@@ -1,0 +1,44 @@
+<scrollbar>
+    <nav id="app_main-menu-wrapper">
+        <!-- 
+		<ul class="navbar-nav nav-logo mobile">
+            <li class="nav-item logo-wrapper">
+                <a href="/">
+                    <div class="logo">
+                        <img src="assets/img/logo/logo-icon.png" alt="Logo">
+                    </div>
+                    <h1 class="brand-text">MaterialLab</h1>
+                </a>
+            </li>
+		</ul>
+		-->
+
+        <div class="sidebar-inner sidebar-push">
+            <ul class="nav nav-pills flex-column">
+                <li class="sidebar-header">管理選單</li>
+                <li routerLinkActive="active"><a md-ripple href="javascript:void(0)" class="" [routerLink]="['/home']"><i class="zmdi zmdi-home"></i> 管理系統首頁</a></li>
+                <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+                    <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle><i class="zmdi zmdi-collection-text"></i> 訓練課程管理</a>
+                    <ul class="nav-sub">
+                        <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/starter-pages/full-width-v1']">新增訓練課程</a></li>
+                        <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/starter-pages/full-width-v1']">修改訓練課程</a></li>
+                        <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/starter-pages/full-width-v1']">登錄成績</a></li>
+                    </ul>
+                </li>
+                <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+                    <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle><i class="zmdi zmdi-collection-text"></i> 學員/組別管理</a>
+                    <ul class="nav-sub">
+                        <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/student']">變更組別</a></li>
+                    </ul>
+                </li>
+                <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+                    <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle><i class="zmdi zmdi-collection-text"></i> 相關報表</a>
+                    <ul class="nav-sub">
+                        <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/starter-pages/full-width-v1']">Full Width v1</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+</scrollbar>

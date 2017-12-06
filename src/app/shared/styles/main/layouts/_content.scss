@@ -1,0 +1,41 @@
+.content {
+	.page-header {
+		background: #fff;
+		padding: 20px 30px 15px;
+		width: 100%;
+		box-shadow: 0 1px 1px rgba(0,0,0,.1);
+		position: relative;
+
+		&.header-sm {
+			height: 60px;
+		}
+
+		&.header-md {
+			height: 180px;
+		}
+
+		&.header-lg {
+			height: 220px;
+		}
+
+		&.overlay {
+			position: absolute;
+		}
+	}
+
+	.content-header {
+		padding: 15px 30px;
+		width: 100%;
+		position: relative;
+	}
+
+	.content-body {
+		padding: 30px 30px 90px;
+	}
+
+	.page-header {
+		&.header-lg.overlay + .content-body {
+			padding-top: 170px;
+		}
+	}
+}
