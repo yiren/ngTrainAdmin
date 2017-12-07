@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { StudentService } from '../../../shared/services/student/student.service';
-
 @Component({
   selector: 'app-student-edit',
   templateUrl: './student-edit.component.html',
@@ -9,10 +7,9 @@ import { StudentService } from '../../../shared/services/student/student.service
 })
 export class StudentEditComponent implements OnInit {
 
-  constructor(private studentService:StudentService) { }
+  constructor() { }
 
   ngOnInit() {
-    
   }
 
 }

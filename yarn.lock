@@ -181,9 +181,9 @@
   version "2.0.48"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-2.0.48.tgz#3e90d8cde2d29015e5583017f7830cb3975b2eef"
 
-"@types/lodash@^4.14.66":
-  version "4.14.85"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.85.tgz#a16fbf942422f6eca5622b6910492c496c35069b"
+"@types/lodash@^4.14.88":
+  version "4.14.88"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.88.tgz#97eaf2dc668f33ed8e511a5b627035f4ea20b0f5"
 
 "@types/mcustomscrollbar@^2.8.31":
   version "2.8.32"
@@ -3452,6 +3452,14 @@ ng2-responsive@^0.8.4:
   version "0.8.4"
   resolved "https://registry.yarnpkg.com/ng2-responsive/-/ng2-responsive-0.8.4.tgz#b99151258a981a1a41a3ec8673df0291005578cf"
 
+ng2-toasty@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/ng2-toasty/-/ng2-toasty-4.0.3.tgz#ea78ef8d18757d41ebaba11bd9f90a543f58fd7a"
+
+ngc-float-button@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/ngc-float-button/-/ngc-float-button-1.1.4.tgz#52a71de96703156c852cbefb60f0155b768b3d70"
+
 ngx-bootstrap@^1.7.1:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-1.9.3.tgz#28e75d14fb1beaee609383d7694de4eb3ba03b26"
@@ -4186,6 +4194,10 @@ pretty-error@^2.0.2:
   dependencies:
     renderkid "^2.0.1"
     utila "~0.4"
+
+primeng@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/primeng/-/primeng-5.0.2.tgz#05c4a4502efd4c3bc5d506aa01ae8eb30f9764db"
 
 process-nextick-args@~1.0.6:
   version "1.0.7"

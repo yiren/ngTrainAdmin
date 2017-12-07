@@ -12,8 +12,18 @@ import { CommonModule } from '@angular/common';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FooterComponent } from '../layout/footer/footer.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {NgcFloatButtonModule} from 'ngc-float-button';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { RatingModule } from 'ngx-bootstrap/rating';
@@ -24,14 +34,26 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
+const matModule= [
+    MatExpansionModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatListModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatDialogModule
+]
+
 @NgModule({
     imports: [
 		CommonModule,
         FormsModule,
         ReactiveFormsModule,
 		ResponsiveModule,
-        MatSidenavModule,
-		MatButtonModule,
         AccordionModule.forRoot(),
         AlertModule.forRoot(),
         ButtonsModule.forRoot(),
@@ -46,7 +68,9 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
         TabsModule.forRoot(),
         TimepickerModule.forRoot(),
         TooltipModule.forRoot(),
-        TypeaheadModule.forRoot()
+        TypeaheadModule.forRoot(),
+        ...matModule,
+
     ],
     declarations: [
 		AppBackdropComponent,
@@ -56,8 +80,6 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 		CommonModule,
         FormsModule,
 		ResponsiveModule,
-        MatSidenavModule,
-		MatButtonModule,
 		AppBackdropComponent,
 		FooterComponent,
         ReactiveFormsModule,
@@ -75,7 +97,9 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
         TabsModule,
         TimepickerModule,
         TooltipModule,
-        TypeaheadModule
+        TypeaheadModule,
+        ...matModule,
+        NgcFloatButtonModule
     ]
 })
 
