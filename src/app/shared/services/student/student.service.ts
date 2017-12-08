@@ -114,6 +114,12 @@ export class StudentService {
     return this.sections;
   } 
 
+  addStudent(student){
+    this.students.push(student);
+    const targetSection = _.find(this.studentsBySection, {sectionId:student.sectionId});
+    targetSection.students.push(student);
+  }
+
   updateStudent(student, sectionId){
     const targetSection = _.find(this.studentsBySection, {sectionId:student.sectionId});
     const originalSection = _.find(this.studentsBySection, {sectionId:sectionId});
@@ -129,5 +135,13 @@ export class StudentService {
     });
     console.log('modOri', modOri);
     targetSection.students.push(student);
+  }
+
+  deleteStudent(student){
+    const targetSection = _.find(this.studentsBySection, {sectionId:student.sectionId});
+    const modTarget=_.remove(targetSection.students, (oldStudent)=>{
+      //console.log(oldStudent.studentId !== student.studentId);
+      return oldStudent.studentId == student.studentId;
+    });
   }
 }

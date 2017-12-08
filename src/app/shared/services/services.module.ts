@@ -4,16 +4,14 @@ import { ConfigService } from './config/config.service';
 import { PreloaderService } from './preloader/preloader.service';
 import { SpinnerService } from './spinner/spinner.service';
 
-
-
 @NgModule({
     imports: [
 	
     ],
     providers: [
         ConfigService,
-				PreloaderService,
-				SpinnerService
+		PreloaderService,
+		SpinnerService
     ],
     declarations: [
 

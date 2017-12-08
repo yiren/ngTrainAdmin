@@ -4,6 +4,7 @@ import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
+import { CourseService } from "app/shared/services/course/course.service";
 import { FormsModule } from "@angular/forms";
 import { GlobalState } from "./app.state";
 import { HttpModule } from "@angular/http";
@@ -19,7 +20,8 @@ import { routing } from "./app.routing";
 const APP_PROVIDERS = [
   AppState, 
   GlobalState,
-  StudentService
+  StudentService,
+  CourseService
 ];
 
 export type StoreType = {

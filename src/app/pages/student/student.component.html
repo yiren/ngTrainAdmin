@@ -1,5 +1,5 @@
 <div class="content-body container">
-    <button id="addBtn" mat-fab color="warn">新增</button>
+    <button id="addBtn" mat-fab color="warn" (click)="OnAddStudentDialog()">新增</button>
     <mat-accordion multi="true">
         <mat-expansion-panel *ngFor="let section of studentsBySection" [expanded]="true">
             <mat-expansion-panel-header>
@@ -24,6 +24,7 @@
                         </mat-select>
                     </mat-form-field>
                     <button mat-raised-button color="accent" (click)="updateStudent(student, section.sectionId)">更改</button>
+                    <button mat-raised-button color="warning" (click)="deleteStudent(student, section.sectionId)">刪除</button>
 
                 </mat-list-item>
             </mat-list>

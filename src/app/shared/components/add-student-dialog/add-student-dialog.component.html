@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>新增學員</h2>
+
+<mat-dialog-content>
+    <h4>填入學員基本資料</h4>
+    <mat-form-field>
+        <input matInput placeholder="姓名" [(ngModel)]="data.student.studentName" #nameInput>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="組別" [(ngModel)]="data.student.sectionId">
+            <mat-option *ngFor="let item of data.sections" [value]="item.sectionId">{{item.sectionName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>取消</button>
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button mat-raised-button [mat-dialog-close]="data.student" color="primary" [disabled]="nameInput.value==''">確定新增</button>
+</mat-dialog-actions>

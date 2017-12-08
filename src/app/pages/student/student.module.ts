@@ -1,3 +1,4 @@
+import { AddStudentDialogComponent } from '../../shared/components/add-student-dialog/add-student-dialog.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -22,6 +23,10 @@ const STUDENT_ROUTE = [
   StudentComponent,
   StudentEditComponent,
   StudentAddComponent,
+  AddStudentDialogComponent
+  ],
+  entryComponents:[
+    AddStudentDialogComponent
   ]
 })
 export class StudentModule { }

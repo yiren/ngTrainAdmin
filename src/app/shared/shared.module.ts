@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FooterComponent } from '../layout/footer/footer.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -45,7 +46,8 @@ const matModule= [
     MatListModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
 ]
 
 @NgModule({
@@ -74,7 +76,8 @@ const matModule= [
     ],
     declarations: [
 		AppBackdropComponent,
-		FooterComponent
+		FooterComponent,
+		
     ],
     exports: [
 		CommonModule,
@@ -99,7 +102,8 @@ const matModule= [
         TooltipModule,
         TypeaheadModule,
         ...matModule,
-        NgcFloatButtonModule
+        NgcFloatButtonModule,
+        
     ]
 })
 
