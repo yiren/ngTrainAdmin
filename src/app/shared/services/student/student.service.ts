@@ -18,16 +18,16 @@ export class StudentService {
   ];
 
   sections=[
-    {sectionId: 1, sectionName: '儀控組'},
-    {sectionId: 2, sectionName: '機械組'},
-    {sectionId: 3, sectionName: '策劃組'},
-    {sectionId: 4, sectionName: '電氣組'},
-    {sectionId: 5, sectionName: 'PE II'},
-    {sectionId: 6, sectionName: '核析組'}
+    {sectionId: 1, sectionName: '儀控組', sectionCode:"J"},
+    {sectionId: 2, sectionName: '機械組', sectionCode:"M"},
+    {sectionId: 3, sectionName: '策劃組', sectionCode:"A"},
+    {sectionId: 4, sectionName: '電氣組', sectionCode:"E"},
+    {sectionId: 5, sectionName: 'PE II', sectionCode:"B"},
+    {sectionId: 6, sectionName: '核析組', sectionCode:"N"}
   ];
 
   studentsBySection = [
-    {sectionId: 1, sectionName: '儀控組', students:[
+    {sectionId: 1, sectionCode:"J", sectionName: '儀控組', students:[
       {
       studentId: 1,
       studentName: '李念中',
@@ -39,7 +39,7 @@ export class StudentService {
         sectionId:1
         },
     ]},
-    {sectionId: 2, sectionName: '機械組', students:[
+    {sectionId: 2, sectionCode:"M", sectionName: '機械組', students:[
       {
       sectionId: 2,
       studentId: 9,
@@ -52,7 +52,7 @@ export class StudentService {
         studentName: '黃茂豪'
         },
     ]},
-    {sectionId: 3, sectionName: '策劃組', students:[
+    {sectionId: 3, sectionCode:"A", sectionName: '策劃組', students:[
       {
         sectionId: 3,
       studentId: 2,
@@ -64,7 +64,7 @@ export class StudentService {
         studentName: '陳淑嬿'
         },
     ]},
-    {sectionId: 4, sectionName: '電氣組', students:[
+    {sectionId: 4, sectionCode:"E", sectionName: '電氣組', students:[
       {
         sectionId: 4,
       studentId: 5,
@@ -76,7 +76,7 @@ export class StudentService {
         studentName: '蘇慶鴻'
         },
     ]},
-    {sectionId: 5, sectionName: 'PE II', students:[
+    {sectionId: 5, sectionCode:"B", sectionName: 'PE II', students:[
       {
         sectionId: 5,
       studentId: 6,
@@ -88,7 +88,7 @@ export class StudentService {
         studentName: '黃于軒'
         },
     ]},
-    {sectionId: 6, sectionName: '核析組', students:[
+    {sectionId: 6, sectionCode:"N", sectionName: '核析組', students:[
       {
         sectionId: 6,
       studentId: 3,

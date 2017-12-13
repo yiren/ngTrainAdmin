@@ -30,19 +30,19 @@ export class CourseAddComponent implements OnInit {
     this.studentsBySection = this.studentService.getStudentsBySection();
     this.studentsFormGroup = this.fb.group({});
     this.studentsBySection.forEach(section => {
-      this.studentsFormGroup.addControl(section.sectionName, new FormControl());
+      this.studentsFormGroup.addControl(section.sectionCode, new FormControl());
     });
     this.addCourseForm = this.fb.group({
       'courseName':['', Validators.required],
       'courseStartDate':{value:'',disabled:true},
       'courseEndDate':{value:'',disabled:true},
       'trainHours':'',
-      'students':'',
-      'studentsSelect':this.studentsFormGroup
+      'students':this.studentsFormGroup
     });
   }
 
   onSubmit(){
-    console.log(this.addCourseForm);
+    this.studentService.addStudent(this.addCourseForm.value);
+    console.log(this.addCourseForm.value);
   }
 }

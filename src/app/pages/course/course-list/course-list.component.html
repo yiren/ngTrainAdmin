@@ -1,3 +1,46 @@
-<p>
-  course-list works!
-</p>
+<div class="container">
+    <div>
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+
+
+    <mat-table #table [dataSource]="courseDataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="courseName">
+            <mat-header-cell *matHeaderCellDef> 課程名稱 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.courseName}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="courseStartDate">
+            <mat-header-cell *matHeaderCellDef> 開訓日期 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.courseStartDate}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="courseEndDate">
+            <mat-header-cell *matHeaderCellDef> 結訓日期 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.courseEndDate}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="trainHours">
+            <mat-header-cell *matHeaderCellDef> 訓練時數 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.trainHours}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="courseId">
+            <mat-header-cell *matHeaderCellDef>編輯</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-raised-button color="primary">編輯訓練課程</button>
+                <button mat-raised-button color="accent">登錄成績</button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

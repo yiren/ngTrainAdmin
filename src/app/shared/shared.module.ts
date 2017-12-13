@@ -23,8 +23,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import {NgcFloatButtonModule} from 'ngc-float-button';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { RatingModule } from 'ngx-bootstrap/rating';
@@ -47,7 +47,8 @@ const matModule= [
     MatSelectModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule
 ]
 
 @NgModule({
@@ -102,7 +103,6 @@ const matModule= [
         TooltipModule,
         TypeaheadModule,
         ...matModule,
-        NgcFloatButtonModule,
         
     ]
 })

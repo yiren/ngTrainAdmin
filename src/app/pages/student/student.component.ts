@@ -37,22 +37,18 @@ export class StudentComponent implements OnInit {
     dialogRef.afterClosed().subscribe((student)=>{
       console.log(student + ' added');
       this.studentService.addStudent(student);
-
     });
-    
   }
   //
   updateStudent(student, sectionId){
     console.log(student.studentName);
-    
-    if(student.studentName ==''){
+    if(student.studentName == ''){
       console.log("Error");
-    }else if(student.sectionId==sectionId){
+    }else if(student.sectionId == sectionId){
       console.log("not Changed");
     }else{
       this.studentService.updateStudent(student, sectionId);
-    }
-    
+    } 
   }
   deleteStudent(student){
     if(confirm("確認刪除!?"))
