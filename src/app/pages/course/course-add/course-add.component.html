@@ -10,13 +10,13 @@
         <mat-form-field>
             <input matInput [matDatepicker]="startDate" placeholder="開訓日期" formControlName="courseStartDate">
             <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-            <mat-datepicker #startDate></mat-datepicker>
+            <mat-datepicker #startDate disabled="false"></mat-datepicker>
         </mat-form-field>
         /
         <mat-form-field>
             <input matInput [matDatepicker]="endDate" placeholder="結訓日期" formControlName="courseEndDate">
             <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-            <mat-datepicker #endDate></mat-datepicker>
+            <mat-datepicker #endDate disabled="false"></mat-datepicker>
         </mat-form-field>
 
         <p>

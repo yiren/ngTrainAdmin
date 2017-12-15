@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { StudentAddComponent } from './student-add/student-add.component';
 import { StudentComponent } from './student.component';
 import { StudentEditComponent } from './student-edit/student-edit.component';
+import { StudentScoreComponent } from './student-score/student-score.component';
 
 const STUDENT_ROUTE = [
   { path: '', component: StudentComponent },
@@ -23,7 +24,8 @@ const STUDENT_ROUTE = [
   StudentComponent,
   StudentEditComponent,
   StudentAddComponent,
-  AddStudentDialogComponent
+  AddStudentDialogComponent,
+  StudentScoreComponent
   ],
   entryComponents:[
     AddStudentDialogComponent

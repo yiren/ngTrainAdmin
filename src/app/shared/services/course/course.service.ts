@@ -14,27 +14,27 @@ export class CourseService {
   constructor() { }
 
 
-  courses:Course[]=[
+  courses=[
     {
       courseId:1,
       courseName:"健康職場講座-姿勢好.運動對.痠痛說掰掰",
       courseStartDate:"2017/12/12",
       courseEndDate:"2017/12/12",
-      trainHours:2.0,
+      trainHours:2.0
     },
     {
       courseId:2,
       courseName:"106-1期「大型發電機測試及維護班」",
       courseStartDate:"2017/12/04",
       courseEndDate:"2017/12/08",
-      trainHours:27.0,
+      trainHours:27.0
     },
     {
       courseId:3,
       courseName:"106-1期「軸承與潤滑班」",
       courseStartDate:"2017/10/05",
       courseEndDate:"2017/10/13",
-      trainHours:28.0,
+      trainHours:28.0
     }
   ]
 
@@ -62,7 +62,7 @@ export class CourseService {
     socre:"84"
   }
 
-  getCourseList(){
+  getCourseList() {
     return this.courses;
   }
 

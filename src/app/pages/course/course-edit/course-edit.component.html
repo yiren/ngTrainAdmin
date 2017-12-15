@@ -1,3 +1,40 @@
-<p>
-  course-edit works!
-</p>
+<div class="content-body container">
+    <h2>新增課程</h2>
+    <form [formGroup]="editCourseForm" (ngSubmit)="onSubmit()">
+        <p>
+            <mat-form-field>
+                <input placeholder="課程名稱" matInput formControlName="courseName">
+            </mat-form-field>
+        </p>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="startDate" placeholder="開訓日期" formControlName="courseStartDate">
+            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+        /
+        <mat-form-field>
+            <input matInput [matDatepicker]="endDate" placeholder="結訓日期" formControlName="courseEndDate">
+            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+
+        <p>
+            <mat-form-field>
+                <input placeholder="訓練時數" matInput formControlName="trainHours">
+            </mat-form-field>
+        </p>
+
+        <div formGroupName="students">
+            <mat-form-field *ngFor="let section of studentsBySection; let i=index">
+                <mat-select [placeholder]="section.sectionName" multiple [formControlName]="section.sectionCode">
+                    <mat-option *ngFor="let student of section.students" [value]="student.studentId">{{student.studentName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <p>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!addCourseForm.valid">新增訓練課程</button>
+        </p>
+    </form>
+</div>
