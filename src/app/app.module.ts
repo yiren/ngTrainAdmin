@@ -7,6 +7,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { CourseService } from "app/shared/services/course/course.service";
 import { FormsModule } from "@angular/forms";
 import { GlobalState } from "./app.state";
+import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
 import { LayoutModule } from "./layout/layout.module";
 import { NgModule } from "@angular/core";
@@ -36,6 +37,7 @@ export type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ServicesModule,
     ResponsiveModule,

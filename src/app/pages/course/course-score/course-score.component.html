@@ -1,1 +1,26 @@
-
+<div class="container">
+    <h1>成績登錄</h1>
+    <form [formGroup]="scoreForm" (ngSubmit)="updateScore()">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>項次</th>
+                        <th>學員姓名</th>
+                        <th>學員組別</th>
+                        <th>分數</th>
+                    </tr>
+                </thead>
+                <tbody formGroupName="scoreStudents">
+                    <tr *ngFor="let student of students; let i=index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{student.studentName}}</td>
+                        <td>{{student.sectionName}}</td>
+                        <td><input [value]="student.score" [formControlName]="student.studentId"></td>
+                    </tr>
+                    <button mat-raised-button color="accent" type="submit">更新學員成績</button>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

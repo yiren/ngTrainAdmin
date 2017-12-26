@@ -27,6 +27,7 @@ const COURSE_ROUTE = [
      CourseListComponent,
      CourseEditComponent,
      CourseScoreComponent,
-     CourseDetailComponent]
+     CourseDetailComponent
+    ]
 })
 export class CourseModule { }

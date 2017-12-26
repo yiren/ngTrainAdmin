@@ -40,9 +40,18 @@ export class CourseAddComponent implements OnInit {
       'students':this.studentsFormGroup
     });
   }
-
+  testData;
+  s=[];
   onSubmit(){
-    this.studentService.addStudent(this.addCourseForm.value);
+    this.testData=_.values(this.addCourseForm.value.students);
+    _.each(this.testData, (v1, k1)=>{
+      _.each(v1, (v2, k2)=>{
+        this.s.push(v2);
+      })
+    });
+    this.addCourseForm.value.students= this.s;
+    console.log(this.s);
+    //this.studentService.addStudent(this.addCourseForm.value);
     console.log(this.addCourseForm.value);
   }
 }

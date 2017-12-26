@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12">
             <div class="card">
                 <header class="card-heading">
                     <h2 class="card-title"></h2>
@@ -30,82 +30,41 @@
                     <a style="float:right" href="javascript:void(0)" onclick="javascript:window.print();"><i class="zmdi zmdi-print p-r-5"></i> <span class="p-l-5">列印</span></a>
                 </header>
                 <div class="card-body p-50 p-t-10">
-                    <h1></h1>
+                    <h1>{{course.courseName}}</h1>
                     <div class="row">
-                        <div class="col-xs-6">
-                            <h3>INVOICE FROM</h3>
+                        <div class="col-md-6">
+                            <h3>開訓日期:{{course.courseStartDate}}</h3>
+                            <h3>訓練時數:{{course.trainHours | number:'.1' }}</h3>
+                            <h3>學員名單:</h3>
 
                         </div>
-                        <div class="col-xs-6">
-                            <h3>INVOICE TO</h3>
-                            <address class="address">
-                Dribbble Inc.<br>
-                355 Washington Street, 5th Floor<br>
-                Salem, MA 29384<br>
-                Phone: +1 888-123-0000<br>
-              </address>
+                        <div class="col-md-6">
+                            <h3>結訓日期:{{course.courseEndDate}}</h3>
+
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Item#</th>
-                                    <th>Description</th>
-                                    <th>QTY</th>
-                                    <th>Unit Price</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>UX Design
-                                        <p>Wireframes of screens, storyboards and sitemaps.</p>
-                                    </td>
-                                    <td>2</td>
-                                    <td>$2,100</td>
-                                    <td>$4,200</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Front-end Development
-                                        <p>CSS, HTML, and JavaScript files</p>
-                                    </td>
-                                    <td>1</td>
-                                    <td>$3,500</td>
-                                    <td>$3,500</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>UX Research
-                                        <p>User personas, A/B test results, Investigative user studies & interviews.</p>
-                                    </td>
-                                    <td>1</td>
-                                    <td>$2,000</td>
-                                    <td>$2,000</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="invoice-total">
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <h3>Design Lead,</h3>
-                                <div class="signature">J.Smith</div>
-                            </div>
-                            <div class="col-xs-7">
-                                <span class="text-right text-gray">SUB TOTAL</span>
-                                <span class="text-right text-gray">10% DISCOUNT</span>
-                                <span class="text-right m-t-10"><strong>TOTAL DUE</strong></span>
-                            </div>
-                            <div class="col-xs-1">
-                                <span>$9,700</span>
-                                <span>$970</span>
-                                <span class="total">$8,730</span>
-                            </div>
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>項次</th>
+                                        <th>學員組別</th>
+                                        <th>學員姓名</th>
+                                        <th>分數</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let student of course.students; let i=index">
+                                        <th scope="row">{{i+1}}</th>
+                                        <td>{{student.studentName}}</td>
+                                        <td>{{student.sectionName}}</td>
+                                        <td>{{student.score}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
                         </div>
-                        <button class="btn btn-primary btn-round pull-right m-t-20 m-b-20">Make a Payment</button>
                     </div>
                 </div>
             </div>

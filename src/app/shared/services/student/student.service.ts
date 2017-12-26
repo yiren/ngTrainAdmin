@@ -55,14 +55,20 @@ export class StudentService {
     {sectionId: 3, sectionCode:"A", sectionName: '策劃組', students:[
       {
         sectionId: 3,
-      studentId: 2,
-      studentName: '廖經政'
+        studentId: 2,
+        studentName: '廖經政'
       },
       {
         sectionId: 3,
         studentId: 97,
         studentName: '陳淑嬿'
-        },
+      },
+      {
+        sectionId: 3,
+        studentId: 80,
+        studentName: '黃聖翔'
+      }
+
     ]},
     {sectionId: 4, sectionCode:"E", sectionName: '電氣組', students:[
       {
@@ -74,7 +80,7 @@ export class StudentService {
         sectionId: 4,
         studentId: 96,
         studentName: '蘇慶鴻'
-        },
+      },
     ]},
     {sectionId: 5, sectionCode:"B", sectionName: 'PE II', students:[
       {
@@ -86,7 +92,7 @@ export class StudentService {
         sectionId: 5,
         studentId: 95,
         studentName: '黃于軒'
-        },
+      },
     ]},
     {sectionId: 6, sectionCode:"N", sectionName: '核析組', students:[
       {
@@ -98,7 +104,25 @@ export class StudentService {
         sectionId: 6,
         studentId: 94,
         studentName: '林冠宇'
-        },
+      },
+      {
+        sectionId: 6,
+        studentId: 83,
+        studentName: '詹士智'
+      },
+
+    ]},
+    {sectionId: 7, sectionCode:"P", sectionName: '廠佈組', students:[
+      {
+        sectionId: 7,
+        studentId: 81,
+        studentName: '陳夷汀'
+      },
+      {
+        sectionId: 7,
+        studentId: 82,
+        studentName: '郭廷宇'
+      },
     ]},
 
   ];
