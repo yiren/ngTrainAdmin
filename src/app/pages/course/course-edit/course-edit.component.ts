@@ -1,3 +1,5 @@
+import * as _ from 'lodash';
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -25,19 +27,71 @@ export class CourseEditComponent implements OnInit {
               private route:ActivatedRoute) { }
 
   ngOnInit() {
+    let testData=[
+      {
+        sectionCode:'A',
+        studentId:4
+      },
+      {
+        sectionCode:'E',
+        studentId:2
+      },
+      {
+        sectionCode:'A',
+        studentId:5
+      },
+      {
+        sectionCode:'E',
+        studentId:3
+      },
+      {
+        sectionCode:'A',
+        studentId:6
+      }
+    ];
+
+    let sectionWithStudents=[
+      {
+        sectionCode:'A',
+        students:[]
+      },
+      {
+        sectionCode:'E',
+        students:[]
+      }
+    ];
+    
+    _.each(testData, (item)=>{
+      _.each(sectionWithStudents, (student)=>{
+        if(item.sectionCode==student.sectionCode){
+          student.students.push(item.studentId);
+        }
+      })
+    })
+
+    console.log(sectionWithStudents);
+
     this.course=this.courseService.getEditCourseById(1);
     this.studentsBySection=this.studentService.getStudentsBySection();
+
+    const testData2=_.cloneDeep(this.studentsBySection);
+    console.log("Before", testData2);
+    _.each(testData2, (item)=>{
+      item.students=[1,2,3];
+    });
+
+    console.log("After",testData2);
     this.studentsFormGroup = this.fb.group({});
     this.studentsBySection.forEach(section => {
       this.studentsFormGroup.addControl(section.sectionCode, new FormControl());
     });
-    console.log(this.studentsFormGroup.controls);
-
+    //console.log(this.studentsFormGroup.controls);
+    console.log(this.course.students);
     this.course.students.forEach(section => {
       //console.log(section.sectionCode);
-      console.log(this.studentsFormGroup.controls[section.sectionCode].setValue(section.students))
+      this.studentsFormGroup.controls[section.sectionCode].setValue(section.students);
     });
-    this.studentsFormGroup.controls['A'].setValue([80,2,97]);
+    //this.studentsFormGroup.controls['A'].setValue([80,2,97]);
     //console.log(this.studentsFormGroup.controls['J'].setValue(this.course.));
     this.editCourseForm = this.fb.group({
       'courseId':this.course.courseId,

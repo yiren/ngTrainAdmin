@@ -35,6 +35,7 @@
 
         <p>
             <button mat-raised-button color="primary" type="submit" [disabled]="!editCourseForm.valid">更新訓練課程資訊</button>
+            <button mat-raised-button color="warn" type="submit" (click)="deleteCourse()">刪除本訓練課程</button>
         </p>
     </form>
 </div>

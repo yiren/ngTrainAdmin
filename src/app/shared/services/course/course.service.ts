@@ -1,14 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { Course } from '../../model/Course';
 import { Injectable } from '@angular/core';
 import { StudentService } from 'app/shared/services/student/student.service';
-
-export interface Course{
-  courseId:number;
-  courseName:string;
-  courseStartDate:string;
-  courseEndDate:string;
-  trainHours:number;
-}
 
 @Injectable()
 export class CourseService {
@@ -18,23 +12,7 @@ export class CourseService {
 
 
 
-  studentsByCourse1=[
-    {
-      sectionId:3,
-      sectionCode:'A',
-      students:[80,2,97]
-    },
-    {
-      sectionId:7,
-      sectionCode:'P',
-      students:[81]
-    },
-    {
-      sectionId:6,
-      sectionCode:"N",
-      students:[82,3]
-    }
-  ];
+  
 
   studentsWithScore1=[
     {
@@ -90,7 +68,23 @@ export class CourseService {
     students:this.studentsWithScore1
   }
 
-
+  studentsByCourse1=[
+    {
+      sectionId:3,
+      sectionCode:'A',
+      students:[80,2,97]
+    },
+    {
+      sectionId:7,
+      sectionCode:'P',
+      students:[81]
+    },
+    {
+      sectionId:6,
+      sectionCode:"N",
+      students:[82,3]
+    }
+  ];
   editCourse1={
     courseId:1,
     courseName:"健康職場講座-姿勢好.運動對.痠痛說掰掰",
@@ -109,8 +103,14 @@ export class CourseService {
     socre:"84"
   }
 
+  API_ENPOINT = 'http://localhost:62867/api/courses';
+
   getCourseList() {
-    return this.courses;
+
+    return this.httpClient.get<Course[]>(this.API_ENPOINT)
+               
+
+    //return this.courses;
   }
 
   getEditCourseById(id){
@@ -122,7 +122,8 @@ export class CourseService {
   }
 
   getCourseDetailById(id){
-    return this.courseDetail1;
+    return this.httpClient.get<Course>(`${this.API_ENPOINT}/${id}`)
+                          .share();
   }
 
   getStudentScoreById(id){
@@ -134,7 +135,9 @@ export class CourseService {
   }
 
   addCourse(course){
-    this.courses.push(course);
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+    return this.httpClient.post(this.API_ENPOINT, course,{headers:header});
   }
 
   updateCourse(courseId, course){
@@ -142,7 +145,9 @@ export class CourseService {
   }
 
   deleteCourse(courseId){
-    
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+    return this.httpClient.delete(`${this.API_ENPOINT}/${courseId}`,{headers:header});
   }
 
 }

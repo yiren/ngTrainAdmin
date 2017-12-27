@@ -10,14 +10,15 @@ import { CourseService } from '../../../shared/services/course/course.service';
 })
 export class CourseDetailComponent implements OnInit {
 
-  course;
+  course$;
 
   constructor(private courseService:CourseService,
               private route:ActivatedRoute,
               private router:Router) { }
               
   ngOnInit() {
-    this.course=this.courseService.getCourseDetailById(1);
+    
+    this.course$=this.courseService.getCourseDetailById(this.route.snapshot.params['courseId']);
     
   }
 

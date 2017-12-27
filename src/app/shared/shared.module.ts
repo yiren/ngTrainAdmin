@@ -20,6 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -48,7 +49,8 @@ const matModule= [
     MatSnackBarModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressSpinnerModule
 ]
 
 @NgModule({
