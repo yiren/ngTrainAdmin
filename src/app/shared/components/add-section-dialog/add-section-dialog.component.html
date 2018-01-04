@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>新增學員</h2>
+
+<mat-dialog-content>
+    <h4>填入學員基本資料</h4>
+    <mat-form-field>
+        <input matInput placeholder="組別名稱" [(ngModel)]="data.section.sectionName" #nameInput>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="組別代碼" [(ngModel)]="data.section.sectionCode" #codeInput>
+    </mat-form-field>
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>取消</button>
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button mat-raised-button [mat-dialog-close]="data.section" color="primary" [disabled]="nameInput.value=='' || codeInput.value==''">確定新增</button>
+</mat-dialog-actions>

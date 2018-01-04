@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { StudentService } from 'app/shared/services/student/student.service';
-import { setTimeout } from 'timers';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-course-add',
@@ -29,6 +29,8 @@ export class CourseAddComponent implements OnInit {
 
   
   studentsBySection;
+  studentsBySection$;
+  sectionSubscription:Subscription;
   isSubmitted=false;
   typical={
     courseName:'中國電機工程學會「106年度會員大會」',
@@ -38,11 +40,7 @@ export class CourseAddComponent implements OnInit {
   }
   checked;
   ngOnInit() {
-    this.studentsBySection = this.studentService.getStudentsBySection();
     this.studentsFormGroup = this.fb.group({});
-    this.studentsBySection.forEach(section => {
-      this.studentsFormGroup.addControl(section.sectionCode, new FormControl());
-    });
     this.addCourseForm = this.fb.group({
       'courseName':['', Validators.required],
       'courseStartDate':{value:'',disabled:true},
@@ -50,10 +48,25 @@ export class CourseAddComponent implements OnInit {
       'trainHours':'',
       'students':this.studentsFormGroup
     });
+    this.studentsBySection$=this.studentService.getStudentsBySection();
+    this.sectionSubscription = 
+      this.studentService.getStudentsBySection()
+          .subscribe((sections:any[])=>{
+            this.studentsBySection=sections;
+            console.log(sections);
+            this.studentsBySection.forEach(section => {
+              //console.log(section);
+              this.studentsFormGroup.addControl(section.sectionCode, new FormControl());
+          });
+    });
+    
+    
+    //console.log(this.addCourseForm.controls)
   }
   testData;
   s=[];
   onSubmit(){
+    console.log(this.addCourseForm.controls);
     this.testData=_.values(this.addCourseForm.value.students);
     _.each(this.testData, (v1, k1)=>{
       _.each(v1, (v2, k2)=>{
@@ -63,18 +76,18 @@ export class CourseAddComponent implements OnInit {
     this.addCourseForm.value.students= this.s;
     console.log(this.addCourseForm.value);
     
-    this.courseService.addCourse(this.addCourseForm.value)
-                      .subscribe((res:Course)=>{
-                        console.log(res);
-                        // this.snackBar.open(`新增"${res.courseName}"訓練課程`, '關閉',{
-                        //   duration:2000
-                        // });
-                        this.isSubmitted=true;
-                        setTimeout(()=>{
-                          this.router.navigate(['/course']);
-                        },2000);
+    // this.courseService.addCourse(this.addCourseForm.value)
+    //                   .subscribe((res:Course)=>{
+    //                     console.log(res);
+    //                     // this.snackBar.open(`新增"${res.courseName}"訓練課程`, '關閉',{
+    //                     //   duration:2000
+    //                     // });
+    //                     this.isSubmitted=true;
+    //                     setTimeout(()=>{
+    //                       this.router.navigate(['/course']);
+    //                     },2000);
                         
-                      });
+    //                   });
     
     
   }

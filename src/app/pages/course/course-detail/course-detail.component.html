@@ -55,7 +55,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let student of (course$ | async)?.students; let i=index">
+                                    <tr *ngFor="let student of (course$ | async)?.studentCourses; let i=index">
                                         <th scope="row">{{i+1}}</th>
                                         <td>{{student.studentName}}</td>
                                         <td>{{student.sectionName}}</td>

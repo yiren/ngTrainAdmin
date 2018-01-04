@@ -9,7 +9,6 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { StudentService } from '../../../shared/services/student/student.service';
 import { Subscription } from 'rxjs/Subscription';
-import { setTimeout } from 'timers';
 
 @Component({
   selector: 'app-course-list',

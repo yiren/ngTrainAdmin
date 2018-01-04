@@ -10,20 +10,15 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class AddStudentDialogComponent implements OnInit {
 
   studentForm:FormGroup;
-  constructor(private fb:FormBuilder,
+  constructor(
               public dialogRef: MatDialogRef<AddStudentDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data:any) { }
 
   ngOnInit() {
-    this.studentForm = this.fb.group({
-      'studentName': ['', Validators.required],
-      'sectionId': ['', Validators.required]
-    });
+    
   }
 
 
-  onSubmit(data){
-
-  }
+  
 
 }

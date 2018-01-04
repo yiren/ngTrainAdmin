@@ -1,8 +1,11 @@
+import * as _ from 'lodash';
+
 import { Component, OnInit } from '@angular/core';
 
 import { AddStudentDialogComponent } from '../../shared/components/add-student-dialog/add-student-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentService } from '../../shared/services/student/student.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-student',
@@ -14,7 +17,8 @@ export class StudentComponent implements OnInit {
   constructor(private studentService:StudentService,
               public dialog:MatDialog) { }
 
-   
+  sectionSubscription:Subscription;
+  subscriptions:Subscription[];
   studentsBySection = [];
   sections = [];
   student={
@@ -22,8 +26,22 @@ export class StudentComponent implements OnInit {
     sectionId:1
   };
   ngOnInit() {
-    this.studentsBySection=this.studentService.getStudentsBySection();
-    this.sections=this.studentService.getSections();
+    this.studentService.getSections();
+    this.sectionSubscription = 
+      this.studentService.studentSubject
+          .subscribe((sections:any[]) => {
+            this.studentsBySection = sections;
+            this.sections=_.cloneDeep(sections);
+            this.studentsBySection.forEach(section => {
+              //console.log(section);
+              //this.studentsFormGroup.addControl(section.sectionCode, new FormControl());
+          });
+    });
+
+    
+    //this.studentsBySection=this.studentService.getStudentsBySection();
+    //this.sections=this.studentService.getSections();
+    console.log(this.sections);
   }
 
   OnAddStudentDialog(){
@@ -44,10 +62,8 @@ export class StudentComponent implements OnInit {
     console.log(student.studentName);
     if(student.studentName == ''){
       console.log("Error");
-    }else if(student.sectionId == sectionId){
-      console.log("not Changed");
     }else{
-      this.studentService.updateStudent(student, sectionId);
+      this.studentService.updateStudent(student);
     } 
   }
   deleteStudent(student){

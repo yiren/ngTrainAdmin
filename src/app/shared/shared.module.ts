@@ -10,6 +10,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { CommonModule } from '@angular/common';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FooterComponent } from '../layout/footer/footer.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -17,6 +18,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -35,6 +37,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { AddSectionDialogComponent } from './components/add-section-dialog/add-section-dialog.component';
 
 const matModule= [
     MatExpansionModule,
@@ -50,7 +53,9 @@ const matModule= [
     MatDialogModule,
     MatCheckboxModule,
     MatTableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule,
+    FlexLayoutModule
 ]
 
 @NgModule({
@@ -80,6 +85,7 @@ const matModule= [
     declarations: [
 		AppBackdropComponent,
 		FooterComponent,
+		AddSectionDialogComponent,
 		
     ],
     exports: [

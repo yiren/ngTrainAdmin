@@ -12,6 +12,7 @@ import { HttpModule } from "@angular/http";
 import { LayoutModule } from "./layout/layout.module";
 import { NgModule } from "@angular/core";
 import { ResponsiveModule } from "ng2-responsive";
+import { SectionService } from './shared/services/section/section.service';
 import { ServicesModule } from "./shared/services/services.module";
 import { SharedModule } from "./shared/shared.module";
 import { StudentService } from "app/shared/services/student/student.service";
@@ -22,7 +23,8 @@ const APP_PROVIDERS = [
   AppState, 
   GlobalState,
   StudentService,
-  CourseService
+  CourseService,
+  SectionService
 ];
 
 export type StoreType = {

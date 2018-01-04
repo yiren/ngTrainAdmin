@@ -1,5 +1,8 @@
 import * as _ from 'lodash';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -127,45 +130,77 @@ export class StudentService {
 
   ];
 
-  constructor() { }
+  studentSubject=new BehaviorSubject([]);
 
+  constructor(private httpClient:HttpClient) { }
+
+  SECTION_API_ENPOINT = '/api/sections';
+
+  STUDENT_API_ENDPOINT='/api/students';
+
+  
 
   getStudentsBySection(){
-    return this.studentsBySection;
+    return this.httpClient.get(this.SECTION_API_ENPOINT);
   }
 
+
   getSections(){
-    return this.sections;
+    return this.httpClient.get(this.SECTION_API_ENPOINT)
+               .subscribe((data:any[]) => {
+                  this.studentSubject.next(data);
+               });
   } 
 
   addStudent(student){
-    this.students.push(student);
-    const targetSection = _.find(this.studentsBySection, {sectionId:student.sectionId});
-    targetSection.students.push(student);
+    // this.students.push(student);
+    // const targetSection = _.find(this.studentsBySection, {sectionId:student.sectionId});
+    // targetSection.students.push(student);
+    console.log(student);
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+    this.httpClient.post(this.STUDENT_API_ENDPOINT, student ,{headers:header})
+                   .subscribe(res=>{
+                     console.log(res);
+                     this.getSections();
+                   });  
   }
 
-  updateStudent(student, sectionId){
-    const targetSection = _.find(this.studentsBySection, {sectionId:student.sectionId});
-    const originalSection = _.find(this.studentsBySection, {sectionId:sectionId});
-    //console.log('ori', originalSection);
-    //console.log('target', targetSection);
-    // const unchangeSections = _.filter(this.studentsBySection, (section) => {
-    //   console.log(section.sectionId !== originalSection.sectionId);
-    //   return section.sectionId !== originalSection.sectionId || targetSection.sectionId;
-    // })
-    const modOri=_.remove(originalSection.students, (oldStudent)=>{
-      //console.log(oldStudent.studentId !== student.studentId);
-      return oldStudent.studentId == student.studentId;
-    });
-    console.log('modOri', modOri);
-    targetSection.students.push(student);
+  updateStudent(student){
+    // const targetSection = _.find(this.studentsBySection, {sectionId:student.sectionId});
+    // const originalSection = _.find(this.studentsBySection, {sectionId:sectionId});
+    // //console.log('ori', originalSection);
+    // //console.log('target', targetSection);
+    // // const unchangeSections = _.filter(this.studentsBySection, (section) => {
+    // //   console.log(section.sectionId !== originalSection.sectionId);
+    // //   return section.sectionId !== originalSection.sectionId || targetSection.sectionId;
+    // // })
+    // const modOri=_.remove(originalSection.students, (oldStudent)=>{
+    //   //console.log(oldStudent.studentId !== student.studentId);
+    //   return oldStudent.studentId == student.studentId;
+    // });
+    // console.log('modOri', modOri);
+    // targetSection.students.push(student);
+
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+    this.httpClient.put(`${this.STUDENT_API_ENDPOINT}/${student.studentId}`, student ,{headers:header})
+                   .subscribe(res=>{
+                     this.getSections();
+                   });  
   }
 
   deleteStudent(student){
-    const targetSection = _.find(this.studentsBySection, {sectionId:student.sectionId});
-    const modTarget=_.remove(targetSection.students, (oldStudent)=>{
-      //console.log(oldStudent.studentId !== student.studentId);
-      return oldStudent.studentId == student.studentId;
-    });
+    // const targetSection = _.find(this.studentsBySection, {sectionId:student.sectionId});
+    // const modTarget=_.remove(targetSection.students, (oldStudent)=>{
+    //   //console.log(oldStudent.studentId !== student.studentId);
+    //   return oldStudent.studentId == student.studentId;
+    // });
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+    this.httpClient.delete(`${this.STUDENT_API_ENDPOINT}/${student.studentId}`, {headers:header})
+                   .subscribe(res=>{
+                     this.getSections();
+                   });  
   }
 }

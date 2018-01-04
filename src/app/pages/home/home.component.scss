@@ -1,8 +1,21 @@
-.fullWidth1-wrapper{
-	.content{
-			//This keeps the main content height from collapsing.
-			.content-body{
-						 min-height: 88.9vh !important;
-			}
-	}
+.fullWidth1-wrapper {
+    .content {
+        //This keeps the main content height from collapsing.
+        .content-body {
+            min-height: 88.9vh !important;
+        }
+    }
+}
+
+.fix-font-size {
+    font-size: 24px;
+    color: green;
+    background-color: blue;
+    margin: 0px;
+}
+
+#card {
+    font-size: 40px;
+    padding: 20px;
+    margin: 5px
 }

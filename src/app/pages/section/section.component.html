@@ -1,0 +1,31 @@
+<div class="content-body container">
+    <button class="float-add-btn" mat-fab color="warn" (click)="OnAddSectionDialog()">新增</button>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="true" hideToggle="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    組別列表
+                </mat-panel-title>
+                <mat-panel-description>
+                    請點選要修改的組別
+
+                </mat-panel-description>
+                <mat-icon>folder_shared</mat-icon>
+            </mat-expansion-panel-header>
+            <mat-list>
+                <mat-list-item *ngFor="let section of sections">
+                    <mat-icon>folder_shared</mat-icon>
+                    <mat-form-field>
+                        <input placeholder="組別名稱" matInput [(ngModel)]="section.sectionName">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input placeholder="組別代碼" matInput [(ngModel)]="section.sectionCode">
+                    </mat-form-field>
+                    <button mat-raised-button color="accent" (click)="updateSection(section)">更改</button>
+                    <button mat-raised-button color="warning" (click)="deleteSection(section.sectionId)">刪除</button>
+                </mat-list-item>
+            </mat-list>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

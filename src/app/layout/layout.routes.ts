@@ -11,6 +11,8 @@ const LAYOUT_ROUTES: Routes = [
       { path: "home", loadChildren: "../pages/home/home.module#HomeModule" },
       { path: "student", loadChildren: "../pages/student/student.module#StudentModule" },
       { path: "course", loadChildren: "../pages/course/course.module#CourseModule" },
+      { path: "section", loadChildren: "../pages/section/section.module#SectionModule" }
+
     ]
   },
 

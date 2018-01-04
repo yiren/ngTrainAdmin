@@ -103,11 +103,11 @@ export class CourseService {
     socre:"84"
   }
 
-  API_ENPOINT = 'http://localhost:62867/api/courses';
+  API_ENPOINT = '/api/courses';
 
   getCourseList() {
 
-    return this.httpClient.get<Course[]>(this.API_ENPOINT)
+    return this.httpClient.get<Course[]>(this.API_ENPOINT);
                
 
     //return this.courses;
@@ -141,7 +141,9 @@ export class CourseService {
   }
 
   updateCourse(courseId, course){
-      
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+    return this.httpClient.put(`${this.API_ENPOINT}/${courseId}`, course,{headers:header});  
   }
 
   deleteCourse(courseId){
