@@ -2,6 +2,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { AddSectionDialogComponent } from './components/add-section-dialog/add-section-dialog.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AppBackdropComponent } from './components/app_backdrop/app_backdrop.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FooterComponent } from '../layout/footer/footer.component';
+import { GridModule } from '@progress/kendo-angular-grid';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -37,7 +39,6 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-import { AddSectionDialogComponent } from './components/add-section-dialog/add-section-dialog.component';
 
 const matModule= [
     MatExpansionModule,
@@ -111,7 +112,7 @@ const matModule= [
         TooltipModule,
         TypeaheadModule,
         ...matModule,
-        
+        GridModule
     ]
 })
 

@@ -4,5 +4,5 @@ export interface Course{
     courseStartDate: string;
     courseEndDate: string;
     trainHours: number;
-    studentCourses: object;
+    studentCourses: any[];
   }

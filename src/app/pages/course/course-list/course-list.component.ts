@@ -26,8 +26,9 @@ export class CourseListComponent implements OnInit {
   displayedColumns = ['courseName', 'courseStartDate', 'courseEndDate', 'trainHours', 'courseId'];
   ngOnInit() {
 
-        this.courseSubscription = this.courseService.getCourseList().subscribe(data=>{
-        //console.log(data);
+        this.courseService.getCourseList();
+        this.courseService.courseSubject.subscribe(data=>{
+        console.log(data);
         this.courseDataSource = new MatTableDataSource<Course>(data); 
       });
       

@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import * as moment from 'moment';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -36,12 +37,12 @@ export class CourseEditComponent implements OnInit, OnDestroy {
               private router:Router) { }
 
   ngOnInit() {
+    this.courseId=this.route.snapshot.params['courseId'];
     this.studentsFormGroup = this.fb.group({});
     this.editCourseForm = this.fb.group({
-      
       'courseName':['', Validators.required],
-      'courseStartDate':{value:'', disabled:true},
-      'courseEndDate':{value:'', disabled:true},
+      'courseStartDate':{value:new Date(), disabled:true},
+      'courseEndDate':{value:new Date(), disabled:true},
       'trainHours':'',
       'students':this.studentsFormGroup
     });
@@ -56,44 +57,41 @@ export class CourseEditComponent implements OnInit, OnDestroy {
           });
           this.studentsBySection.forEach(section => {
             //console.log(section);
-            
             this.studentsFormGroup.addControl(section.sectionCode, new FormControl());
-            
           });
+          this.courseSubscription=
+            this.courseService.getCourseDetailById(this.courseId)
+            .subscribe((course:Course)=>{
+              _.each(this.updateStudentsBySection, (item)=>{
+                      //console.log(item);
+                      _.each(course.studentCourses,(st)=>{
+                        if(item.sectionCode==st.sectionCode){
+                          //console.log(st);
+                          item.students.push(st.studentId);
+                        }
+                    }
+                  );
+                }
+              );
+              _.each(this.updateStudentsBySection, (sbs)=>{
+                this.studentsFormGroup.controls[sbs.sectionCode].setValue(sbs.students);
+              });
+              //console.log(this.updateStudentsBySection);
+              //console.log(this.studentsFormGroup.controls);
+              this.editCourseForm.patchValue({
+                'courseName':course.courseName,
+                'courseStartDate':new Date(course.courseStartDate),
+                'courseEndDate':new Date(course.courseEndDate),
+                'trainHours':course.trainHours,
+                // 'students':this.studentsFormGroup
+              })
+          });
+        //console.log(this.updateStudentsBySection);
+        this.subscriptions.push(this.courseSubscription);
     });
     this.subscriptions.push(this.sectionSubscription);
-    this.courseId=this.route.snapshot.params['courseId'];
-    this.courseSubscription=
-      this.courseService.getCourseDetailById(this.courseId)
-      .subscribe((course:Course)=>{
-        _.each(this.updateStudentsBySection, (item)=>{
-                //console.log(item);
-                _.each(course.studentCourses,(st)=>{
-                  if(item.sectionCode==st.sectionCode){
-                    //console.log(st);
-                    item.students.push(st.studentId);
-                  }
-              }
-            )
-          }
-        );
-        
-        _.each(this.updateStudentsBySection, (sbs)=>{
-          this.studentsFormGroup.controls[sbs.sectionCode].setValue(sbs.students);
-        });
-        console.log(this.updateStudentsBySection);
-        console.log(this.studentsFormGroup.controls);
-        this.editCourseForm.patchValue({
-          
-          'courseName':course.courseName,
-          'courseStartDate':new Date(course.courseStartDate),
-          'courseEndDate':new Date(course.courseEndDate),
-          'trainHours':course.trainHours,
-          // 'students':this.studentsFormGroup
-        })
-      });
-    console.log(this.updateStudentsBySection);
-    this.subscriptions.push(this.courseSubscription);
+    
+    
     let testData=[
       {
         sectionCode:'A',
@@ -164,21 +162,34 @@ export class CourseEditComponent implements OnInit, OnDestroy {
     //this.startDate=new Date(this.course.courseStartDate);
     //this.endDate=this.course.courseEndDate;
     //console.log(this.editCourseForm);
+
+    this.onStartDateChange();
+  }
+  onStartDateChange(){
+    // this.editCourseForm.get('courseStartDate').valueChanges
+    //     .subscribe(date=>{
+    //       console.log(date);
+    //       console.log(moment(date).format("YYYY/MM/DD"));
+    //     });
   }
   isSubmitted=false;
   s=[];
 
 
   onSubmit(){
-    //console.log(this.editCourseForm.value);
+    
     let studentIds=this.editCourseForm.value.students;
     _.each(_.values(studentIds),
-    item=>{
-      console.log(item);
-      _.each(item, v=>this.s.push(v));
+      item=>{
+        //console.log(item);
+        _.each(item, v=>this.s.push(v));
     });
-    console.log(this.s);
+    //console.log(this.s);
     this.editCourseForm.value.students=this.s;
+    this.editCourseForm.value.courseStartDate=moment(this.editCourseForm.get('courseStartDate').value).format('YYYY/MM/DD');
+    this.editCourseForm.value.courseEndDate=moment(this.editCourseForm.get('courseEndDate').value).format('YYYY/MM/DD');
+    
+    //console.log(this.editCourseForm.value);
     this.subscriptions.push(this.courseService.updateCourse(this.courseId, this.editCourseForm.value)
                       .subscribe(res=>{
                         console.log(res);
@@ -187,7 +198,6 @@ export class CourseEditComponent implements OnInit, OnDestroy {
                           this.router.navigate(['/course']);
                         },2000);
                       }));
-    
   }
 
   deleteCourse(){

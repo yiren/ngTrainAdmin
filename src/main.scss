@@ -12,6 +12,7 @@
 @import "./app/shared/styles/app";
 //== Themes
 @import "./app/shared/styles/themes/theme-a";
+@import "~@progress/kendo-theme-default/scss/all";
 .float-add-btn {
     top: auto !important;
     right: 20px !important;

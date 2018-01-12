@@ -1,5 +1,9 @@
+import * as moment from 'moment';
+
 import { AppState, InternalStateType } from "./app.service";
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
+import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -46,7 +50,10 @@ export type StoreType = {
     SharedModule.forRoot(),
     routing
   ],
-  providers: [APP_PROVIDERS],
+  providers: [APP_PROVIDERS,
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

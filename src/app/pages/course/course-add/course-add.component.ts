@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import * as moment from 'moment';
 
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -60,35 +61,44 @@ export class CourseAddComponent implements OnInit {
           });
     });
     
-    
+    this.onStartDateChange();
     //console.log(this.addCourseForm.controls)
   }
+
+  onStartDateChange(){
+    // this.addCourseForm.get('courseStartDate').valueChanges
+    //     .subscribe(date=>{
+    //       console.log(date);
+    //       console.log(moment(date).format("YYYY/MM/DD"));
+    //     });
+  }
+
   testData;
   s=[];
   onSubmit(){
-    console.log(this.addCourseForm.controls);
+    console.log(this.addCourseForm.value);
     this.testData=_.values(this.addCourseForm.value.students);
     _.each(this.testData, (v1, k1)=>{
       _.each(v1, (v2, k2)=>{
         this.s.push(v2);
       })
     });
-    this.addCourseForm.value.students= this.s;
+    this.addCourseForm.value.students = this.s;
+    this.addCourseForm.value.courseStartDate=moment(this.addCourseForm.get('courseStartDate').value).format('YYYY/MM/DD');
+    this.addCourseForm.value.courseEndDate=moment(this.addCourseForm.get('courseEndDate').value).format('YYYY/MM/DD');
     console.log(this.addCourseForm.value);
     
-    // this.courseService.addCourse(this.addCourseForm.value)
-    //                   .subscribe((res:Course)=>{
-    //                     console.log(res);
-    //                     // this.snackBar.open(`新增"${res.courseName}"訓練課程`, '關閉',{
-    //                     //   duration:2000
-    //                     // });
-    //                     this.isSubmitted=true;
-    //                     setTimeout(()=>{
-    //                       this.router.navigate(['/course']);
-    //                     },2000);
+    this.courseService.addCourse(this.addCourseForm.value)
+                      .subscribe((res:Course)=>{
+                        console.log(res);
+                        // this.snackBar.open(`新增"${res.courseName}"訓練課程`, '關閉',{
+                        //   duration:2000
+                        // });
+                        this.isSubmitted=true;
+                        setTimeout(()=>{
+                          this.router.navigate(['/course']);
+                        },2000);
                         
-    //                   });
-    
-    
+                      });
   }
 }

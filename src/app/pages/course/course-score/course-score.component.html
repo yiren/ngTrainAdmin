@@ -11,8 +11,8 @@
                         <th>分數</th>
                     </tr>
                 </thead>
-                <tbody formGroupName="scoreStudents">
-                    <tr *ngFor="let student of students; let i=index">
+                <tbody formGroupName="studentScoreData">
+                    <tr *ngFor="let student of course?.studentCourses; let i=index">
                         <th scope="row">{{i+1}}</th>
                         <td>{{student.studentName}}</td>
                         <td>{{student.sectionName}}</td>

@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Course } from '../../model/Course';
+import { CourseSearch } from 'app/shared/model/CourseSearch';
 import { Injectable } from '@angular/core';
 import { StudentService } from 'app/shared/services/student/student.service';
 
@@ -12,7 +14,62 @@ export class CourseService {
 
 
 
-  
+  courseSubject=new BehaviorSubject([]);
+  courseSearchSubject=new BehaviorSubject([]);
+
+  API_ENPOINT = '/api/courses';
+
+  getCourseList() {
+
+    this.httpClient.get<Course[]>(this.API_ENPOINT)
+        .subscribe(courses=>{
+          this.courseSubject.next(courses)
+        });
+               
+
+    //return this.courses;
+  }
+
+  getCourseDetailById(id){
+    return this.httpClient.get<Course>(`${this.API_ENPOINT}/${id}`)
+                          .share();
+  }
+
+  getStudentScoreById(id){
+    return this.studentsWithScore1;
+  }
+
+  searchCourse(searchVM:CourseSearch){
+    this.httpClient.post(`${this.API_ENPOINT}/search`, searchVM)
+                   .subscribe((courses:any[])=>{
+                     this.courseSearchSubject.next(courses);
+                   })
+  }
+
+  updateStudentScoreById(courseId,updateScore){
+    let header = new HttpHeaders();
+    const body=JSON.stringify(updateScore);
+    header.append('Content-Type', 'application/json');
+    return this.httpClient.put(`${this.API_ENPOINT}/${courseId}/score`, updateScore,{headers:header})
+  }
+
+  addCourse(course){
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+    return this.httpClient.post(this.API_ENPOINT, course,{headers:header});
+  }
+
+  updateCourse(courseId, course){
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+    return this.httpClient.put(`${this.API_ENPOINT}/${courseId}`, course,{headers:header});  
+  }
+
+  deleteCourse(courseId){
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+    return this.httpClient.delete(`${this.API_ENPOINT}/${courseId}`,{headers:header});
+  }
 
   studentsWithScore1=[
     {
@@ -102,54 +159,4 @@ export class CourseService {
     studentName:"李文祥",
     socre:"84"
   }
-
-  API_ENPOINT = '/api/courses';
-
-  getCourseList() {
-
-    return this.httpClient.get<Course[]>(this.API_ENPOINT);
-               
-
-    //return this.courses;
-  }
-
-  getEditCourseById(id){
-    return this.editCourse1;
-  }
-
-  updateEditCourseBy(id){
-    
-  }
-
-  getCourseDetailById(id){
-    return this.httpClient.get<Course>(`${this.API_ENPOINT}/${id}`)
-                          .share();
-  }
-
-  getStudentScoreById(id){
-    return this.studentsWithScore1;
-  }
-
-  updateStudentScoreById(id){
-
-  }
-
-  addCourse(course){
-    let header = new HttpHeaders();
-    header.append('Content-Type', 'application/json');
-    return this.httpClient.post(this.API_ENPOINT, course,{headers:header});
-  }
-
-  updateCourse(courseId, course){
-    let header = new HttpHeaders();
-    header.append('Content-Type', 'application/json');
-    return this.httpClient.put(`${this.API_ENPOINT}/${courseId}`, course,{headers:header});  
-  }
-
-  deleteCourse(courseId){
-    let header = new HttpHeaders();
-    header.append('Content-Type', 'application/json');
-    return this.httpClient.delete(`${this.API_ENPOINT}/${courseId}`,{headers:header});
-  }
-
 }

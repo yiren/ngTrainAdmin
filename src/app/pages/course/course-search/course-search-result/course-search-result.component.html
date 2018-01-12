@@ -1,0 +1,13 @@
+<kendo-grid [data]="data" [height]="550" [sortable]="true" (dataStateChange)="dataStateChange($event)">
+    <kendo-grid-column field="courseName" title="課程名稱" [sortable]="true">
+    </kendo-grid-column>
+    <kendo-grid-column field="courseStartDate" title="開訓日期">
+    </kendo-grid-column>
+    <kendo-grid-column field="courseEndDate" title="結訓日期">
+    </kendo-grid-column>
+    <kendo-grid-column field="trainHours" title="訓練時數">
+    </kendo-grid-column>
+    <div *kendoGridDetailTemplate="let course">
+        <app-course-search-detail [course]="course.studentCourses"></app-course-search-detail>
+    </div>
+</kendo-grid>

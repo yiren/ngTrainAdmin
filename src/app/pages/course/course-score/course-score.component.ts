@@ -18,25 +18,42 @@ export class CourseScoreComponent implements OnInit {
 
   scoreForm:FormGroup;
   scoreStudents:FormGroup;
-
+  courseId;
+  course;
   ngOnInit() {
-    this.students=this.courseService.getStudentScoreById(1);
-
     this.scoreStudents=this.fb.group({});
-
-    this.students.forEach(student => {
-       this.scoreStudents.addControl(student.studentId, new FormControl(student.score));
-    });
-
     this.scoreForm=this.fb.group({
-      'courseId':[1, Validators.required],
-      'scoreStudents':this.scoreStudents
+      'modifier':[''],
+      'studentScoreData':this.scoreStudents
     });
+    
+    this.courseId=this.route.snapshot.params['courseId'];
+
+    this.courseService.getCourseDetailById(this.courseId)
+        .subscribe(course=>{
+          console.log(course);
+          this.course=course;
+          course.studentCourses.forEach(student => {
+            this.scoreStudents.addControl(student.studentId, new FormControl(student.score, Validators.required));
+         });
+        });
+    
+
+    
+
+    
   }
 
   updateScore(){
-
+    
     console.log(this.scoreForm.value);
-  }
+    this.courseService.updateStudentScoreById(this.courseId, this.scoreForm.value)
+        .subscribe(res=>{
+          console.log(res);
+          setTimeout(()=>{
+            this.router.navigate(['/course']);
+          },2000);
+        })
+  }     
 
 }
