@@ -24,7 +24,7 @@ export class CourseSearchFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.searchForm.value)
+    //console.log(this.searchForm.value)
     this.courserService.searchCourse(this.searchForm.value);
   }
 

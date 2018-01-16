@@ -1,4 +1,5 @@
 import { CommonModule } from "@angular/common";
+import { CommonSharedModule } from '../shared/common.shared.module';
 import { FormsModule } from '@angular/forms';
 import { LayoutComponent } from './layout.component';
 import { LayoutRoutes } from './layout.routes';
@@ -8,7 +9,6 @@ import { NgModule } from '@angular/core';
 import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
 import { ScrollbarDirective } from "../shared/directives/scrollbar.directive";
 import { SearchComponent } from './top-navbar/search/search.component';
-import { SharedModule } from '../shared/shared.module';
 import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 
 @NgModule({
@@ -25,7 +25,7 @@ import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 		LayoutRoutes,
 		CommonModule,
 		FormsModule,
-		SharedModule.forRoot()
+		CommonSharedModule.forRoot()
     ]
 })
 export class LayoutModule { }

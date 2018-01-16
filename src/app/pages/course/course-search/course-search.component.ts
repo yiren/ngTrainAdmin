@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { CourseService } from '../../../shared/services/course/course.service';
 
@@ -7,7 +7,8 @@ import { CourseService } from '../../../shared/services/course/course.service';
   templateUrl: './course-search.component.html',
   styleUrls: ['./course-search.component.scss']
 })
-export class CourseSearchComponent implements OnInit {
+export class CourseSearchComponent implements OnInit, OnDestroy {
+  
 
   constructor(private courseService:CourseService) { }
 
@@ -16,6 +17,9 @@ export class CourseSearchComponent implements OnInit {
   ngOnInit() {
     this.courseSearch$=this.courseService.courseSearchSubject;
 
+  }
+  ngOnDestroy(): void {
+    this.courseService.courseSearchSubject.next([]);
   }
 
 }

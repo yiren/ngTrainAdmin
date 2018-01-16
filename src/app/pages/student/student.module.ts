@@ -1,8 +1,8 @@
 import { AddStudentDialogComponent } from '../../shared/components/add-student-dialog/add-student-dialog.component';
 import { CommonModule } from '@angular/common';
+import { CommonSharedModule } from '../../shared/common.shared.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from '../../shared/shared.module';
 import { StudentAddComponent } from './student-add/student-add.component';
 import { StudentComponent } from './student.component';
 import { StudentEditComponent } from './student-edit/student-edit.component';
@@ -17,7 +17,7 @@ const STUDENT_ROUTE = [
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
+    CommonSharedModule,
     RouterModule.forChild(STUDENT_ROUTE)
   ],
   declarations: [

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class StudentService {
@@ -144,7 +145,9 @@ export class StudentService {
     return this.httpClient.get(this.SECTION_API_ENPOINT);
   }
 
-
+  getStudents():Observable<any[]>{
+    return this.httpClient.get<any[]>(this.STUDENT_API_ENDPOINT);
+  }
   getSections(){
     return this.httpClient.get(this.SECTION_API_ENPOINT)
                .subscribe((data:any[]) => {

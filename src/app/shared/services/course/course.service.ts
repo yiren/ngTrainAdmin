@@ -40,10 +40,18 @@ export class CourseService {
   }
 
   searchCourse(searchVM:CourseSearch){
-    this.httpClient.post(`${this.API_ENPOINT}/search`, searchVM)
-                   .subscribe((courses:any[])=>{
+    this.httpClient.post(`${this.API_ENPOINT}/searchbycourse`, searchVM)
+                   
+                   .subscribe((courses:Course[])=>{
                      this.courseSearchSubject.next(courses);
                    })
+  }
+
+  searchCourseByStudent(studentSearchVM){
+    this.httpClient.post(`${this.API_ENPOINT}/searchbystudent`,studentSearchVM)
+                   .subscribe((courses:Course[])=>{
+                      this.courseSearchSubject.next(courses);
+                   });
   }
 
   updateStudentScoreById(courseId,updateScore){

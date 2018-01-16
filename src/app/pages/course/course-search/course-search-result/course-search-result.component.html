@@ -1,4 +1,4 @@
-<kendo-grid [data]="data" [height]="550" [sortable]="true" (dataStateChange)="dataStateChange($event)">
+<kendo-grid [data]="searchGrid" [height]="550" [sortable]="true" (dataStateChange)="dataStateChange($event)" [pageSize]="pageSize" [skip]="skip" [pageable]="true" [pageSize]="pageSize" (pageChange)="pageChange($event)">
     <kendo-grid-column field="courseName" title="課程名稱" [sortable]="true">
     </kendo-grid-column>
     <kendo-grid-column field="courseStartDate" title="開訓日期">

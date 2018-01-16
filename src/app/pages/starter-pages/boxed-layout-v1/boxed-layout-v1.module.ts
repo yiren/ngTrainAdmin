@@ -1,9 +1,8 @@
+import { BoxedV1Component } from './boxed-layout-v1.component';
 import { CommonModule } from '@angular/common';
+import { CommonSharedModule } from '../../../shared/common.shared.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BoxedV1Component } from './boxed-layout-v1.component';
-import { SharedModule } from '../../../shared/shared.module';
-
 
 const BoxedV1_ROUTE = [
     { path: '', component: BoxedV1Component },
@@ -13,7 +12,7 @@ const BoxedV1_ROUTE = [
 	  declarations: [BoxedV1Component],
     imports: [
 			CommonModule,
-			SharedModule,
+			CommonSharedModule,
 			RouterModule.forChild(BoxedV1_ROUTE)
     ]
   

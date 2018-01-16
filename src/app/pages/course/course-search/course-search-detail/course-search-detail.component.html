@@ -1,1 +1,11 @@
-{{course|json}}
+<kendo-grid [data]="gridView" [sortable]="{
+    allowUnsort: allowUnsort,
+    mode: multiple ? 'multiple' : 'single'
+    }" [sort]="sort" (sortChange)="sortChange($event)">
+    <kendo-grid-column field="studentName" title="學員姓名">
+    </kendo-grid-column>
+    <kendo-grid-column field="sectionName" title="組別">
+    </kendo-grid-column>
+    <kendo-grid-column field="score" title="分數">
+    </kendo-grid-column>
+</kendo-grid>

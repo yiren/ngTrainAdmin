@@ -1,10 +1,8 @@
-
 import { CommonModule } from '@angular/common';
+import { CommonSharedModule } from '../../../shared/common.shared.module';
+import { LeftSideNavV2Component } from './left-side-nav-v2.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LeftSideNavV2Component } from './left-side-nav-v2.component';
-import { SharedModule } from '../../../shared/shared.module';
-
 
 const LeftSideNavV2_ROUTE = [
     { path: '', component: LeftSideNavV2Component },
@@ -14,7 +12,7 @@ const LeftSideNavV2_ROUTE = [
 	  declarations: [LeftSideNavV2Component],
     imports: [
 			CommonModule,
-			SharedModule,
+			CommonSharedModule,
 			RouterModule.forChild(LeftSideNavV2_ROUTE)
     ]
   

@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
+import { CommonSharedModule } from '../../shared/common.shared.module';
+import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
-import { SharedModule } from '../../shared/shared.module';
-
 
 const HOME_ROUTE = [
     { path: '', component: HomeComponent },
@@ -13,7 +12,7 @@ const HOME_ROUTE = [
 	  declarations: [HomeComponent],
     imports: [
 			CommonModule,
-			SharedModule,
+			CommonSharedModule,
 			RouterModule.forChild(HOME_ROUTE)
     ]
   

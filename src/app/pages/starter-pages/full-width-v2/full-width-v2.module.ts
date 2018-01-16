@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
+import { CommonSharedModule } from '../../../shared/common.shared.module';
+import { FullWidthV2Component } from './full-width-v2.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FullWidthV2Component } from './full-width-v2.component';
-import { SharedModule } from '../../../shared/shared.module';
-
 
 const FullWidthV2_ROUTE = [
     { path: '', component: FullWidthV2Component },
@@ -13,7 +12,7 @@ const FullWidthV2_ROUTE = [
 	  declarations: [FullWidthV2Component],
     imports: [
 			CommonModule,
-			SharedModule,
+			CommonSharedModule,
 			RouterModule.forChild(FullWidthV2_ROUTE)
     ]
   

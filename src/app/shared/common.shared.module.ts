@@ -14,12 +14,14 @@ import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FooterComponent } from '../layout/footer/footer.component';
 import { GridModule } from '@progress/kendo-angular-grid';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
@@ -56,7 +58,9 @@ const matModule= [
     MatTableModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatGridListModule,
+    MatAutocompleteModule
 ]
 
 @NgModule({
@@ -116,10 +120,10 @@ const matModule= [
     ]
 })
 
-export class SharedModule {
+export class CommonSharedModule {
     static forRoot(): ModuleWithProviders {
         return {
-            ngModule: SharedModule
+            ngModule: CommonSharedModule
         };
     }
 }

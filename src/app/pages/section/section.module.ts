@@ -1,9 +1,9 @@
 import { AddSectionDialogComponent } from 'app/shared/components/add-section-dialog/add-section-dialog.component';
 import { CommonModule } from '@angular/common';
+import { CommonSharedModule } from '../../shared/common.shared.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SectionComponent } from './section.component';
-import { SharedModule } from 'app/shared/shared.module';
 
 const SECTION_ROUTE = [
   { path: '', component: SectionComponent },
@@ -12,7 +12,7 @@ const SECTION_ROUTE = [
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
+    CommonSharedModule,
     RouterModule.forChild(SECTION_ROUTE)
   ],
   declarations: [SectionComponent],

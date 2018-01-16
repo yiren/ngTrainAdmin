@@ -8,6 +8,7 @@ import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-mome
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
+import { CommonSharedModule } from "./shared/common.shared.module";
 import { CourseService } from "app/shared/services/course/course.service";
 import { FormsModule } from "@angular/forms";
 import { GlobalState } from "./app.state";
@@ -18,7 +19,6 @@ import { NgModule } from "@angular/core";
 import { ResponsiveModule } from "ng2-responsive";
 import { SectionService } from './shared/services/section/section.service';
 import { ServicesModule } from "./shared/services/services.module";
-import { SharedModule } from "./shared/shared.module";
 import { StudentService } from "app/shared/services/student/student.service";
 import { routing } from "./app.routing";
 
@@ -47,7 +47,7 @@ export type StoreType = {
     BrowserAnimationsModule,
     ServicesModule,
     ResponsiveModule,
-    SharedModule.forRoot(),
+    CommonSharedModule.forRoot(),
     routing
   ],
   providers: [APP_PROVIDERS,

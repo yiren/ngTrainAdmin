@@ -1,0 +1,30 @@
+<form [formGroup]="studentSearchForm" (ngSubmit)="onSubmit()">
+    <p>
+        <mat-form-field>
+            <input matInput placeholder="請輸入學員名字" aria-label="State" [matAutocomplete]="auto" formControlName="studentName">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let student of filteredStudents | async" [value]="student.studentName">
+                    {{student.studentName}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </p>
+
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="startDate" placeholder="開訓日期" formControlName="courseStartDate">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate disabled="false"></mat-datepicker>
+    </mat-form-field>
+    /
+    <mat-form-field>
+        <input matInput [matDatepicker]="endDate" placeholder="結訓日期" formControlName="courseEndDate">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate disabled="false"></mat-datepicker>
+    </mat-form-field>
+
+    <p>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!studentSearchForm.valid">搜尋學員訓練紀錄</button>
+    </p>
+
+</form>
