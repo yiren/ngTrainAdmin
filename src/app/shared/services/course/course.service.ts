@@ -47,7 +47,17 @@ export class CourseService {
                    })
   }
 
+
+  lastStudentSearchValueSubject=new BehaviorSubject({
+    studentName:'',
+    courseStartDate:'',
+    courseEndDate:''
+  });
+  
+  
+
   searchCourseByStudent(studentSearchVM){
+    this.lastStudentSearchValueSubject.next(studentSearchVM);
     this.httpClient.post(`${this.API_ENPOINT}/searchbystudent`,studentSearchVM)
                    .subscribe((courses:Course[])=>{
                       this.courseSearchSubject.next(courses);

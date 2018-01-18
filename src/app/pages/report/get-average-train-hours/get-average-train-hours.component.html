@@ -1,0 +1,25 @@
+<div class="container">
+    <form [formGroup]="averageForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="startDate" placeholder="起始日期" formControlName="startDate">
+            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate disabled="false"></mat-datepicker>
+        </mat-form-field>
+        /
+        <mat-form-field>
+            <input matInput [matDatepicker]="endDate" placeholder="結束日期" formControlName="endDate">
+            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <p>
+            <button mat-raised-button color="primary" type="submit" [disabled]="averageForm.valid">計算全處平均時數</button>
+        </p>
+
+    </form>
+
+    <br>
+
+    <h4>平均時數為:{{averageTrainhours}}</h4>
+</div>

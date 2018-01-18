@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     $(document).on("click", '[href="#"]', e => e.preventDefault());
+    
   }
   //check if menu should reset on resize
   @HostListener("window:resize")

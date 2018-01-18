@@ -1,51 +1,54 @@
 <div class="container">
     <div>
         <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="簡易搜尋">
         </mat-form-field>
     </div>
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div *ngIf="!isLoadingResults">
+        <mat-table #table [dataSource]="courseDataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="courseName">
+                <mat-header-cell *matHeaderCellDef> 課程名稱 </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    {{element.courseName}}
+                </mat-cell>
+            </ng-container>
 
 
-    <mat-table #table [dataSource]="courseDataSource">
-
-        <!-- Position Column -->
-        <ng-container matColumnDef="courseName">
-            <mat-header-cell *matHeaderCellDef> 課程名稱 </mat-header-cell>
-            <mat-cell *matCellDef="let element">
-                {{element.courseName}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="courseStartDate">
+                <mat-header-cell *matHeaderCellDef> 開訓日期 </mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.courseStartDate}}
+                </mat-cell>
+            </ng-container>
 
 
-        <ng-container matColumnDef="courseStartDate">
-            <mat-header-cell *matHeaderCellDef> 開訓日期 </mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.courseStartDate}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="courseEndDate">
+                <mat-header-cell *matHeaderCellDef> 結訓日期 </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.courseEndDate}} </mat-cell>
+            </ng-container>
 
 
-        <ng-container matColumnDef="courseEndDate">
-            <mat-header-cell *matHeaderCellDef> 結訓日期 </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.courseEndDate}} </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="trainHours">
+                <mat-header-cell *matHeaderCellDef> 訓練時數 </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.trainHours}} </mat-cell>
+            </ng-container>
 
+            <ng-container matColumnDef="courseId">
+                <mat-header-cell *matHeaderCellDef>編輯</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <a href="javascript:void(0)" mat-raised-button color="default" [routerLink]="[element.courseId,'detail']">詳細</a>
+                    <a href="javascript:void(0)" mat-raised-button color="primary" [routerLink]="[element.courseId,'edit']">修改</a>
+                    <a href="javascript:void(0)" mat-raised-button color="accent" [routerLink]="[element.courseId,'score']">登錄</a>
 
-        <ng-container matColumnDef="trainHours">
-            <mat-header-cell *matHeaderCellDef> 訓練時數 </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.trainHours}} </mat-cell>
-        </ng-container>
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="courseId">
-            <mat-header-cell *matHeaderCellDef>編輯</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-                <a href="javascript:void(0)" mat-raised-button color="default" [routerLink]="[element.courseId,'detail']">詳細</a>
-                <a href="javascript:void(0)" mat-raised-button color="primary" [routerLink]="[element.courseId,'edit']">修改</a>
-                <a href="javascript:void(0)" mat-raised-button color="accent" [routerLink]="[element.courseId,'score']">登錄</a>
-
-            </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator #paginator [pageSize]="10" [length]="totalRecord" [pageSizeOptions]="[5, 10, 20]">
+        </mat-paginator>
+    </div>
 </div>

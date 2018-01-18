@@ -27,8 +27,8 @@ export class StudentSearchFormComponent implements OnInit {
     
     this.studentSearchForm=this.fb.group({
       'studentName':['', Validators.required],
-      'courseStartDate':'',
-      'courseEndDate':''
+      'courseStartDate':{value:'', disabled:true},
+      'courseEndDate':{value:'', disabled:true}
     });
     this.studentService.getStudents()
         .subscribe(students=>{
@@ -37,13 +37,13 @@ export class StudentSearchFormComponent implements OnInit {
                               .startWith('')
                               .map(studentName=>studentName ? this.filterStudents(studentName):this.students.slice());
         });
-        
-          
-    
-
-    
-        
-    
+    this.courseService.lastStudentSearchValueSubject.subscribe(studentVM=>{
+       this.studentSearchForm.patchValue({
+        'studentName':studentVM.studentName,
+        'courseStartDate':new Date(studentVM.courseStartDate),
+        'courseEndDate':new Date(studentVM.courseEndDate)
+       });
+    }); 
   }
   isValid=false;
 

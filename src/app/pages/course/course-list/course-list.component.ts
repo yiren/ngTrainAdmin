@@ -1,8 +1,9 @@
 import * as _ from 'lodash';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 
+import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Course } from '../../../shared/model/course';
 import { CourseService } from 'app/shared/services/course/course.service';
 import { Observable } from 'rxjs/Observable';
@@ -15,28 +16,37 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.scss']
 })
-export class CourseListComponent implements OnInit {
+export class CourseListComponent implements OnInit, AfterViewInit {
+  @ViewChild(MatPaginator) paginator:MatPaginator;
+  
   
   constructor(private courseService:CourseService,
               private studentService:StudentService,
               private router:Router) { }
-  
+  isLoadingResults=true;
   courseSubscription:Subscription;
-  courseDataSource;
+  courseDataSource=new MatTableDataSource<Course>();
+  totalRecord;
   displayedColumns = ['courseName', 'courseStartDate', 'courseEndDate', 'trainHours', 'courseId'];
   ngOnInit() {
 
         this.courseService.getCourseList();
         this.courseService.courseSubject.subscribe(data=>{
-        console.log(data);
-        this.courseDataSource = new MatTableDataSource<Course>(data); 
+        //console.log(data);
+          this.totalRecord=data.length;
+          this.isLoadingResults=false;
+          this.courseDataSource.data = data; 
       });
       
   }
+  ngAfterViewInit(): void {
+    this.courseDataSource.paginator = this.paginator;
+  }
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase();
-    this.courseDataSource.filter=filterValue;
+    this.courseDataSource.filter = filterValue;
      // MatTableDataSource defaults to lowercase matches
   }
 
