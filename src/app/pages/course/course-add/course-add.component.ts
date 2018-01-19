@@ -33,12 +33,6 @@ export class CourseAddComponent implements OnInit {
   studentsBySection$;
   sectionSubscription:Subscription;
   isSubmitted=false;
-  typical={
-    courseName:'中國電機工程學會「106年度會員大會」',
-    CourseStartDate:'',
-    CourseEndDate:'',
-    TrainHours:30
-  }
   checked;
   ngOnInit() {
     this.studentsFormGroup = this.fb.group({});
@@ -84,11 +78,20 @@ export class CourseAddComponent implements OnInit {
       })
     });
     this.addCourseForm.value.students = this.s;
-    this.addCourseForm.value.courseStartDate=moment(this.addCourseForm.get('courseStartDate').value).format('YYYY/MM/DD');
-    this.addCourseForm.value.courseEndDate=moment(this.addCourseForm.get('courseEndDate').value).format('YYYY/MM/DD');
+    console.log(this.addCourseForm.get('courseStartDate').value!=='')
+    if(this.addCourseForm.get('courseStartDate').value!==''){
+      this.addCourseForm.value.courseStartDate=moment(this.addCourseForm.get('courseStartDate').value).format('YYYY/MM/DD');
+    }
+    if(this.addCourseForm.get('courseEndDate').value!==''){
+      this.addCourseForm.value.courseEndDate=moment(this.addCourseForm.get('courseEndDate').value).format('YYYY/MM/DD');
+    }
+      
+    if(this.addCourseForm.get('trainHours').value==='')
+      this.addCourseForm.value.trainHours=0;
+      
     console.log(this.addCourseForm.value);
     
-    this.courseService.addCourse(this.addCourseForm.value)
+     this.courseService.addCourse(this.addCourseForm.value)
                       .subscribe((res:Course)=>{
                         console.log(res);
                         // this.snackBar.open(`新增"${res.courseName}"訓練課程`, '關閉',{
