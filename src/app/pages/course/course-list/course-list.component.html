@@ -1,7 +1,7 @@
 <div class="container">
     <div>
         <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="簡易搜尋">
+            <input matInput (keyup)="applyFilter($event.target.value)" [value]="keyword" placeholder="簡易搜尋">
         </mat-form-field>
     </div>
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
@@ -10,7 +10,7 @@
 
             <!-- Position Column -->
             <ng-container matColumnDef="courseName">
-                <mat-header-cell *matHeaderCellDef> 課程名稱 </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> 課程名稱 </mat-header-cell>
                 <mat-cell *matCellDef="let element">
                     {{element.courseName}}
                 </mat-cell>
@@ -18,14 +18,14 @@
 
 
             <ng-container matColumnDef="courseStartDate">
-                <mat-header-cell *matHeaderCellDef> 開訓日期 </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> 開訓日期 </mat-header-cell>
                 <mat-cell *matCellDef="let element">{{element.courseStartDate}}
                 </mat-cell>
             </ng-container>
 
 
             <ng-container matColumnDef="courseEndDate">
-                <mat-header-cell *matHeaderCellDef> 結訓日期 </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> 結訓日期 </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.courseEndDate}} </mat-cell>
             </ng-container>
 

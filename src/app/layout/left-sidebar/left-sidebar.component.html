@@ -22,8 +22,7 @@
                     <ul class="nav-sub">
                         <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/course']">訓練課程清單</a></li>
                         <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/course','add']">新增訓練課程</a></li>
-                        <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/course','searchbycourse']">依課程搜尋</a></li>
-                        <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/course','searchbystudent']">依學員搜尋</a></li>
+
                     </ul>
                 </li>
                 <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
@@ -39,8 +38,12 @@
                     </ul>
                 </li>
                 <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
-                    <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle><i class="zmdi zmdi-collection-text"></i> 相關報表</a>
+                    <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle><i class="zmdi zmdi-collection-text"></i> 搜尋與相關報表</a>
                     <ul class="nav-sub">
+
+                        <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/report','searchbycourse']">依課程搜尋</a></li>
+                        <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/report','searchbystudent']">依學員搜尋</a></li>
+                        <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/report','searchbysection']">依組別搜尋</a></li>
                         <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/report','getaveragetrainhours']">計算平均時數</a></li>
                     </ul>
                 </li>

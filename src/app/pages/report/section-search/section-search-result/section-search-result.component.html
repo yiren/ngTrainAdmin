@@ -1,0 +1,16 @@
+<kendo-grid [data]="sectionGrid" [height]="800" [sortable]="true" (dataStateChange)="dataStateChange($event)" [pageSize]="pageSize" [skip]="skip" [pageable]="true" [pageSize]="pageSize" (pageChange)="pageChange($event)">
+
+    <kendo-grid-column field="studentName" title="學員" [sortable]="true">
+    </kendo-grid-column>
+    <kendo-grid-column field="sectionName" title="組別" [sortable]="true">
+    </kendo-grid-column>
+    <kendo-grid-column field="courseName" title="課程名稱" [sortable]="true">
+    </kendo-grid-column>
+    <kendo-grid-column field="courseStartDate" title="開訓日期">
+    </kendo-grid-column>
+    <kendo-grid-column field="courseEndDate" title="結訓日期">
+    </kendo-grid-column>
+    <kendo-grid-column field="trainHours" title="訓練時數">
+    </kendo-grid-column>
+
+</kendo-grid>

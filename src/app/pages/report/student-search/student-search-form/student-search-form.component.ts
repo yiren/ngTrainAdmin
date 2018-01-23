@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CourseService } from '../../../../shared/services/course/course.service';
 import { Observable } from 'rxjs/Observable';
+import { ReportService } from '../../../../shared/services/report/report.service';
 import { StudentService } from 'app/shared/services/student/student.service';
 import { map } from 'rxjs/operator/map';
 import { startWith } from 'rxjs/operator/startWith';
@@ -17,6 +18,7 @@ import { startWith } from 'rxjs/operator/startWith';
 export class StudentSearchFormComponent implements OnInit {
 
   constructor(private courseService:CourseService,
+              private reportService:ReportService,
               private studentService:StudentService,
               private fb:FormBuilder) { }
 
@@ -60,7 +62,7 @@ export class StudentSearchFormComponent implements OnInit {
       this.studentSearchForm.value.courseEndDate=endDate.format('YYYY/MM/DD');
     }
     console.log(this.studentSearchForm.value);
-    this.courseService.searchCourseByStudent(this.studentSearchForm.value);
+    this.reportService.searchCourseByStudent(this.studentSearchForm.value);
   }
   
  

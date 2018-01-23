@@ -18,7 +18,7 @@ export class StudentSearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-   
+   this.courseService.courseSearchSubject.next([]);
   }
 
 }

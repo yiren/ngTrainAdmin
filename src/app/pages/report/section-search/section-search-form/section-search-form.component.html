@@ -1,0 +1,27 @@
+<form [formGroup]="sectionForm" (ngSubmit)="onSubmit()">
+
+    <p>
+        <mat-form-field>
+            <mat-select placeholder="請選擇組別" formControlName="sectionId">
+                <mat-option *ngFor="let section of (sections$ | async)" [value]="section.sectionId">{{section.sectionName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="startDate" placeholder="起始日期" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate disabled="false"></mat-datepicker>
+    </mat-form-field>
+    /
+    <mat-form-field>
+        <input matInput [matDatepicker]="endDate" placeholder="結束日期" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate disabled="false"></mat-datepicker>
+    </mat-form-field>
+
+    <p>
+        <button mat-raised-button color="primary" type="submit">搜尋訓練記錄</button>
+    </p>
+
+</form>

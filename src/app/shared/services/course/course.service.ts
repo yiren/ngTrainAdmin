@@ -13,10 +13,14 @@ export class CourseService {
               public httpClient:HttpClient) { }
 
 
-
+  searchKeywordSubject=new BehaviorSubject('');
   courseSubject=new BehaviorSubject([]);
   courseSearchSubject=new BehaviorSubject([]);
-
+  lastStudentSearchValueSubject=new BehaviorSubject({
+    studentName:'',
+    courseStartDate:'',
+    courseEndDate:''
+  });
   API_ENPOINT = '/api/courses';
 
   getCourseList() {
@@ -39,30 +43,7 @@ export class CourseService {
     return this.studentsWithScore1;
   }
 
-  searchCourse(searchVM:CourseSearch){
-    this.httpClient.post(`${this.API_ENPOINT}/searchbycourse`, searchVM)
-                   
-                   .subscribe((courses:Course[])=>{
-                     this.courseSearchSubject.next(courses);
-                   })
-  }
-
-
-  lastStudentSearchValueSubject=new BehaviorSubject({
-    studentName:'',
-    courseStartDate:'',
-    courseEndDate:''
-  });
   
-  
-
-  searchCourseByStudent(studentSearchVM){
-    this.lastStudentSearchValueSubject.next(studentSearchVM);
-    this.httpClient.post(`${this.API_ENPOINT}/searchbystudent`,studentSearchVM)
-                   .subscribe((courses:Course[])=>{
-                      this.courseSearchSubject.next(courses);
-                   });
-  }
 
   updateStudentScoreById(courseId,updateScore){
     let header = new HttpHeaders();
