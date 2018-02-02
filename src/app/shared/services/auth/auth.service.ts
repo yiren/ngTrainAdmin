@@ -10,12 +10,47 @@ export class AuthService {
 
     clientId="DneTraining";
     API_ENDPOINT='/api/token/auth';
+
+    tokenSubject=new BehaviorSubject('');
     /**
      *
      */
+
+    token:TokenResponse;
     constructor(private httpClient: HttpClient,
                 @Inject(PLATFORM_ID)private platformId) {
         
+    }
+    
+    getAuthFromServer(data:any):Observable<boolean>{
+        return this.httpClient.post(this.API_ENDPOINT, data)
+                    .do(console.log)
+                    .map((res:any)=>{
+                        let token= res && res.token;
+                        console.log(token);
+                        if(token){
+                            this.token=token;
+                            this.setAuth(token);
+                            return true;
+                        }
+                        return Observable.throw('Unauthorized');
+                   })
+                   
+                   .catch(error => {
+                        return new Observable<any>(error);
+                   });
+    }
+
+
+    refreshToken():Observable<boolean>{
+        var data={
+            client_id:this.clientId,
+            grant_type:"refresh_token",
+            refresh_token:this.token.refresh_token,
+            scope:"offline_access profile email"
+        };
+        
+        return this.getAuthFromServer(data)
     }
 
     login(username:string, password:string): Observable<boolean>{
@@ -26,22 +61,8 @@ export class AuthService {
             grant_type:"password",
             scope:"offline_access profile email"
         };
-        console.log(data);
-        return this.httpClient.post(this.API_ENDPOINT, data)
-                    .do(console.log)
-                    .map((res:any)=>{
-                        let token= res && res.token;
-                        console.log(token);
-                        if(token){
-                            this.setAuth(token);
-                            return true;
-                        }
-                        return Observable.throw('Unauthorized');
-                   })
-                   
-                   .catch(error => {
-                        return new Observable<any>(error);
-                   });
+        
+        return this.getAuthFromServer(data);
     }
 
     private setAuth(token){
@@ -86,4 +107,5 @@ export class AuthService {
 interface TokenResponse{
     token:string;
     expiration:number;
+    refresh_token:string;
 }
