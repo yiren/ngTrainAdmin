@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { CourseService } from '../../../../shared/services/course/course.service';
 import { Observable } from 'rxjs/Observable';
 import { ReportService } from '../../../../shared/services/report/report.service';
@@ -24,6 +25,7 @@ export class StudentSearchFormComponent implements OnInit {
 
   studentSearchForm:FormGroup;
   students:any[];
+  
   filteredStudents:Observable<any[]>;
   ngOnInit() {
     
@@ -53,6 +55,13 @@ export class StudentSearchFormComponent implements OnInit {
     return this.students.filter(student=>student.studentName.indexOf(name)===0)
   }
   onSubmit(){
+    this.courseService.lastStudentSearchValueSubject.subscribe(studentVM=>{
+       this.studentSearchForm.patchValue({
+        'studentName':this.studentSearchForm.get('studentName').value,
+        'courseStartDate':this.studentSearchForm.get('courseStartDate').value,
+        'courseEndDate':this.studentSearchForm.get('courseEndDate').value
+       });
+    }); 
     let startDate=moment(this.studentSearchForm.get('courseStartDate').value);
     let endDate=moment(this.studentSearchForm.get('courseEndDate').value);
     if(startDate.isValid() ==true){
@@ -65,6 +74,9 @@ export class StudentSearchFormComponent implements OnInit {
     this.reportService.searchCourseByStudent(this.studentSearchForm.value);
   }
   
+  clearData(){
+    this.courseService.studentSearchSubject.next([]);
+  }
  
 }
 

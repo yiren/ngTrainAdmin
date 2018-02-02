@@ -6,12 +6,15 @@ import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 
 import { AppComponent } from "./app.component";
+import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
+import { AuthService } from './shared/services/auth/auth.service';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { CommonSharedModule } from "./shared/common.shared.module";
 import { CourseService } from "app/shared/services/course/course.service";
 import { FormsModule } from "@angular/forms";
 import { GlobalState } from "./app.state";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
 import { LayoutModule } from "./layout/layout.module";
@@ -20,7 +23,7 @@ import { ReportService } from './shared/services/report/report.service';
 import { ResponsiveModule } from "ng2-responsive";
 import { SectionService } from './shared/services/section/section.service';
 import { ServicesModule } from "./shared/services/services.module";
-import { StudentService } from "app/shared/services/student/student.service";
+import { StudentService } from "./shared/services/student/student.service";
 import { routing } from "./app.routing";
 
 // Application wide providers
@@ -30,7 +33,8 @@ const APP_PROVIDERS = [
   StudentService,
   CourseService,
   SectionService,
-  ReportService
+  ReportService,
+  AuthService
 ];
 
 export type StoreType = {
@@ -55,6 +59,7 @@ export type StoreType = {
   providers: [APP_PROVIDERS,
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
 })

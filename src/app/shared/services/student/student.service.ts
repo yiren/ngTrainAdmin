@@ -132,7 +132,7 @@ export class StudentService {
   ];
 
   studentSubject=new BehaviorSubject([]);
-
+  studentKeywordSubject=new BehaviorSubject('');
   constructor(private httpClient:HttpClient) { }
 
   SECTION_API_ENPOINT = '/api/sections';

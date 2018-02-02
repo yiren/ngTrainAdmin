@@ -24,7 +24,7 @@ export class ReportService {
         this.courseService.lastStudentSearchValueSubject.next(studentSearchVM);
         this.httpClient.post(`${this.API_ENDPOINT}/searchbystudent`,studentSearchVM)
                         .subscribe((courses:Course[])=>{
-                            this.courseService.courseSearchSubject.next(courses);
+                            this.courseService.studentSearchSubject.next(courses);
                         });
     }
     

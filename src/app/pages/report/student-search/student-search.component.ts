@@ -14,11 +14,11 @@ export class StudentSearchComponent implements OnInit, OnDestroy {
 
   studentSearch$;
   ngOnInit() {
-    this.studentSearch$=this.courseService.courseSearchSubject;
+    this.studentSearch$=this.courseService.studentSearchSubject;
   }
 
   ngOnDestroy() {
-   this.courseService.courseSearchSubject.next([]);
+   
   }
 
 }

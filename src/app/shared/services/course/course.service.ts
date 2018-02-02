@@ -12,7 +12,7 @@ export class CourseService {
   constructor(public studentService:StudentService,
               public httpClient:HttpClient) { }
 
-
+  studentSearchSubject=new BehaviorSubject([]);
   searchKeywordSubject=new BehaviorSubject('');
   courseSubject=new BehaviorSubject([]);
   courseSearchSubject=new BehaviorSubject([]);

@@ -1,10 +1,20 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CommonSharedModule } from 'app/shared/common.shared.module';
+import { LoginComponent } from './login/login.component';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+const AUTH_ROUTE=[
+  {path:'', redirectTo:'login',pathMatch:'full'},
+  {path: 'login', component: LoginComponent},
+];
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonSharedModule,
+    CommonModule,
+    RouterModule.forChild(AUTH_ROUTE)
   ],
-  declarations: []
+  declarations: [LoginComponent]
 })
 export class AuthModule { }

@@ -27,9 +27,22 @@ export class SectionSearchResultComponent implements OnInit {
   public multiple = false;
   public allowUnsort = true;
   public sort : SortDescriptor[]= [{
+    field: 'sectionName',
+    dir: 'asc'
+  },
+  {
+    field: 'studentName',
+    dir: 'asc'
+  },
+  {
+    field: 'courseStartDate',
+    dir: 'desc'
+  },
+  {
     field: 'courseEndDate',
     dir: 'desc'
-  }];
+  }
+];
   pageSize=50;
   skip=0;
   ngOnInit() {

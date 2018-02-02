@@ -1,8 +1,10 @@
 <div class="container">
     <div>
         <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" [value]="keyword" placeholder="簡易搜尋">
+            <input matInput #termInput [value]="keyword" placeholder="簡易搜尋">
         </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="applyFilter(termInput.value)">搜尋課程</button>
     </div>
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     <div *ngIf="!isLoadingResults">

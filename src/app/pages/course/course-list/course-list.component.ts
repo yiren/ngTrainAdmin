@@ -60,6 +60,7 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   applyFilter(filterValue: string) {
+   
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase();
     this.courseDataSource.filter = filterValue;

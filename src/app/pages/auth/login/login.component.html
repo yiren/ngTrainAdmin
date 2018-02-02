@@ -1,0 +1,23 @@
+<div class="content-body container">
+    <h2>新增課程</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <p>
+            <mat-form-field>
+                <input placeholder="帳號" matInput formControlName="loginName">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <input placeholder="密碼" type="password" matInput formControlName="password">
+            </mat-form-field>
+        </p>
+        <p>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid || isSubmitted">登入</button>
+            <button mat-raised-button color="danger" (click)="GetValue()">Get Value</button>
+            <button mat-raised-button color="warning" (click)="logout()">Logout</button>
+        </p>
+        <mat-spinner *ngIf="isSubmitted">
+        </mat-spinner>
+    </form>
+    <h4>Protected Data:{{value|json}}</h4>
+</div>

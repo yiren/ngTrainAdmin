@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from "@angular/router";
 
 import { LayoutComponent } from "./layout.component";
+import { LoginComponent } from "app/pages/auth/login/login.component";
 
 const LAYOUT_ROUTES: Routes = [
   {
@@ -12,8 +13,8 @@ const LAYOUT_ROUTES: Routes = [
       { path: "student", loadChildren: "../pages/student/student.module#StudentModule" },
       { path: "course", loadChildren: "../pages/course/course.module#CourseModule" },
       { path: "section", loadChildren: "../pages/section/section.module#SectionModule" },
-      { path: "report", loadChildren: "../pages/report/report.module#ReportModule" }
-
+      { path: "report", loadChildren: "../pages/report/report.module#ReportModule" },
+      { path: "auth", loadChildren: "../pages/auth/auth.module#AuthModule" }
     ]
   },
 
