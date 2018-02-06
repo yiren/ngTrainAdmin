@@ -42,6 +42,14 @@ export class AuthService {
     }
 
 
+    getFbAccessToken(accessToken:string){
+        console.log(accessToken+' :before Request');
+        return this.httpClient.post<TokenResponse>(`${this.API_ENDPOINT}/facebook`,{
+            access_token:accessToken,
+            client_id:this.clientId
+        });
+    }
+
     refreshToken():Observable<boolean>{
         var data={
             client_id:this.clientId,
@@ -65,8 +73,10 @@ export class AuthService {
         return this.getAuthFromServer(data);
     }
 
-    private setAuth(token){
+    setAuth(token){
         if(isPlatformBrowser(this.platformId)){
+            if(this.getAuth()) localStorage.removeItem('auth');
+
             localStorage.setItem('auth',JSON.stringify(token));
         }else{
             localStorage.removeItem('auth');
