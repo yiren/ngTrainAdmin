@@ -30,10 +30,16 @@ export class CourseSearchResultComponent implements OnInit, AfterViewInit {
   searchGrid:GridDataResult;
   public multiple = false;
   public allowUnsort = true;
-  public sort : SortDescriptor[]= [{
-    field: 'courseEndDate',
+  public sort : SortDescriptor[]= [
+    {
+    field: 'courseStartDate',
     dir: 'desc'
-  }];
+    },
+    {
+      field: 'courseEndDate',
+      dir: 'desc'
+    },
+  ];
   pageSize=15;
   skip=0;
   ngOnInit() {

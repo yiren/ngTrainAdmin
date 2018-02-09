@@ -1,4 +1,17 @@
 <div class="container">
-    <app-student-search-form></app-student-search-form>
-    <app-student-search-result [data]="studentSearch$"></app-student-search-result>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="true" hideToggle="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h3>依組別搜尋</h3>
+                </mat-panel-title>
+                <mat-panel-description>
+                    填入下方搜尋條件
+                </mat-panel-description>
+                <mat-icon>perm_identity</mat-icon>
+            </mat-expansion-panel-header>
+            <app-student-search-form [data]="studentSearch$"></app-student-search-form>
+            <app-student-search-result [data]="studentSearch$"></app-student-search-result>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>

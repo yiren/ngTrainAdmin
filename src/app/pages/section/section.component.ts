@@ -23,7 +23,7 @@ export class SectionComponent implements OnInit {
     
     this.sectionService.sectionSubject
         .subscribe(data=>{
-          console.log(data);
+          //console.log(data);
           this.sections=data;
         });
     this.sectionService.getSectionList();
@@ -45,7 +45,7 @@ export class SectionComponent implements OnInit {
     });
     console.log(dialogRef);
     dialogRef.afterClosed().subscribe((section)=>{
-      console.log(section + ' added');
+      //console.log(section + ' added');
       this.sectionService.addSection(section);
     });
   }

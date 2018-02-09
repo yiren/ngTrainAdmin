@@ -1,5 +1,18 @@
 <div class="container">
-    <app-section-search-form></app-section-search-form>
-    <br>
-    <app-section-search-result [data]="sectionSearch$"></app-section-search-result>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="true" hideToggle="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h3>依組別搜尋</h3>
+                </mat-panel-title>
+                <mat-panel-description>
+                    填入下方搜尋條件
+                </mat-panel-description>
+                <mat-icon>featured_play_list</mat-icon>
+            </mat-expansion-panel-header>
+            <app-section-search-form [data]="sectionSearch$"></app-section-search-form>
+            <br>
+            <app-section-search-result [data]="sectionSearch$"></app-section-search-result>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>

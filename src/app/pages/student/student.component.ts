@@ -41,7 +41,7 @@ export class StudentComponent implements OnInit {
     
     //this.studentsBySection=this.studentService.getStudentsBySection();
     //this.sections=this.studentService.getSections();
-    console.log(this.sections);
+    //console.log(this.sections);
   }
 
   OnAddStudentDialog(){
@@ -53,18 +53,18 @@ export class StudentComponent implements OnInit {
     });
     console.log(dialogRef);
     dialogRef.afterClosed().subscribe((student)=>{
-      console.log(student + ' added');
+      //console.log(student + ' added');
       this.studentService.addStudent(student);
     });
   }
   //
   updateStudent(student, sectionId){
-    console.log(student.studentName);
+    //console.log(student.studentName);
     if(student.studentName == ''){
       console.log("Error");
     }else{
       this.studentService.updateStudent(student);
-    } 
+    }
   }
   deleteStudent(student){
     if(confirm("確認刪除!?"))

@@ -11,6 +11,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { CommonModule } from '@angular/common';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ExcelExportModule } from '@progress/kendo-angular-excel-export/dist/es/excel-export.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FooterComponent } from '../layout/footer/footer.component';
 import { GridModule } from '@progress/kendo-angular-grid';
@@ -62,8 +63,15 @@ const matModule= [
     FlexLayoutModule,
     MatGridListModule,
     MatAutocompleteModule,
-    MatPaginatorModule 
-]
+    MatPaginatorModule
+];
+
+const kendoUI=[
+    GridModule,
+    ExcelExportModule
+];
+
+
 
 @NgModule({
     imports: [
@@ -118,7 +126,8 @@ const matModule= [
         TooltipModule,
         TypeaheadModule,
         ...matModule,
-        GridModule
+        ...kendoUI
+        
     ]
 })
 

@@ -48,7 +48,7 @@ export class CourseAddComponent implements OnInit {
       this.studentService.getStudentsBySection()
           .subscribe((sections:any[])=>{
             this.studentsBySection=sections;
-            console.log(sections);
+            //console.log(sections);
             this.studentsBySection.forEach(section => {
               //console.log(section);
               this.studentsFormGroup.addControl(section.sectionCode, new FormControl());
@@ -78,7 +78,7 @@ export class CourseAddComponent implements OnInit {
       })
     });
     this.addCourseForm.value.students = this.s;
-    console.log(this.addCourseForm.get('courseStartDate').value!=='')
+    //console.log(this.addCourseForm.get('courseStartDate').value!=='')
     if(this.addCourseForm.get('courseStartDate').value!==''){
       this.addCourseForm.value.courseStartDate=moment(this.addCourseForm.get('courseStartDate').value).format('YYYY/MM/DD');
     }
@@ -89,18 +89,18 @@ export class CourseAddComponent implements OnInit {
     if(this.addCourseForm.get('trainHours').value==='')
       this.addCourseForm.value.trainHours=0;
       
-    console.log(this.addCourseForm.value);
+    //console.log(this.addCourseForm.value);
     
      this.courseService.addCourse(this.addCourseForm.value)
                       .subscribe((res:Course)=>{
-                        console.log(res);
+                        //console.log(res);
                         // this.snackBar.open(`新增"${res.courseName}"訓練課程`, '關閉',{
                         //   duration:2000
                         // });
                         this.isSubmitted=true;
                         setTimeout(()=>{
                           this.router.navigate(['/course']);
-                        },2000);
+                        },1000);
                         
                       });
   }

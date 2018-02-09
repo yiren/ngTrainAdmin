@@ -12,12 +12,18 @@ export class ReportService {
                 private courseService:CourseService) { }
     API_ENDPOINT='/api/searchdata';
     averageTrainHourBehaviorSubject=new BehaviorSubject(0);
-
+    courseExportSubject=new BehaviorSubject([]);
     searchCourse(searchVM:CourseSearch){
+        //console.log(searchVM);
         this.httpClient.post(`${this.API_ENDPOINT}/searchbycourse`, searchVM)
                         .subscribe((courses:Course[])=>{
                             this.courseService.courseSearchSubject.next(courses);
-                        })
+                        });
+        this.httpClient.post(`${this.API_ENDPOINT}/searchbysection`,searchVM)
+        .subscribe((data:any[])=>{
+            //console.log("export data",data)
+            this.courseExportSubject.next(data);
+        })
     }
     
     searchCourseByStudent(studentSearchVM){
@@ -25,6 +31,7 @@ export class ReportService {
         this.httpClient.post(`${this.API_ENDPOINT}/searchbystudent`,studentSearchVM)
                         .subscribe((courses:Course[])=>{
                             this.courseService.studentSearchSubject.next(courses);
+                            
                         });
     }
     

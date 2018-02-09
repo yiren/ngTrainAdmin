@@ -1,4 +1,20 @@
 <div class="container">
-    <app-course-search-form></app-course-search-form>
-    <app-course-search-result [data]="courseSearch$"></app-course-search-result>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="true" hideToggle="true">
+            <mat-expansion-panel-header>
+                <mat-icon>format_list_bulleted</mat-icon>
+                <mat-panel-title>
+                    <h3>依課程搜尋</h3>
+                </mat-panel-title>
+                <mat-panel-description>
+                    填入下方搜尋條件
+                </mat-panel-description>
+
+            </mat-expansion-panel-header>
+
+            <app-course-search-form></app-course-search-form>
+            <app-course-search-result [data]="courseSearch$"></app-course-search-result>
+        </mat-expansion-panel>
+    </mat-accordion>
+
 </div>

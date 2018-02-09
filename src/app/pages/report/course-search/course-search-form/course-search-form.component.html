@@ -19,6 +19,25 @@
 
     <p>
         <button mat-raised-button color="primary" type="submit">搜尋訓練記錄</button>
+        <button mat-raised-button type="reset" (click)="reset()">清空搜尋</button>
+        <button mat-raised-button color="accent" (click)="excelexport.save()" [disabled]="!isSubmitted">匯出搜尋結果</button>
     </p>
 
 </form>
+
+<kendo-excelexport [data]="searchData" fileName="訓練課程搜尋結果.xlsx" #excelexport>
+    <kendo-excelexport-column field="sectionName" title="組別">
+    </kendo-excelexport-column>
+    <kendo-excelexport-column field="studentName" title="學員">
+    </kendo-excelexport-column>
+    <kendo-excelexport-column field="courseName" title="課程名稱">
+    </kendo-excelexport-column>
+    <kendo-excelexport-column field="trainHours" title="訓練時數">
+    </kendo-excelexport-column>
+    <kendo-excelexport-column field="score" title="分數">
+    </kendo-excelexport-column>
+    <kendo-excelexport-column field="courseStartDate" title="開訓日期">
+    </kendo-excelexport-column>
+    <kendo-excelexport-column field="courseEndDate" title="結訓日期">
+    </kendo-excelexport-column>
+</kendo-excelexport>

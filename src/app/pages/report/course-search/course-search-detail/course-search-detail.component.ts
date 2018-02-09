@@ -28,7 +28,7 @@ export class CourseSearchDetailComponent implements OnInit {
   }];
   ngOnInit() {
     this.loadData();
-    console.log(this.gridView);
+    //console.log(this.gridView);
   }
   public sortChange(sort): void {
     

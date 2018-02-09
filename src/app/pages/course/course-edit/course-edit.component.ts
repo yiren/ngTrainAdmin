@@ -194,7 +194,7 @@ export class CourseEditComponent implements OnInit, OnDestroy {
                       .subscribe(res=>{
                         console.log(res);
                         this.isSubmitted=true;
-                        setTimeout(()=>this.router.navigate(['/course']),3000);
+                        setTimeout(()=>this.router.navigate(['/course']),1000);
                         
                         
                       }));
@@ -203,11 +203,11 @@ export class CourseEditComponent implements OnInit, OnDestroy {
   deleteCourse(){
     this.subscriptions.push(this.courseService.deleteCourse(this.courseId)
                     .subscribe(res=>{
-                      console.log(res);
+                      //console.log(res);
                       this.isSubmitted=true;
-                      
-                      this.router.navigate(['/course']);
-                     
+                        setTimeout(()=>{
+                          this.router.navigate(['/course']);
+                        },1000);
                     }));
   }
 

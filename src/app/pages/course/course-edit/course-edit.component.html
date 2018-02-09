@@ -1,44 +1,58 @@
 <div class="content-body container">
-    <h2>編輯課程</h2>
-    <form [formGroup]="editCourseForm" (ngSubmit)="onSubmit()">
-        <p>
-            <mat-form-field>
-                <input placeholder="課程名稱" matInput formControlName="courseName">
-            </mat-form-field>
-        </p>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="true" hideToggle="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
 
-        <mat-form-field>
-            <input matInput [matDatepicker]="startDate" placeholder="開訓日期" formControlName="courseStartDate">
-            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-            <mat-datepicker #startDate disabled="false"></mat-datepicker>
-        </mat-form-field>
-        /
-        <mat-form-field>
-            <input matInput [matDatepicker]="endDate" placeholder="結訓日期" formControlName="courseEndDate">
-            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-            <mat-datepicker #endDate disabled="false"></mat-datepicker>
-        </mat-form-field>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <h2>編輯課程</h2>
 
-        <p>
-            <mat-form-field>
-                <input placeholder="訓練時數" matInput formControlName="trainHours">
-            </mat-form-field>
-        </p>
+                </mat-panel-description>
+                <mat-icon>mode_edit</mat-icon>
+            </mat-expansion-panel-header>
 
-        <div formGroupName="students">
-            <mat-form-field *ngFor="let section of studentsBySection; let i=index">
-                <mat-select [placeholder]="section.sectionName" multiple [formControlName]="section.sectionCode">
-                    <mat-option *ngFor="let student of section.students" [value]="student.studentId">{{student.studentName}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+            <form [formGroup]="editCourseForm" (ngSubmit)="onSubmit()">
+                <p>
+                    <mat-form-field>
+                        <input placeholder="課程名稱" matInput formControlName="courseName">
+                    </mat-form-field>
+                </p>
 
-        <p>
-            <button mat-raised-button color="primary" type="submit" [disabled]="!editCourseForm.valid || isSubmitted">更新訓練課程資訊</button>
-            <button mat-raised-button color="warn" type="button" (click)="deleteCourse()" [disabled]="!editCourseForm.valid || isSubmitted">刪除本訓練課程</button>
-        </p>
-        <mat-spinner *ngIf="isSubmitted">
-        </mat-spinner>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="startDate" placeholder="開訓日期" formControlName="courseStartDate">
+                    <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                    <mat-datepicker #startDate disabled="false"></mat-datepicker>
+                </mat-form-field>
+                /
+                <mat-form-field>
+                    <input matInput [matDatepicker]="endDate" placeholder="結訓日期" formControlName="courseEndDate">
+                    <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                    <mat-datepicker #endDate disabled="false"></mat-datepicker>
+                </mat-form-field>
 
-    </form>
+                <p>
+                    <mat-form-field>
+                        <input placeholder="訓練時數" matInput formControlName="trainHours">
+                    </mat-form-field>
+                </p>
+                <h6>各組:</h6>
+                <div formGroupName="students" fxLayout="row no-wrap" fxLayoutAlign="space-between">
+                    <mat-form-field *ngFor="let section of studentsBySection; let i=index">
+                        <mat-select [placeholder]="section.sectionName" multiple [formControlName]="section.sectionCode">
+                            <mat-option *ngFor="let student of section.students" [value]="student.studentId">{{student.studentName}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <p>
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!editCourseForm.valid || isSubmitted">更新訓練課程資訊</button>
+                    <button mat-raised-button color="warn" type="button" (click)="deleteCourse()" [disabled]="!editCourseForm.valid || isSubmitted">刪除本訓練課程</button>
+                </p>
+                <mat-spinner *ngIf="isSubmitted">
+                </mat-spinner>
+
+            </form>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>

@@ -21,14 +21,17 @@ export class SectionSearchResultComponent implements OnInit {
   @ViewChild(GridComponent) grid :GridComponent
 
   @Input()
-  data:Observable<any[]>;;
+  data:Observable<any[]>;
+
+  
+
   record:any[];
   sectionGrid:GridDataResult;
   public multiple = false;
   public allowUnsort = true;
   public sort : SortDescriptor[]= [{
     field: 'sectionName',
-    dir: 'asc'
+    dir: 'desc'
   },
   {
     field: 'studentName',
@@ -47,8 +50,9 @@ export class SectionSearchResultComponent implements OnInit {
   skip=0;
   ngOnInit() {
     this.data.subscribe((res:any[])=>{
-      console.log(res);
+      //console.log(res);
       this.record=_.cloneDeep(res);
+      
       this.loadData();
     });
   }

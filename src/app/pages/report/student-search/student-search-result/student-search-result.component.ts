@@ -26,6 +26,7 @@ export class StudentSearchResultComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.data.subscribe((courses:Course[])=>{
+      //console.log(courses);
       this.courseDataSource=new MatTableDataSource<Course>(courses);
     })
   }

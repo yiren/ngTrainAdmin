@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -8,6 +8,7 @@ import { CourseService } from '../../../../shared/services/course/course.service
 import { Observable } from 'rxjs/Observable';
 import { ReportService } from '../../../../shared/services/report/report.service';
 import { StudentService } from 'app/shared/services/student/student.service';
+import { Subscription } from 'rxjs/Subscription';
 import { map } from 'rxjs/operator/map';
 import { startWith } from 'rxjs/operator/startWith';
 
@@ -16,7 +17,8 @@ import { startWith } from 'rxjs/operator/startWith';
   templateUrl: './student-search-form.component.html',
   styleUrls: ['./student-search-form.component.scss']
 })
-export class StudentSearchFormComponent implements OnInit {
+export class StudentSearchFormComponent implements OnInit, OnDestroy {
+  
 
   constructor(private courseService:CourseService,
               private reportService:ReportService,
@@ -25,7 +27,12 @@ export class StudentSearchFormComponent implements OnInit {
 
   studentSearchForm:FormGroup;
   students:any[];
+  @Input()
+  data:Observable<any[]>;
   
+  isSubmitted=false;
+  searchDataSubscription:Subscription;
+  searchData;
   filteredStudents:Observable<any[]>;
   ngOnInit() {
     
@@ -47,14 +54,20 @@ export class StudentSearchFormComponent implements OnInit {
         'courseStartDate':new Date(studentVM.courseStartDate),
         'courseEndDate':new Date(studentVM.courseEndDate)
        });
-    }); 
+    });
+    this.searchDataSubscription=this.data.subscribe(res=>{
+      this.searchData=res;
+      //console.log(this.searchData);
+    });
   }
   isValid=false;
 
   filterStudents(name:string){
     return this.students.filter(student=>student.studentName.indexOf(name)===0)
   }
+  
   onSubmit(){
+    this.isSubmitted=true;
     this.courseService.lastStudentSearchValueSubject.subscribe(studentVM=>{
        this.studentSearchForm.patchValue({
         'studentName':this.studentSearchForm.get('studentName').value,
@@ -70,17 +83,16 @@ export class StudentSearchFormComponent implements OnInit {
     if(endDate.isValid()==true){
       this.studentSearchForm.value.courseEndDate=endDate.format('YYYY/MM/DD');
     }
-    console.log(this.studentSearchForm.value);
+    //console.log(this.studentSearchForm.value);
     this.reportService.searchCourseByStudent(this.studentSearchForm.value);
   }
   
-  clearData(){
+  reset(){
+    this.studentSearchForm.reset();
     this.courseService.studentSearchSubject.next([]);
   }
- 
+  ngOnDestroy(): void {
+    this.searchDataSubscription.unsubscribe();
+  }
 }
 
-export interface Student{
-  studentName:string;
-  
-}

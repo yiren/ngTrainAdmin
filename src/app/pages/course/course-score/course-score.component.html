@@ -1,26 +1,41 @@
 <div class="container">
-    <h1>成績登錄</h1>
-    <form [formGroup]="scoreForm" (ngSubmit)="updateScore()">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>項次</th>
-                        <th>學員姓名</th>
-                        <th>學員組別</th>
-                        <th>分數</th>
-                    </tr>
-                </thead>
-                <tbody formGroupName="studentScoreData">
-                    <tr *ngFor="let student of course?.studentCourses; let i=index">
-                        <th scope="row">{{i+1}}</th>
-                        <td>{{student.studentName}}</td>
-                        <td>{{student.sectionName}}</td>
-                        <td><input [value]="student.score" [formControlName]="student.studentId"></td>
-                    </tr>
-                    <button mat-raised-button color="accent" type="submit">更新學員成績</button>
-                </tbody>
-            </table>
-        </div>
-    </form>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="true" hideToggle="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+
+                </mat-panel-title>
+                <mat-panel-description>
+                    <h2>成績登錄</h2>
+
+                </mat-panel-description>
+                <mat-icon>play_for_work</mat-icon>
+            </mat-expansion-panel-header>
+            <form [formGroup]="scoreForm" (ngSubmit)="updateScore()">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>項次</th>
+                                <th>學員姓名</th>
+                                <th>學員組別</th>
+                                <th>分數</th>
+                            </tr>
+                        </thead>
+                        <tbody formGroupName="studentScoreData">
+                            <tr *ngFor="let student of course?.studentCourses; let i=index">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{student.studentName}}</td>
+                                <td>{{student.sectionName}}</td>
+                                <td><input [value]="student.score" [formControlName]="student.studentId"></td>
+                            </tr>
+                            <button mat-raised-button color="accent" type="submit" [disabled]="isSubmitted">更新學員成績</button>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+            <mat-spinner *ngIf="isSubmitted">
+            </mat-spinner>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>

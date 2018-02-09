@@ -20,6 +20,7 @@ export class CourseScoreComponent implements OnInit {
   scoreStudents:FormGroup;
   courseId;
   course;
+  isSubmitted=false;
   ngOnInit() {
     this.scoreStudents=this.fb.group({});
     this.scoreForm=this.fb.group({
@@ -37,11 +38,6 @@ export class CourseScoreComponent implements OnInit {
             this.scoreStudents.addControl(student.studentId, new FormControl(student.score, Validators.required));
          });
         });
-    
-
-    
-
-    
   }
 
   updateScore(){
@@ -49,10 +45,11 @@ export class CourseScoreComponent implements OnInit {
     console.log(this.scoreForm.value);
     this.courseService.updateStudentScoreById(this.courseId, this.scoreForm.value)
         .subscribe(res=>{
-          console.log(res);
+          //console.log(res);
+          this.isSubmitted=true;
           setTimeout(()=>{
             this.router.navigate(['/course']);
-          },2000);
+          },1000);
         })
   }     
 
