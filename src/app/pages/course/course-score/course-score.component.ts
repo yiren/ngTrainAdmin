@@ -41,8 +41,7 @@ export class CourseScoreComponent implements OnInit {
   }
 
   updateScore(){
-    
-    console.log(this.scoreForm.value);
+    //console.log(this.scoreForm.value);
     this.courseService.updateStudentScoreById(this.courseId, this.scoreForm.value)
         .subscribe(res=>{
           //console.log(res);

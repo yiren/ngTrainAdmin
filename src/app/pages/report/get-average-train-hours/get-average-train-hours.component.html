@@ -32,8 +32,11 @@
             </form>
 
             <br>
+            <div *ngIf="isSubmitted">
+                平均時數為:{{averageTrainhours}}
+            </div>
 
-            <h4>平均時數為:{{averageTrainhours}}</h4>
+
         </mat-expansion-panel>
     </mat-accordion>
 </div>

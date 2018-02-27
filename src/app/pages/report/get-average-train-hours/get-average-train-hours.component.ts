@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -15,6 +17,8 @@ export class GetAverageTrainHoursComponent implements OnInit {
 
   averageForm:FormGroup;
   averageTrainhours;
+  isSubmitted=false;
+  
   ngOnInit() {
     this.averageForm=this.fb.group({
       'startDate':[{value:'', disabled:true}],
@@ -22,10 +26,22 @@ export class GetAverageTrainHoursComponent implements OnInit {
     });
   }
   onSubmit(){
+    this.isSubmitted=false;
+    let startDate=moment(this.averageForm.get('startDate').value);
+    let endDate=moment(this.averageForm.get('endDate').value);
+    if(startDate.isValid() ==true){
+      this.averageForm.value.startDate=startDate.format('YYYY/MM/DD');
+    };
+    if(endDate.isValid()==true){
+      this.averageForm.value.endDate=endDate.format('YYYY/MM/DD');
+    }
+    console.log(this.averageForm.value);
     this.reportService.getAverageTrainHours(this.averageForm.value)
         .subscribe(value=>{
-          console.log(value);
+          //console.log(value);
+          this.isSubmitted=true;
           this.averageTrainhours=value;
+          
           }
         );
 
