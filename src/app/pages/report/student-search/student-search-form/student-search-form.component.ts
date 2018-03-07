@@ -67,6 +67,7 @@ export class StudentSearchFormComponent implements OnInit, OnDestroy {
   }
   
   onSubmit(){
+    this.courseService.courseSearchSubject.next([]);
     this.isSubmitted=true;
     this.courseService.lastStudentSearchValueSubject.subscribe(studentVM=>{
        this.studentSearchForm.patchValue({
@@ -89,7 +90,7 @@ export class StudentSearchFormComponent implements OnInit, OnDestroy {
   
   reset(){
     this.studentSearchForm.reset();
-    this.courseService.studentSearchSubject.next([]);
+    this.courseService.courseSearchSubject.next([]);
   }
   ngOnDestroy(): void {
     this.searchDataSubscription.unsubscribe();

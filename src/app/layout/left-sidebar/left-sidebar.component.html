@@ -17,7 +17,7 @@
             <ul class="nav nav-pills flex-column">
                 <li class="sidebar-header">管理選單</li>
                 <li routerLinkActive="active"><a md-ripple href="javascript:void(0)" class="" [routerLink]="['/home']"><i class="zmdi zmdi-home"></i> 管理系統首頁</a></li>
-                <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+                <li *ngIf="isLoggedIn()" routerLinkActive="active open" appNavDropdown class="nav-dropdown">
                     <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle><i class="zmdi zmdi-collection-text"></i> 訓練課程管理</a>
                     <ul class="nav-sub">
                         <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/course']">訓練課程清單</a></li>
@@ -25,13 +25,13 @@
 
                     </ul>
                 </li>
-                <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+                <li *ngIf="isLoggedIn()" routerLinkActive="active open" appNavDropdown class="nav-dropdown">
                     <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle><i class="zmdi zmdi-collection-text"></i> 學員管理</a>
                     <ul class="nav-sub">
                         <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/student']">學員名單</a></li>
                     </ul>
                 </li>
-                <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+                <li *ngIf="isLoggedIn()" routerLinkActive="active open" appNavDropdown class="nav-dropdown">
                     <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle><i class="zmdi zmdi-collection-text"></i> 組別管理</a>
                     <ul class="nav-sub">
                         <li routerLinkActive="active"><a href="javascript:void(0)" [routerLink]="['/section']">組別名單</a></li>

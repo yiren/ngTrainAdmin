@@ -45,22 +45,23 @@ export class SectionSearchFormComponent implements OnInit, OnDestroy {
     this.isSubmitted=false;
   }
   onSubmit(){
+    this.courseService.courseSearchSubject.next([]);
     this.isSubmitted=true;
     let startDate=moment(this.sectionForm.get('startDate').value);
     let endDate=moment(this.sectionForm.get('endDate').value);
     if(startDate.isValid() ==true){
-      this.sectionForm.value.startDate=startDate.format('YYYY/MM/DD');
+      this.sectionForm.value.coursestartDate=startDate.format('YYYY/MM/DD');
     };
     if(endDate.isValid()==true){
-      this.sectionForm.value.endDate=endDate.format('YYYY/MM/DD');
+      this.sectionForm.value.courseEndDate=endDate.format('YYYY/MM/DD');
     }
-    //console.log(this.sectionForm.value);
+    console.log(this.sectionForm.value);
     this.reportService.searchCourseBySection(this.sectionForm.value);
   }
 
   reset(){
     this.sectionForm.reset();
-    this.courseService.courseSubject.next([]);
+    this.courseService.courseSearchSubject.next([]);
     //this.courseService.studentSearchSubject.next([]);
   }
   ngOnDestroy(): void {

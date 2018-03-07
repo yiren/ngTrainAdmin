@@ -14,7 +14,7 @@ export class ConfigService {
     };
     this.appLayout = {
       isApp_Boxed: false,
-      isApp_SidebarLeftCollapsed: false,
+      isApp_SidebarLeftCollapsed: true,
       isApp_MobileSidebarLeftOpen: false,
       isApp_SidebarRightOpen: false,
       isApp_BackdropVisible: false

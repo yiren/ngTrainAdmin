@@ -1,24 +1,67 @@
 <div id="content_wrapper" class="fullWidth1-wrapper">
     <div class="content">
-        <header class="page-header header-sm">
-            <h1>核技處訓練管理系統</h1>
-        </header>
-        <div class="content-body">
-            <div class="card">
-                <header class="card-header">
-                    <h2 class="card-title">相關管理功能請點選左方連結。</h2>
+
+        <div class="content-body" fxLayout="row no-wrap" fxLayoutAlign="center stretch" fxLayoutGap="35px">
+            <div class="card" fxFlex="35%">
+                <h4 class="card-header text-center">
+                    課程管理
+                </h4>
+                <div class="card-body">
+                    <div *ngIf="isLoggedIn() else loginTemplate">
+
+                        <mat-list>
+                            <mat-list-item style="display:flex;justify-content:center"><a mat-raised-button color="primary" [routerLink]="['/course']">訓練課程清單</a></mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button color="accent" [routerLink]="['/course','add']">新增訓練課程</button></mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/student']">學員管理</button></mat-list-item>
+
+                            <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/section']">組別管理</button></mat-list-item>
+                            <mat-divider></mat-divider>
+
+                            <mat-list-item style="display:flex;justify-content:center">
+                                <button color="primary" mat-raised-button (click)="logout()">登出</button>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+
+                            <mat-list-item style="display:flex;justify-content:center">
+                                <button color="primary" mat-raised-button [routerLink]="['/auth/changepassword']">變更密碼</button>
+                            </mat-list-item>
+
+                        </mat-list>
+                    </div>
+
+                    <ng-template #loginTemplate>
+                        <mat-list>
+                            <mat-list-item style="display:flex;justify-content:center">
+                                <blockquote class="blockquote mb-0 text-center">本項功能須登入</blockquote>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item style="display:flex;justify-content:center"><button color="primary" mat-raised-button [routerLink]="['/auth']">登入</button></mat-list-item>
+                        </mat-list>
 
 
-                </header>
-                <!-- <div class="card-block">
-                    <h3>相關管理功能請點選左方連結。
-                    </h3>
 
-                    
-                    <a href="javascript:void(0)" [routerLink]="['/auth','loginWithFb']">FB登入頁面</a>
-                    <a href="javascript:void(0)" [routerLink]="['/auth','loginWithExplicitFlow']">FB Explicit Flow</a>
-                   
-                </div> -->
+
+                    </ng-template>
+                </div>
+            </div>
+            <div class="card" fxFlex="35%">
+                <h4 class="card-header text-center">
+                    訓練紀錄查詢
+                </h4>
+                <div class="card-body">
+
+                    <mat-list>
+                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','searchbycourse']">依課程搜尋</button></mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','searchbystudent']">依學員搜尋</button></mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','searchbysection']">依組別搜尋</button></mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','getaveragetrainhours']">計算平均時數</button></mat-list-item>
+                    </mat-list>
+                </div>
             </div>
         </div>
     </div>

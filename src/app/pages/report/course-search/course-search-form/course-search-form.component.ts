@@ -34,6 +34,7 @@ export class CourseSearchFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(){
+    
     this.isSubmitted=true;
     //console.log(this.searchForm.value)
     let startDate=moment(this.searchForm.get('courseStartDate').value);
@@ -52,7 +53,7 @@ export class CourseSearchFormComponent implements OnInit, OnDestroy {
 
   reset(){
     this.searchForm.reset();
-    this.courseService.courseSubject.next([]);
+    this.courseService.courseSearchSubject.next([]);
     //this.courseService.studentSearchSubject.next([]);
   }
 

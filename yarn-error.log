@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\joombuopre.D027\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @progress/kendo-angular-pdf-export @progress/kendo-drawin
+  C:\Program Files\nodejs\node.exe C:\Users\joombuopre.D027\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @angular/material @angular/cdk
 
 PATH: 
-  E:\cmder\bin;E:\cmder\vendor\conemu-maximus5\ConEmu\Scripts;E:\cmder\vendor\conemu-maximus5;E:\cmder\vendor\conemu-maximus5\ConEmu;C:\Python27\;C:\Python27\Scripts;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\DOCUME~2\Shared;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\LINQPad5;C:\Program Files\Microsoft\Web Platform Installer;C:\Users\joombuopre.D027\AppData\Local\.meteor;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\dotnet\;C:\Program Files (x86)\Common Files\Acronis\SnapAPI\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Go\bin;C:\Users\joombuopre.D027\AppData\Local\.meteor;C:\Program Files\Oracle\VirtualBox;C:\Users\joombuopre.D027\AppData\Roaming\npm;C:\Program Files\Microsoft VS Code\bin;C:\Users\joombuopre.D027\AppData\Local\GitHubDesktop\bin;C:\Users\joombuopre.D027\.dotnet\tools;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;E:\cmder\
+  E:\cmder\bin;E:\cmder\vendor\conemu-maximus5\ConEmu\Scripts;E:\cmder\vendor\conemu-maximus5;E:\cmder\vendor\conemu-maximus5\ConEmu;C:\Python27\;C:\Python27\Scripts;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\DOCUME~2\Shared;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\LINQPad5;C:\Program Files\Microsoft\Web Platform Installer;C:\Users\joombuopre.D027\AppData\Local\.meteor;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\dotnet\;C:\Program Files (x86)\Common Files\Acronis\SnapAPI\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Go\bin;C:\Program Files\Git\cmd;C:\Users\joombuopre.D027\AppData\Local\.meteor;C:\Program Files\Oracle\VirtualBox;C:\Users\joombuopre.D027\AppData\Roaming\npm;C:\Users\joombuopre.D027\AppData\Local\GitHubDesktop\bin;C:\Users\joombuopre.D027\.dotnet\tools;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;E:\cmder\
 
 Yarn version: 
   1.3.2
@@ -43,12 +43,22 @@ npm manifest:
           "@angular/platform-server": "^5.1.0",
           "@angular/router": "^5.1.0",
           "@ngrx/store": "^4.1.1",
+          "@progress/kendo-angular-dateinputs": "^1.4.3",
+          "@progress/kendo-angular-dropdowns": "^1.5.0",
+          "@progress/kendo-angular-excel-export": "^1.0.5",
+          "@progress/kendo-angular-grid": "^1.6.5",
+          "@progress/kendo-angular-inputs": "^1.4.2",
+          "@progress/kendo-angular-intl": "^1.3.0",
           "@progress/kendo-angular-l10n": "^1.0.5",
+          "@progress/kendo-angular-pdf-export": "^1.0.1",
+          "@progress/kendo-data-query": "^1.1.2",
+          "@progress/kendo-drawing": "^1.4.0",
           "@progress/kendo-theme-default": "^2.46.0",
           "bootstrap": "^4.0.0-alpha.6",
           "compass-mixins": "^0.12.10",
           "core-js": "^2.4.1",
           "css-loader": "^0.28.4",
+          "default-passive-events": "^1.0.6",
           "html-element-stringify": "^0.2.0",
           "intl": "^1.2.5",
           "jquery": "^3.2.1",
@@ -309,11 +319,113 @@ Lockfile:
       tree-kill "^1.0.0"
       webpack-sources "^1.1.0"
   
+  "@progress/kendo-angular-dateinputs@^1.4.3":
+    version "1.4.3"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-angular-dateinputs/-/kendo-angular-dateinputs-1.4.3.tgz#41ed299d3c7f55a66b8f1fdd56bef382c486c540"
+    dependencies:
+      "@progress/kendo-angular-popup" "^1.2.0"
+      "@progress/kendo-date-math" "^1.1.0"
+      tslib "^1.7.0"
+  
+  "@progress/kendo-angular-dropdowns@^1.5.0":
+    version "1.5.0"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-angular-dropdowns/-/kendo-angular-dropdowns-1.5.0.tgz#38fe508eb40a28a4c8fbdfd068820bf36854b0b2"
+    dependencies:
+      "@progress/kendo-angular-popup" "^1.1.0"
+      "@progress/kendo-angular-resize-sensor" "^2.0.0"
+      tslib "^1.7.0"
+  
+  "@progress/kendo-angular-excel-export@^1.0.5":
+    version "1.0.5"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-angular-excel-export/-/kendo-angular-excel-export-1.0.5.tgz#dfc409ad379b23a8f5c3c560eead6b048a07fa8b"
+    dependencies:
+      "@progress/kendo-file-saver" "^1.0.0"
+      "@progress/kendo-ooxml" "^1.0.0"
+      tslib "^1.7.0"
+  
+  "@progress/kendo-angular-grid@^1.6.5":
+    version "1.6.5"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-angular-grid/-/kendo-angular-grid-1.6.5.tgz#2235ca3f233aa5d0766ac916e7fd42027fc6cb87"
+    dependencies:
+      "@progress/kendo-angular-pdf-export" "^1.0.0"
+      "@progress/kendo-angular-resize-sensor" "^2.0.0"
+      "@progress/kendo-file-saver" "^1.0.0"
+      "@telerik/kendo-draggable" "^1.6.0"
+      tslib "^1.7.0"
+  
+  "@progress/kendo-angular-inputs@^1.4.2":
+    version "1.4.2"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-angular-inputs/-/kendo-angular-inputs-1.4.2.tgz#3004e94660b21739604dea9c080d97bbc51e6f92"
+    dependencies:
+      "@progress/kendo-angular-resize-sensor" "^2.0.0"
+      "@telerik/kendo-draggable" "^1.5.1"
+      "@telerik/kendo-inputs-common" "^2.2.2"
+      tslib "^1.7.0"
+  
+  "@progress/kendo-angular-intl@^1.3.0":
+    version "1.3.0"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-angular-intl/-/kendo-angular-intl-1.3.0.tgz#0c78278d5963f2adf3bfdc64a3da8396b0c4b857"
+    dependencies:
+      "@telerik/kendo-intl" "^1.3.0"
+      tslib "^1.7.0"
+  
   "@progress/kendo-angular-l10n@^1.0.5":
     version "1.0.5"
     resolved "https://registry.yarnpkg.com/@progress/kendo-angular-l10n/-/kendo-angular-l10n-1.0.5.tgz#9ca828cfe45ae3aed634223b9cb13dcb2c875031"
     dependencies:
       tslib "^1.7.0"
+  
+  "@progress/kendo-angular-pdf-export@^1.0.0", "@progress/kendo-angular-pdf-export@^1.0.1":
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-angular-pdf-export/-/kendo-angular-pdf-export-1.0.1.tgz#56e061a029648a2b433d05dd8fdffeef50b56487"
+    dependencies:
+      "@progress/kendo-file-saver" "^1.0.1"
+      tslib "^1.7.0"
+  
+  "@progress/kendo-angular-popup@^1.1.0", "@progress/kendo-angular-popup@^1.2.0":
+    version "1.3.1"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-angular-popup/-/kendo-angular-popup-1.3.1.tgz#170ae717cbb521888cd6a940e7b38e7e693f54c4"
+    dependencies:
+      "@progress/kendo-popup-common" "^1.2.3"
+      tslib "^1.7.0"
+  
+  "@progress/kendo-angular-resize-sensor@^2.0.0":
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-angular-resize-sensor/-/kendo-angular-resize-sensor-2.0.1.tgz#51a0beee17fa11fe711694db8cb15f7f0d6a807a"
+    dependencies:
+      tslib "^1.7.0"
+  
+  "@progress/kendo-data-query@^1.1.2":
+    version "1.1.2"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-data-query/-/kendo-data-query-1.1.2.tgz#77827eb8bc690b0a06b2a02653eb591b6a66333f"
+    dependencies:
+      tslib "^1.7.0"
+  
+  "@progress/kendo-date-math@^1.1.0":
+    version "1.1.1"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-date-math/-/kendo-date-math-1.1.1.tgz#69a93cac2249cc29fa998a084e736a4742371977"
+    dependencies:
+      tslib "^1.7.0"
+  
+  "@progress/kendo-drawing@^1.4.0":
+    version "1.4.0"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-drawing/-/kendo-drawing-1.4.0.tgz#e0bbd509ae069f399b243b4d2260d1fb7c6d6d7e"
+    dependencies:
+      pako "^1.0.5"
+  
+  "@progress/kendo-file-saver@^1.0.0", "@progress/kendo-file-saver@^1.0.1":
+    version "1.0.4"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-file-saver/-/kendo-file-saver-1.0.4.tgz#a7023c2251f04a756ab86c56f71c4eecb1a356be"
+  
+  "@progress/kendo-ooxml@^1.0.0":
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-ooxml/-/kendo-ooxml-1.0.2.tgz#68ef7f65e4e8720d842ccbda6dd83414020a94e3"
+    dependencies:
+      jszip "^3.1.0"
+  
+  "@progress/kendo-popup-common@^1.2.3":
+    version "1.2.3"
+    resolved "https://registry.yarnpkg.com/@progress/kendo-popup-common/-/kendo-popup-common-1.2.3.tgz#4ba09bffdf886eabed4126a78b538d98fe3211c6"
   
   "@progress/kendo-theme-default@^2.46.0":
     version "2.46.0"
@@ -328,6 +440,18 @@ Lockfile:
   "@schematics/schematics@0.0.11":
     version "0.0.11"
     resolved "https://registry.yarnpkg.com/@schematics/schematics/-/schematics-0.0.11.tgz#c8f70f270ed38f29b2873248126fd59abd635862"
+  
+  "@telerik/kendo-draggable@^1.5.1", "@telerik/kendo-draggable@^1.6.0":
+    version "1.6.0"
+    resolved "https://registry.yarnpkg.com/@telerik/kendo-draggable/-/kendo-draggable-1.6.0.tgz#6951d238289b09322b6306ccba07d389e5d4784a"
+  
+  "@telerik/kendo-inputs-common@^2.2.2":
+    version "2.2.2"
+    resolved "https://registry.yarnpkg.com/@telerik/kendo-inputs-common/-/kendo-inputs-common-2.2.2.tgz#84e5a500306478c657ed86f3af2a40dca0d74fc1"
+  
+  "@telerik/kendo-intl@^1.3.0":
+    version "1.3.1"
+    resolved "https://registry.yarnpkg.com/@telerik/kendo-intl/-/kendo-intl-1.3.1.tgz#f1e87191b1fd3e522e487734a3a71fc0bc664c6f"
   
   "@types/jasmine@2.5.38":
     version "2.5.38"
@@ -1394,6 +1518,10 @@ Lockfile:
     version "2.5.1"
     resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
   
+  core-js@~2.3.0:
+    version "2.3.0"
+    resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.3.0.tgz#fab83fbb0b2d8dc85fa636c4b9d34c75420c6d65"
+  
   core-object@^3.1.0:
     version "3.1.5"
     resolved "https://registry.yarnpkg.com/core-object/-/core-object-3.1.5.tgz#fa627b87502adc98045e44678e9a8ec3b9c0d2a9"
@@ -1673,6 +1801,10 @@ Lockfile:
   deep-extend@~0.4.0:
     version "0.4.2"
     resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
+  
+  default-passive-events@^1.0.6:
+    version "1.0.6"
+    resolved "https://registry.yarnpkg.com/default-passive-events/-/default-passive-events-1.0.6.tgz#adb88611aa1b18770ea5e2487b10dc1705809400"
   
   default-require-extensions@^1.0.0:
     version "1.0.0"
@@ -2029,6 +2161,10 @@ Lockfile:
       es6-set "~0.1.5"
       es6-symbol "~3.1.1"
       event-emitter "~0.3.5"
+  
+  es6-promise@~3.0.2:
+    version "3.0.2"
+    resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.0.2.tgz#010d5858423a5f118979665f46486a95c6ee2bb6"
   
   es6-set@~0.1.5:
     version "0.1.5"
@@ -2907,6 +3043,10 @@ Lockfile:
     version "0.5.5"
     resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
   
+  immediate@~3.0.5:
+    version "3.0.6"
+    resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
+  
   import-lazy@^2.1.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/import-lazy/-/import-lazy-2.1.0.tgz#05698e3d45c88e8d7e9d92cb0584e77f096f3e43"
@@ -3424,6 +3564,16 @@ Lockfile:
       json-schema "0.2.3"
       verror "1.10.0"
   
+  jszip@^3.1.0:
+    version "3.1.5"
+    resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.1.5.tgz#e3c2a6c6d706ac6e603314036d43cd40beefdf37"
+    dependencies:
+      core-js "~2.3.0"
+      es6-promise "~3.0.2"
+      lie "~3.1.0"
+      pako "~1.0.2"
+      readable-stream "~2.0.6"
+  
   karma-chrome-launcher@~2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/karma-chrome-launcher/-/karma-chrome-launcher-2.0.0.tgz#c2790c5a32b15577d0fff5a4d5a2703b3b439c25"
@@ -3559,6 +3709,12 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/license-webpack-plugin/-/license-webpack-plugin-1.1.1.tgz#76b2cedccc78f139fd7877e576f756cfc141b8c2"
     dependencies:
       ejs "^2.5.7"
+  
+  lie@~3.1.0:
+    version "3.1.1"
+    resolved "https://registry.yarnpkg.com/lie/-/lie-3.1.1.tgz#9a436b2cc7746ca59de7a41fa469b3efb76bd87e"
+    dependencies:
+      immediate "~3.0.5"
   
   load-json-file@^1.0.0:
     version "1.1.0"
@@ -4264,7 +4420,7 @@ Lockfile:
       registry-url "^3.0.3"
       semver "^5.1.0"
   
-  pako@~1.0.5:
+  pako@^1.0.5, pako@~1.0.2, pako@~1.0.5:
     version "1.0.6"
     resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.6.tgz#0101211baa70c4bca4a0f63f2206e97b7dfaf258"
   
@@ -4982,6 +5138,17 @@ Lockfile:
       inherits "~2.0.1"
       isarray "0.0.1"
       string_decoder "~0.10.x"
+  
+  readable-stream@~2.0.6:
+    version "2.0.6"
+    resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.0.6.tgz#8f90341e68a53ccc928788dacfcd11b36eb9b78e"
+    dependencies:
+      core-util-is "~1.0.0"
+      inherits "~2.0.1"
+      isarray "~1.0.0"
+      process-nextick-args "~1.0.6"
+      string_decoder "~0.10.x"
+      util-deprecate "~1.0.1"
   
   readdirp@^2.0.0:
     version "2.1.0"
@@ -6671,14 +6838,4 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.18.tgz#8cecb3977fcd1b3090562ff4570e2847e752b48d"
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@progress%2fkendo-drawin: Not found
-      at Request.params.callback [as _callback] (C:\Users\joombuopre.D027\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:62098:18)
-      at Request.self.callback (C:\Users\joombuopre.D027\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:123085:22)
-      at emitTwo (events.js:125:13)
-      at Request.emit (events.js:213:7)
-      at Request.<anonymous> (C:\Users\joombuopre.D027\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:124068:10)
-      at emitOne (events.js:115:13)
-      at Request.emit (events.js:210:7)
-      at IncomingMessage.<anonymous> (C:\Users\joombuopre.D027\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:123988:12)
-      at Object.onceWrapper (events.js:314:30)
-      at emitNone (events.js:110:20)
+  Error: EPERM: operation not permitted, unlink 'E:\GitRepository\DneTrainNg\DneTrainNg\ngTrainAdmin\node_modules\@angular\material\core\typings\style\apply-transform.d.ts'

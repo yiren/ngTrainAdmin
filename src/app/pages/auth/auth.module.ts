@@ -5,10 +5,12 @@ import { LoginExplicitFlowComponent } from './login-explicit-flow/login-explicit
 import { LoginFacebookComponent } from './login-facebook/login-facebook.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { UserPasswordComponent } from './user/user.component';
 
 const AUTH_ROUTE=[
   {path:'', redirectTo:'login',pathMatch:'full'},
   {path: 'login', component: LoginComponent},
+  {path: 'changepassword', component: UserPasswordComponent},
   {path: 'loginWithFb', component: LoginFacebookComponent},
   {path: 'loginWithExplicitFlow', component: LoginExplicitFlowComponent},
 ];
@@ -19,6 +21,6 @@ const AUTH_ROUTE=[
     CommonModule,
     RouterModule.forChild(AUTH_ROUTE)
   ],
-  declarations: [LoginComponent, LoginFacebookComponent, LoginExplicitFlowComponent]
+  declarations: [LoginComponent, LoginFacebookComponent, LoginExplicitFlowComponent, UserPasswordComponent]
 })
 export class AuthModule { }

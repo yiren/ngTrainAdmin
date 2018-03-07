@@ -1,3 +1,6 @@
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -22,9 +25,12 @@ export class AuthService {
         
     }
     
-    getAuthFromServer(data:any):Observable<boolean>{
+    getAuthFromServer(data:any):Observable<boolean>
+    //:Observable<boolean>
+    {
+        console.log(data);
         return this.httpClient.post(this.API_ENDPOINT, data)
-                    .do(console.log)
+                   .do(console.log)
                     .map((res:any)=>{
                         let token= res && res.token;
                         console.log(token);
@@ -34,8 +40,8 @@ export class AuthService {
                             return true;
                         }
                         return Observable.throw('Unauthorized');
-                   })
-                   
+                   }
+                    )
                    .catch(error => {
                         return new Observable<any>(error);
                    });
@@ -61,7 +67,7 @@ export class AuthService {
         return this.getAuthFromServer(data)
     }
 
-    login(username:string, password:string): Observable<boolean>{
+    login(username:string, password:string){
         var data={
             username:username,
             password:password,
@@ -101,7 +107,7 @@ export class AuthService {
     }
 
     getValue(){
-        return this.httpClient.get('/api/SampleData');
+        return this.httpClient.get('/api/token');
     }
 
     logout(){

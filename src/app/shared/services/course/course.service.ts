@@ -26,16 +26,16 @@ export class CourseService {
   getCourseList() {
 
     this.httpClient.get<Course[]>(this.API_ENPOINT)
+        .do(console.log)
         .subscribe(courses=>{
           this.courseSubject.next(courses)
         });
-               
-
     //return this.courses;
   }
 
   getCourseDetailById(id){
     return this.httpClient.get<Course>(`${this.API_ENPOINT}/${id}`)
+
                           .share();
   }
 

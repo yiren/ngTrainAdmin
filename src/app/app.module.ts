@@ -25,6 +25,7 @@ import { ResponsiveModule } from "ng2-responsive";
 import { SectionService } from './shared/services/section/section.service';
 import { ServicesModule } from "./shared/services/services.module";
 import { StudentService } from "./shared/services/student/student.service";
+import { TrainAdminGuard } from './shared/guard/trainadmin.guard';
 import { routing } from "./app.routing";
 
 // Application wide providers
@@ -35,7 +36,8 @@ const APP_PROVIDERS = [
   CourseService,
   SectionService,
   ReportService,
-  AuthService
+  AuthService,
+  TrainAdminGuard
 ];
 
 export type StoreType = {
@@ -60,8 +62,8 @@ export type StoreType = {
   providers: [APP_PROVIDERS,
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
-    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
-    {provide:HTTP_INTERCEPTORS, useClass:AuthRefreshTokenInterceptor, multi:true},
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
+    ,{provide:HTTP_INTERCEPTORS, useClass:AuthRefreshTokenInterceptor, multi:true},
   ],
   bootstrap: [AppComponent]
 })
