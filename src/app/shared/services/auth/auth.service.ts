@@ -28,9 +28,9 @@ export class AuthService {
     getAuthFromServer(data:any):Observable<boolean>
     //:Observable<boolean>
     {
-        console.log(data);
+        //console.log(data);
         return this.httpClient.post(this.API_ENDPOINT, data)
-                   .do(console.log)
+                   //.do(console.log)
                     .map((res:any)=>{
                         let token= res && res.token;
                         console.log(token);
@@ -49,7 +49,7 @@ export class AuthService {
 
 
     getFbAccessToken(accessToken:string){
-        console.log(accessToken+' :before Request');
+        //console.log(accessToken+' :before Request');
         return this.httpClient.post<TokenResponse>(`${this.API_ENDPOINT}/facebook`,{
             access_token:accessToken,
             client_id:this.clientId
@@ -97,6 +97,10 @@ export class AuthService {
             }
         }
         return null;
+    }
+
+    changePassword(data){
+        return this.httpClient.post('/api/UserManage',data);
     }
 
     isLoggedIn():boolean{

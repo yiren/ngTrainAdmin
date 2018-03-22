@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.loginForm);
+    //console.log(this.loginForm);
     this.authService.login(this.loginForm.value.loginName, this.loginForm.value.password)
         .subscribe(res=>{
           //console.log(res);
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           //console.log(this.authService.getAuth());
           this.router.navigate(['/'])
         },(err)=>{
-          console.log(err);
+          //console.log(err);
         });
   }
 

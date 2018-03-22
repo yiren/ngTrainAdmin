@@ -44,17 +44,16 @@ export class AuthRefreshTokenInterceptor implements HttpInterceptor {
                 this.auth.refreshToken()
                     .subscribe(res=>{
                         if(res){
-                            console.log('Refresh Token Got!');
-                            // I do not got it.
+                            
                             var http=this.injector.get(HttpClient);
                             http.request(this.currentRequest)
                                 .subscribe(result=>{
 
                                 }, error=>console.log(error));
                         }else{
-                            console.log('Refresh Token Failed!');
+                            
                             this.auth.logout();
-                            this.router.navigate(['login']);
+                            this.router.navigate(['/auth']);
                         }
 
                     }, error=>console.log(error));
