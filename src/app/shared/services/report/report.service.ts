@@ -1,8 +1,9 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
+
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Course } from '../../model/Course';
 import { CourseSearch } from '../../model/CourseSearch';
 import { CourseService } from '../course/course.service';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 
@@ -13,13 +14,23 @@ export class ReportService {
     API_ENDPOINT='/api/searchdata';
     averageTrainHourBehaviorSubject=new BehaviorSubject(0);
     courseExportSubject=new BehaviorSubject([]);
-    searchCourse(searchVM:CourseSearch){
+    searchCourse(searchVM){
         //console.log(searchVM);
-        this.httpClient.post(`${this.API_ENDPOINT}/searchbycourse`, searchVM)
+        let searchParams=new HttpParams();
+        Object.keys(searchVM).forEach(key =>{
+            searchParams = searchParams.append(key, searchVM[key]);
+       });
+        this.httpClient.get(`${this.API_ENDPOINT}/searchbycourse`,{
+                            
+                            observe:'body',
+                            params:searchVM
+                        })
+                        //.do(console.log)
                         .subscribe((courses:Course[])=>{
+                            //console.log(courses);
                             this.courseService.courseSearchSubject.next(courses);
                         });
-        this.httpClient.post(`${this.API_ENDPOINT}/searchbysection`,searchVM)
+        this.httpClient.get(`${this.API_ENDPOINT}/searchbysection`,{params:searchVM})
         .subscribe((data:any[])=>{
             //console.log("export data",data)
             this.courseExportSubject.next(data);
@@ -28,7 +39,7 @@ export class ReportService {
     
     searchCourseByStudent(studentSearchVM){
         this.courseService.lastStudentSearchValueSubject.next(studentSearchVM);
-        this.httpClient.post(`${this.API_ENDPOINT}/searchbystudent`,studentSearchVM)
+        this.httpClient.get(`${this.API_ENDPOINT}/searchbystudent`,{params:studentSearchVM})
                         .subscribe((courses:Course[])=>{
                             this.courseService.studentSearchSubject.next(courses);
                             
@@ -36,7 +47,7 @@ export class ReportService {
     }
     
     searchCourseBySection(sectionSearchVM){
-        this.httpClient.post(`${this.API_ENDPOINT}/searchbysection`,sectionSearchVM)
+        this.httpClient.get(`${this.API_ENDPOINT}/searchbysection`,{params:sectionSearchVM})
                        .subscribe((data:any[])=>{
                            this.courseService.courseSearchSubject.next(data);
                        })

@@ -11,6 +11,7 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { StudentService } from '../../../shared/services/student/student.service';
 import { Subscription } from 'rxjs/Subscription';
+import { map } from 'rxjs/operators/map';
 import { merge } from 'rxjs/operator/merge';
 import { startWith } from 'rxjs/operator/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
@@ -24,53 +25,75 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     //this.courseService.searchKeywordSubject.next('');
   }
-  
+  pager:Observable<any>;
   @ViewChild(MatPaginator) paginator:MatPaginator;
-  
   @ViewChild(MatSort) sort:MatSort;
   constructor(private courseService:CourseService,
               private studentService:StudentService,
               private router:Router) { }
-  
-  isLoadingResults=false;
-  keyword;  
+  subscriptions:Subscription[]=[];
+  isLoadingResults=true;
+  keyword='';  
   courseSubscription:Subscription;
   courseDataSource=new MatTableDataSource<Course>();
   totalRecord;
   dataRecord;
   displayedColumns = ['courseName', 'courseStartDate', 'courseEndDate', 'trainHours', 'courseId'];
   ngOnInit() {
+        
+        this.subscriptions.push(this.courseService.getPaginatedCourses(0,25).subscribe(data=>{
+          this.isLoadingResults=false;
+          this.courseService.paginatedcourseSubject.next(data);
+        }));
         this.courseService.searchKeywordSubject.subscribe(term=>this.keyword=term);
-        this.courseService.getCourseList();
-        this.courseService.courseSubject.subscribe(data=>{
+        
+        this.courseService.paginatedcourseSubject.subscribe((data:PaginatedCourses)=>{
           //console.log(data);
-          this.totalRecord = data.length;
-          this.isLoadingResults = false;
-          this.courseDataSource.data= data;
+          this.totalRecord = data.recordCount;
           
+          this.courseDataSource.data= data.courses;
         });
   }
   
   ngAfterViewInit(): void {
+    //console.log(this.paginator);
+    this.paginator.page
+            .pipe(
+              switchMap(() => {
+                this.isLoadingResults=true;
+                return this.courseService.getPaginatedCourses(this.paginator.pageIndex, this.paginator.pageSize)
+            }),
+            map(data=>{
+              this.isLoadingResults=false;
+              return data;
+            })
+
+            ).subscribe(data=>{
+              this.courseService.paginatedcourseSubject.next(data);
+
+            });
     //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-    
-    this.courseDataSource.filter = this.keyword;
-    this.courseDataSource.paginator = this.paginator;
-    this.courseDataSource.sort=this.sort;
+    //this.courseDataSource.filter = this.keyword;
+    //this.courseDataSource.paginator = this.paginator;
   }
 
   applyFilter(filterValue: string) {
-   
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase();
-    this.courseDataSource.filter = filterValue;
-    this.courseService.searchKeywordSubject.next(filterValue);
+    this.isLoadingResults=true;
+    this.courseService.getPaginatedCourses(this.paginator.pageIndex, this.paginator.pageSize, filterValue)
+               .subscribe(data=>{
+                  this.isLoadingResults=false;
+                  this.courseService.searchKeywordSubject.next(filterValue);
+                  this.courseService.paginatedcourseSubject.next(data);
+               })
+    
   }
-
-  
-  
 }
-
+interface PaginatedCourses{
+  courses:Course[];
+  recordCount:number;
+}
 // export class CourseDataSource extends DataSource<Course>{
 //   constructor(private courseService:CourseService){
 //     super();

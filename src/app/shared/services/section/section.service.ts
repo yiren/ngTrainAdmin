@@ -22,7 +22,7 @@ export class SectionService {
   updateSection(section){
     this.httpClient.put(`${this.SECTION_API_ENDPOINT}/${section.sectionId}`,section)
                    .subscribe(data=>{
-                     console.log(data);
+                     //console.log(data);
                      this.getSectionList();
                    });
   }
@@ -30,7 +30,7 @@ export class SectionService {
   deleteSection(sectionId){
     this.httpClient.delete(`${this.SECTION_API_ENDPOINT}/${sectionId}`)
                    .subscribe(res=>{
-                     console.log(res);
+                     //console.log(res);
                      this.getSectionList();
                    });
   }

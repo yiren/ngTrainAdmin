@@ -47,7 +47,7 @@ export class CourseSearchFormComponent implements OnInit, OnDestroy {
     }
     this.courseService.courseSearchSubject.next([]);
     this.searchForm.value.queryOption=1;
-    console.log(this.searchForm.value);
+    //console.log(this.searchForm.value);
     this.reportService.searchCourse(this.searchForm.value);
   }
 

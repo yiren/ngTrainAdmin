@@ -1,7 +1,7 @@
 <div class="content-body container">
     <button class="float-add-btn" mat-fab color="warn" (click)="OnAddStudentDialog()">新增</button>
     <mat-accordion multi="true">
-        <mat-expansion-panel *ngFor="let section of studentsBySection">
+        <mat-expansion-panel expanded="true" *ngFor="let section of studentsBySection">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     {{section.sectionName}}

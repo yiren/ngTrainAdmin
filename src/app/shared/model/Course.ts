@@ -5,4 +5,5 @@ export interface Course{
     courseEndDate: string;
     trainHours: number;
     studentCourses: any[];
+    recordCount:number
   }

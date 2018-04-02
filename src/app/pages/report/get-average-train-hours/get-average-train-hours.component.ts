@@ -35,7 +35,7 @@ export class GetAverageTrainHoursComponent implements OnInit {
     if(endDate.isValid()==true){
       this.averageForm.value.endDate=endDate.format('YYYY/MM/DD');
     }
-    console.log(this.averageForm.value);
+    //console.log(this.averageForm.value);
     this.reportService.getAverageTrainHours(this.averageForm.value)
         .subscribe(value=>{
           //console.log(value);

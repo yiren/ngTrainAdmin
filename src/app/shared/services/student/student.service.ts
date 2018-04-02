@@ -159,17 +159,18 @@ export class StudentService {
     // this.students.push(student);
     // const targetSection = _.find(this.studentsBySection, {sectionId:student.sectionId});
     // targetSection.students.push(student);
-    console.log(student);
+    //console.log(student);
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
     this.httpClient.post(this.STUDENT_API_ENDPOINT, student ,{headers:header})
                    .subscribe(res=>{
-                     console.log(res);
+                     //console.log(res);
                      this.getSections();
                    });  
   }
 
   updateStudent(student){
+    //console.log(student);
     // const targetSection = _.find(this.studentsBySection, {sectionId:student.sectionId});
     // const originalSection = _.find(this.studentsBySection, {sectionId:sectionId});
     // //console.log('ori', originalSection);

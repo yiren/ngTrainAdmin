@@ -9,12 +9,14 @@ import { StudentService } from 'app/shared/services/student/student.service';
 @Injectable()
 export class CourseService {
 
+  
   constructor(public studentService:StudentService,
               public httpClient:HttpClient) { }
 
   studentSearchSubject=new BehaviorSubject([]);
   searchKeywordSubject=new BehaviorSubject('');
   courseSubject=new BehaviorSubject([]);
+  paginatedcourseSubject=new BehaviorSubject({});
   courseSearchSubject=new BehaviorSubject([]);
   lastStudentSearchValueSubject=new BehaviorSubject({
     studentName:'',
@@ -44,10 +46,18 @@ export class CourseService {
   }
 
   
-
+  getPaginatedCourses(pageIndex, pageSize, keyword='') {
+    //const data=JSON.stringify({pageIndex:pageIndex, pageSize:pageSize});
+    //console.log(data);
+    //console.log({pageIndex:pageIndex, pageSize:pageSize, keyword:keyword});
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+    return this.httpClient.post(`${this.API_ENPOINT}/getpaginatedcourses`, {pageIndex:pageIndex, pageSize:pageSize, keyword:keyword});
+  }
   updateStudentScoreById(courseId,updateScore){
     let header = new HttpHeaders();
     const body=JSON.stringify(updateScore);
+    //console.log(body);
     header.append('Content-Type', 'application/json');
     return this.httpClient.put(`${this.API_ENPOINT}/${courseId}/score`, updateScore,{headers:header})
   }

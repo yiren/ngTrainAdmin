@@ -45,7 +45,7 @@ export class CourseSearchResultComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.data.subscribe((res:Course[])=>{
       this.record=_.cloneDeep(res);
-      //console.log(this.record);
+      console.log(this.record);
       this.loadData();
       //console.log(this.searchGrid);
     });

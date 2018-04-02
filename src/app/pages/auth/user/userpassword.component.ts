@@ -30,7 +30,7 @@ export class UserPasswordComponent implements OnInit {
     //console.log(this.changeForm.value);
     this.authService.changePassword(this.changeForm.value)
         .subscribe(res=>{
-          console.log(res);
+          //console.log(res);
           this.isSubmitted=true;
           setTimeout(()=>this.router.navigate(['/']),1000);
         });
