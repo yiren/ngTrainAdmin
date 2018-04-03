@@ -57,7 +57,7 @@ export class StudentSearchFormComponent implements OnInit, OnDestroy {
     });
     this.searchDataSubscription=this.data.subscribe(res=>{
       this.searchData=res;
-      //console.log(this.searchData);
+      console.log(this.searchData);
     });
   }
   isValid=false;
@@ -91,6 +91,7 @@ export class StudentSearchFormComponent implements OnInit, OnDestroy {
   reset(){
     this.studentSearchForm.reset();
     this.courseService.courseSearchSubject.next([]);
+    this.isSubmitted=false;
   }
   ngOnDestroy(): void {
     this.searchDataSubscription.unsubscribe();

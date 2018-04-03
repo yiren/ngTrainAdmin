@@ -40,8 +40,7 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
   dataRecord;
   displayedColumns = ['courseName', 'courseStartDate', 'courseEndDate', 'trainHours', 'courseId'];
   ngOnInit() {
-        
-        this.subscriptions.push(this.courseService.getPaginatedCourses(0,25).subscribe(data=>{
+        this.subscriptions.push(this.courseService.getPaginatedCourses(0,25, this.keyword).subscribe(data=>{
           this.isLoadingResults=false;
           this.courseService.paginatedcourseSubject.next(data);
         }));
@@ -50,7 +49,6 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
         this.courseService.paginatedcourseSubject.subscribe((data:PaginatedCourses)=>{
           //console.log(data);
           this.totalRecord = data.recordCount;
-          
           this.courseDataSource.data= data.courses;
         });
   }
@@ -70,7 +68,6 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
 
             ).subscribe(data=>{
               this.courseService.paginatedcourseSubject.next(data);
-
             });
     //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     //this.courseDataSource.filter = this.keyword;

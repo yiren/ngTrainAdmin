@@ -29,10 +29,8 @@
         </ng-container>
 
         <ng-container matColumnDef="courseId">
-            <mat-header-cell *matHeaderCellDef>編輯</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-                <a href="javascript:void(0)" mat-raised-button color="default" [routerLink]="['/course', element.courseId,'detail']">詳細</a>
-            </mat-cell>
+            <mat-header-cell *matHeaderCellDef>分數</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.score}} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

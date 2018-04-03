@@ -4,7 +4,24 @@
         <div class="content-body" fxLayout="row no-wrap" fxLayoutAlign="center stretch" fxLayoutGap="35px">
             <div class="card" fxFlex="35%">
                 <h4 class="card-header text-center">
-                    課程管理
+                    訓練紀錄查詢
+                </h4>
+                <div class="card-body">
+
+                    <mat-list>
+                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','searchbycourse']">依課程搜尋</button></mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','searchbystudent']">依學員搜尋</button></mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','searchbysection']">依組別搜尋</button></mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','getaveragetrainhours']">計算平均時數</button></mat-list-item>
+                    </mat-list>
+                </div>
+            </div>
+            <div class="card" fxFlex="35%">
+                <h4 class="card-header text-center">
+                    訓練資料登錄管理
                 </h4>
                 <div class="card-body">
                     <div *ngIf="isLoggedIn() else loginTemplate">
@@ -46,23 +63,7 @@
                     </ng-template>
                 </div>
             </div>
-            <div class="card" fxFlex="35%">
-                <h4 class="card-header text-center">
-                    訓練紀錄查詢
-                </h4>
-                <div class="card-body">
 
-                    <mat-list>
-                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','searchbycourse']">依課程搜尋</button></mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','searchbystudent']">依學員搜尋</button></mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','searchbysection']">依組別搜尋</button></mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item style="display:flex;justify-content:center"><button mat-raised-button [routerLink]="['/report','getaveragetrainhours']">計算平均時數</button></mat-list-item>
-                    </mat-list>
-                </div>
-            </div>
         </div>
     </div>
 </div>

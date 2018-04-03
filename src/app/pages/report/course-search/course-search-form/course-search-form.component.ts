@@ -54,6 +54,7 @@ export class CourseSearchFormComponent implements OnInit, OnDestroy {
   reset(){
     this.searchForm.reset();
     this.courseService.courseSearchSubject.next([]);
+    this.isSubmitted=false;
     //this.courseService.studentSearchSubject.next([]);
   }
 

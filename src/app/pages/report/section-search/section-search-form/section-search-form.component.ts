@@ -62,6 +62,7 @@ export class SectionSearchFormComponent implements OnInit, OnDestroy {
   reset(){
     this.sectionForm.reset();
     this.courseService.courseSearchSubject.next([]);
+    this.isSubmitted=false;
     //this.courseService.studentSearchSubject.next([]);
   }
   ngOnDestroy(): void {
