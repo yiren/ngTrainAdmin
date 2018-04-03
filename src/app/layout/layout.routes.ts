@@ -11,11 +11,17 @@ const LAYOUT_ROUTES: Routes = [
     children: [
       { path: "", redirectTo: "home", pathMatch: "full" },
       { path: "home", loadChildren: "../pages/home/home.module#HomeModule" },
-      { path: "student",canActivateChild:[TrainAdminGuard], loadChildren: "../pages/student/student.module#StudentModule" },
-      { path: "course",canActivateChild:[TrainAdminGuard], loadChildren: "../pages/course/course.module#CourseModule" },
-      { path: "section",canActivateChild:[TrainAdminGuard], loadChildren: "../pages/section/section.module#SectionModule" },
+      { path: "student",
+      //canActivateChild:[TrainAdminGuard],
+      loadChildren: "../pages/student/student.module#StudentModule" },
+      { path: "course",
+      //canActivateChild:[TrainAdminGuard], 
+      loadChildren: "../pages/course/course.module#CourseModule" },
+      { path: "section",
+      //canActivateChild:[TrainAdminGuard], 
+      loadChildren: "../pages/section/section.module#SectionModule" },
       { path: "report", loadChildren: "../pages/report/report.module#ReportModule" },
-      { path: "auth", loadChildren: "../pages/auth/auth.module#AuthModule" }
+      //{ path: "auth", loadChildren: "../pages/auth/auth.module#AuthModule" }
     ]
   },
 
