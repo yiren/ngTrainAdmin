@@ -314,9 +314,19 @@
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@progress/kendo-popup-common/-/kendo-popup-common-1.2.3.tgz#4ba09bffdf886eabed4126a78b538d98fe3211c6"
 
+"@progress/kendo-theme-bootstrap@^2.11.11":
+  version "2.11.11"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-theme-bootstrap/-/kendo-theme-bootstrap-2.11.11.tgz#baf9b46b25627f8c217a5b7a66011a230deed314"
+  dependencies:
+    "@progress/kendo-theme-default" "^2.50.0"
+
 "@progress/kendo-theme-default@^2.46.0":
   version "2.46.0"
   resolved "https://registry.yarnpkg.com/@progress/kendo-theme-default/-/kendo-theme-default-2.46.0.tgz#1208392b0cd263f4b70c462014b4bd58f507bab9"
+
+"@progress/kendo-theme-default@^2.50.0":
+  version "2.50.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-theme-default/-/kendo-theme-default-2.50.0.tgz#8d0827bd822c3c780a19eecb3d52f7bd59fc7372"
 
 "@schematics/angular@0.1.17":
   version "0.1.17"
@@ -5304,8 +5314,8 @@ promise@^7.1.1:
     asap "~2.0.3"
 
 protractor@~5.2.7:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/protractor/-/protractor-5.3.0.tgz#5df98201cbdaeb50826af6d05630ef1945bf9c32"
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/protractor/-/protractor-5.3.1.tgz#b8b8ac4ad2278bb7a461b99a34d79532095f14b8"
   dependencies:
     "@types/node" "^6.0.46"
     "@types/q" "^0.0.32"

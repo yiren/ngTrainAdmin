@@ -60,8 +60,7 @@ export type StoreType = {
     routing
   ],
   providers: [APP_PROVIDERS,
-    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+   
     {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
     ,{provide:HTTP_INTERCEPTORS, useClass:AuthRefreshTokenInterceptor, multi:true},
   ],
