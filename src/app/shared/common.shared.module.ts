@@ -1,4 +1,6 @@
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { AccordionModule } from 'ngx-bootstrap/accordion';
@@ -27,7 +29,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
-import { MatNativeDateModule } from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectModule} from '@angular/material/select';
@@ -72,7 +73,17 @@ const kendoUI=[
     GridModule,
     ExcelExportModule
 ];
-
+export const TW_FORMATS = {
+    parse: {
+      dateInput: 'YYYY/MM/DD'
+    },
+    display: {
+      dateInput: 'YYYY/MM/DD',
+      monthYearLabel: 'YYYY MMM',
+      dateA11yLabel: 'YYYY/MM/DD',
+      monthYearA11yLabel: 'YYYY MMM'
+    }
+  };
 
 
 @NgModule({
@@ -104,6 +115,13 @@ const kendoUI=[
 		FooterComponent,
 		AddSectionDialogComponent,
 		
+    ],
+
+    providers:[
+        {provide: MAT_DATE_FORMATS, useValue: TW_FORMATS},
+        {provide: MAT_DATE_LOCALE, useValue: 'zh-TW'},
+        {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+        
     ],
     exports: [
 		CommonModule,
