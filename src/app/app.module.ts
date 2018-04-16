@@ -6,6 +6,7 @@ import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 
 import { AppComponent } from "./app.component";
+import { AuthEffects } from './pages/auth/store/auth.effects';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { AuthRefreshTokenInterceptor } from './shared/interceptor/auth.refresh.interceptor';
 import { AuthService } from './shared/services/auth/auth.service';
@@ -13,6 +14,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { CommonSharedModule } from "./shared/common.shared.module";
 import { CourseService } from "app/shared/services/course/course.service";
+import { EffectsModule } from '@ngrx/effects';
 import { FormsModule } from "@angular/forms";
 import { GlobalState } from "./app.state";
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -24,8 +26,11 @@ import { ReportService } from './shared/services/report/report.service';
 import { ResponsiveModule } from "ng2-responsive";
 import { SectionService } from './shared/services/section/section.service';
 import { ServicesModule } from "./shared/services/services.module";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { StoreModule } from '@ngrx/store';
 import { StudentService } from "./shared/services/student/student.service";
 import { TrainAdminGuard } from './shared/guard/trainadmin.guard';
+import { authReducer } from './pages/auth/store/auth.reducers';
 import { routing } from "./app.routing";
 
 // Application wide providers
@@ -57,7 +62,11 @@ export type StoreType = {
     ServicesModule,
     ResponsiveModule,
     CommonSharedModule.forRoot(),
-    routing
+    routing,
+    StoreModule.forRoot({auth:authReducer}),
+        EffectsModule.forRoot([AuthEffects]),
+        StoreDevtoolsModule.instrument()
+    
   ],
   providers: [APP_PROVIDERS,
    

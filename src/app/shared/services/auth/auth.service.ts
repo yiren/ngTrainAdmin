@@ -25,27 +25,29 @@ export class AuthService {
         
     }
     
-    getAuthFromServer(data:any):Observable<boolean>
+    getAuthFromServer(data:any):Observable<any>
     //:Observable<boolean>
     {
-        //console.log(data);
-        return this.httpClient.post(this.API_ENDPOINT, data)
+        console.log(data);
+        const apiReq=this.httpClient.post(this.API_ENDPOINT, data)
+        console.log(apiReq);
+        return apiReq;
                    //.do(console.log)
-                    .map((res:any)=>{
-                        let token= res && res.token;
-                        console.log(token);
-                        if(token){
-                            this.token=token;
-                            this.setAuth(token);
-                            return true;
-                        }
-                        return Observable.throw('Unauthorized');
-                   }
-                    )
-                   .catch(error => {
-                        return new Observable<any>(error);
-                   });
-    }
+    //                 .map((res:any)=>{
+    //                     let token= res && res.token;
+    //                     console.log(token);
+    //                     if(token){
+    //                         this.token=token;
+    //                         this.setAuth(token);
+    //                         return true;
+    //                     }
+    //                     return Observable.throw('Unauthorized');
+    //                }
+    //                 )
+    //                .catch(error => {
+    //                     return new Observable<any>(error);
+    //                });
+     }
 
 
     getFbAccessToken(accessToken:string){

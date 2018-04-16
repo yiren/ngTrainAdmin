@@ -1,6 +1,9 @@
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
+import { LoginComponent } from './pages/auth/login/login.component';
 
 const ROUTES: Routes = [
+    
     { path: '', loadChildren: './layout/layout.module#LayoutModule' }
 ];
 

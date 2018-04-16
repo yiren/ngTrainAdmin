@@ -7,7 +7,7 @@
                     課程管理
                 </h4>
                 <div class="card-body">
-                    <div *ngIf="isLoggedIn() else loginTemplate">
+                    <div *ngIf="(authState$ | async).isAuthenticated else loginTemplate">
 
                         <mat-list>
                             <mat-list-item style="display:flex;justify-content:center"><a mat-raised-button color="primary" [routerLink]="['/course']">訓練課程清單</a></mat-list-item>

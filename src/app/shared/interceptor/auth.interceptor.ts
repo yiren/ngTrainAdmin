@@ -2,9 +2,12 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Inject, Injectable, Injector } from '@angular/core';
 
 import { AuthService } from '../services/auth/auth.service';
+import {AuthState} from '../../pages/auth/store/auth.state'
 import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { switchMap } from 'rxjs/operators/switchMap';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor{
@@ -12,7 +15,8 @@ export class AuthInterceptor implements HttpInterceptor{
     
     constructor(//private authService:AuthService,
                 private injector: Injector,
-                private router:Router) { }
+                private router:Router,
+                private store: Store<AuthState>) { }
 
     private handleAuthError(err:HttpErrorResponse){
         if(err.status===401 || err.status===403){
@@ -30,16 +34,20 @@ export class AuthInterceptor implements HttpInterceptor{
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler) : Observable<HttpEvent<any>>{
-        var auth=this.injector.get(AuthService);
-        var token=(auth.isLoggedIn() ? auth.getAuth(): null);
-        if(token){
-            req=req.clone({
-                setHeaders:{
-                    Authorization:`Bearer ${token}`
-                }
-            })
-        }
+        //var auth=this.injector.get(AuthService);
+        return this.store.take(1).switchMap(authState=>{
+            console.log(authState);
+            var token=authState.token || null
+            if(token){
+                req=req.clone({
+                    setHeaders:{
+                        Authorization:`Bearer ${token}`
+                    }
+                })
+            }
 
-        return next.handle(req).catch(x=>this.handleAuthError(x));
+            return next.handle(req).catch(x=>this.handleAuthError(x));
+        })
+        
     };
 }
