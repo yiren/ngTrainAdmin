@@ -2,6 +2,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/do';
 
+import * as AppActions from '../../../store/app.actions';
 import * as AuthActions from './auth.actions';
 
 import { Action, INIT, Store } from '@ngrx/store';
@@ -21,11 +22,11 @@ export class AuthEffects{
     authCheckAuth$:Observable<Action>=this.actions$
         .ofType(ROOT_EFFECTS_INIT)
         .map(action=>{
-            console.log(action);
+            //console.log(action);
             if(this.authService.isLoggedIn()){
                 return new AuthActions.SetAuthenticatedAction();
             }
-            return action;
+            return new AppActions.NoAction();
         })
         
 

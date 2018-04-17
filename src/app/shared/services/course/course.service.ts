@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Course } from '../../model/Course';
+import { Course } from '../../../pages/course/store/course.states';
 import { CourseSearch } from 'app/shared/model/CourseSearch';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { StudentService } from 'app/shared/services/student/student.service';
 
 @Injectable()
@@ -51,8 +52,8 @@ export class CourseService {
     //console.log(data);
     //console.log({pageIndex:pageIndex, pageSize:pageSize, keyword:keyword});
     let header = new HttpHeaders();
-    header.append('Content-Type', 'application/json');
-    return this.httpClient.post(`${this.API_ENPOINT}/getpaginatedcourses`, {pageIndex:pageIndex, pageSize:pageSize, keyword:keyword});
+    header.set('Content-Type', 'application/json');
+    return this.httpClient.post(`${this.API_ENPOINT}/getpaginatedcourses`, {pageIndex:pageIndex, pageSize:pageSize, keyword:keyword}).catch(x=>Observable.throw(x));
   }
   updateStudentScoreById(courseId,updateScore){
     let header = new HttpHeaders();
