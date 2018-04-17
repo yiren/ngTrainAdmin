@@ -26,11 +26,15 @@ export class CoursesLoadedAction implements Action{
     constructor(public payload:Course[]){}
 }
 
-//UI
- 
-
-export type CourseActions= GetCourseByPageAction |
+export type CourseDataActions= GetCourseByPageAction |
 PaginatedCoursesLoadedAction |
 GetCoursesAction |
 CoursesLoadedAction
 ;
+//UI
+export const SET_KEYWORD_ACTION='SetKeywordAction';
+export class SetKeywordAction  implements Action{
+    readonly type=SET_KEYWORD_ACTION;
+    constructor(public payload:string){}
+}
+export type CourseUiActions= SetKeywordAction;

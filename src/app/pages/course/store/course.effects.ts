@@ -23,8 +23,8 @@ export class CourseEffects {
         .ofType(CourseActions.GET_COURSES_BY_PAGE)
         .switchMap((action:CourseActions.GetCourseByPageAction)=>
         this.httpClient.post(`${this.API_ENPOINT}/getpaginatedcourses`, 
-        {pageIndex:action.payload.pageIndex, pageSize:action.payload.pageSize, keyword:action.payload.keyword?action.payload.keyword:''}))
-        //.do(console.log)
+        {pageIndex:action.payload.pageIndex, pageSize:action.payload.pageSize, keyword:action.payload.keyword}))
+        .do(console.log)
         .map((courses:PaginatedCourses[])=>{console.log(courses);return new CourseActions.PaginatedCoursesLoadedAction(courses)})
         .catch(err=>Observable.throw(err));
 

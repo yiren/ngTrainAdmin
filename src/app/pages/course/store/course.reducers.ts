@@ -1,9 +1,10 @@
 import * as CourseActions from './course.actions';
 
-import { Action } from "@ngrx/store";
-import { courseInitState } from './course.states';
+import { courseDataInitState, courseUiInitState } from './course.states';
 
-export function courseDataReducer(state=courseInitState, action: CourseActions.CourseActions){
+import { Action } from "@ngrx/store";
+
+export function courseDataReducer(state=courseDataInitState, action: CourseActions.CourseDataActions){
 
 
     switch (action.type) {
@@ -26,21 +27,13 @@ export function courseDataReducer(state=courseInitState, action: CourseActions.C
     }
 }
 
-export function courseUiReducer(state, action: CourseActions.CourseActions){
+export function courseUiReducer(state=courseUiInitState, action: CourseActions.CourseUiActions){
     switch (action.type) {
-        
-        case (CourseActions.COURSES_LOADED_ACTION):
+        case (CourseActions.SET_KEYWORD_ACTION):
             return {
                 ...state,
-                courses:action.payload
-            };
-
-        case (CourseActions.PAGINATED_COURSES_LOADED_ACTION):
-            return {
-                ...state,
-                paginatedCourses:action.payload
-            };
-        
+                keyword:action.payload
+            }
     
         default:
             return state;

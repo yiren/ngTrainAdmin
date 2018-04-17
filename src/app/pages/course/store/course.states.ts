@@ -12,13 +12,18 @@ export interface CourseUiState{
     pageIndex:number;
     pageSize:number;
 }
+export const courseUiInitState:CourseUiState={
+    keyword:'',
+    pageIndex:0,
+    pageSize:20
+}
 
 export interface CourseState{
     courses:Course[];
     paginatedCourses:PaginatedCourses;
 }
 
-export const courseInitState:CourseState={
+export const courseDataInitState:CourseState={
     courses:[],
     paginatedCourses:null
 }
