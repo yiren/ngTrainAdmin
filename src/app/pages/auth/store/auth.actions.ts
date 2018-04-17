@@ -4,6 +4,7 @@ export const LOGINACTION='LoginAction';
 export const LOGOUTACTION='LogoutAction';
 export const SET_TOKEN='SetToken';
 export const GET_TOKEN='GetToken';
+export const SET_AUTHENTICATED_ACTION='SetAuthenticatedAction';
 
 export interface loginCredential{
     username: string;
@@ -14,6 +15,8 @@ export class LoginAction implements Action{
     readonly type=LOGINACTION;
     constructor(public payload:loginCredential){}
 }
+
+
 
 export class LogoutAction implements Action{
     readonly type=LOGOUTACTION;
@@ -27,8 +30,13 @@ export class SetTokenAction implements Action{
     constructor(public payload:string){}
 }
 
+export class SetAuthenticatedAction implements Action{
+    readonly type=SET_AUTHENTICATED_ACTION;
+}
+
 export type AuthActions= LoginAction
 | LogoutAction
 | GetTokenAction
 | SetTokenAction
+| SetAuthenticatedAction
 ;

@@ -4,11 +4,7 @@ import { AuthState, initialState } from './auth.state';
 
 export function authReducer(state:AuthState=initialState, action:fromAuth.AuthActions){
     switch(action.type){
-        case (fromAuth.LOGINACTION):
-            return {
-                ...state,
-                isAuthenticated:true
-            };
+        
         case (fromAuth.SET_TOKEN):
             return {
                 ...state,
@@ -22,6 +18,14 @@ export function authReducer(state:AuthState=initialState, action:fromAuth.AuthAc
             token:null
         };
         
+        case (fromAuth.SET_AUTHENTICATED_ACTION):
+            return {
+                ...state,
+                isAuthenticated:true
+            };
+        
+
+
         default:
             return state;
     }

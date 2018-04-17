@@ -28,9 +28,9 @@ export class AuthService {
     getAuthFromServer(data:any):Observable<any>
     //:Observable<boolean>
     {
-        console.log(data);
+       // console.log(data);
         const apiReq=this.httpClient.post(this.API_ENDPOINT, data)
-        console.log(apiReq);
+        //console.log(apiReq);
         return apiReq;
                    //.do(console.log)
     //                 .map((res:any)=>{

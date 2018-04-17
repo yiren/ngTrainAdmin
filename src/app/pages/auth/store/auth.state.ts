@@ -1,6 +1,8 @@
+import { AppState } from "../../../app.service";
+
 export interface AuthState{
     token: string;
-    isAuthenticated;
+    isAuthenticated:boolean;
 }
 
 export const initialState: AuthState={

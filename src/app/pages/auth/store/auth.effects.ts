@@ -4,22 +4,37 @@ import 'rxjs/add/operator/do';
 
 import * as AuthActions from './auth.actions';
 
-import {Actions, Effect} from '@ngrx/effects';
+import { Action, INIT, Store } from '@ngrx/store';
+import {Actions, Effect, ROOT_EFFECTS_INIT} from '@ngrx/effects';
 
-import { Action } from '@ngrx/store';
 import { AuthService } from '../../../shared/services/auth/auth.service';
+import { AuthState } from './auth.state';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class AuthEffects{
+
+    @Effect()
+    authCheckAuth$:Observable<Action>=this.actions$
+        .ofType(ROOT_EFFECTS_INIT)
+        .map(action=>{
+            console.log(action);
+            if(this.authService.isLoggedIn()){
+                return new AuthActions.SetAuthenticatedAction();
+            }
+            return action;
+        })
+        
+
     @Effect()
     authLogin$:Observable<Action>=this.actions$
         .ofType(AuthActions.LOGINACTION)
         .map((action:AuthActions.LoginAction)=>action.payload)
         .switchMap(authData=>this.authService.login(authData.username,authData.password))
-        .do(console.log)
+       // .do(console.log)
         .map(res=>new AuthActions.SetTokenAction(res.token));
 
     @Effect({dispatch:false})
@@ -38,6 +53,7 @@ export class AuthEffects{
     constructor(
         private actions$: Actions,
         private authService:AuthService,
-        private router:Router
+        private router:Router,
+        private store:Store<AuthState>
     ){}
 }

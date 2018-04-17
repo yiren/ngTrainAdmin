@@ -36,8 +36,8 @@ export class AuthInterceptor implements HttpInterceptor{
     intercept(req: HttpRequest<any>, next: HttpHandler) : Observable<HttpEvent<any>>{
         //var auth=this.injector.get(AuthService);
         return this.store.take(1).switchMap(authState=>{
-            console.log(authState);
-            var token=authState.token || null
+            
+            var token=authState.token || null;
             if(token){
                 req=req.clone({
                     setHeaders:{
@@ -45,7 +45,7 @@ export class AuthInterceptor implements HttpInterceptor{
                     }
                 })
             }
-
+            //console.log(req);
             return next.handle(req).catch(x=>this.handleAuthError(x));
         })
         

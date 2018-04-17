@@ -30,6 +30,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { StoreModule } from '@ngrx/store';
 import { StudentService } from "./shared/services/student/student.service";
 import { TrainAdminGuard } from './shared/guard/trainadmin.guard';
+import { appReducers } from './store/app.reducers';
 import { authReducer } from './pages/auth/store/auth.reducers';
 import { routing } from "./app.routing";
 
@@ -63,7 +64,7 @@ export type StoreType = {
     ResponsiveModule,
     CommonSharedModule.forRoot(),
     routing,
-    StoreModule.forRoot({auth:authReducer}),
+    StoreModule.forRoot(appReducers),
         EffectsModule.forRoot([AuthEffects]),
         StoreDevtoolsModule.instrument()
     
