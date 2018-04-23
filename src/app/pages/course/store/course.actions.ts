@@ -6,6 +6,7 @@ export const GET_COURSES_BY_PAGE='GetCourseByPage';
 export const PAGINATED_COURSES_LOADED_ACTION='PaginatedCoursesLoaded';
 export const GET_COURSES_ACTION='GetCourses';
 export const COURSES_LOADED_ACTION='CoursesLoaded';
+export const ADD_COURSE_ACTION='AddCourseAction';
 
 //Data
 export class GetCourseByPageAction implements Action{
@@ -21,9 +22,15 @@ export class GetCoursesAction implements Action{
     readonly type=GET_COURSES_ACTION;
 }
 
+
 export class CoursesLoadedAction implements Action{
     readonly type=COURSES_LOADED_ACTION;
     constructor(public payload:Course[]){}
+}
+
+export class AddCourseAction implements Action{
+    readonly type=ADD_COURSE_ACTION;
+    constructor(public payload:Course){}
 }
 
 export type CourseDataActions= GetCourseByPageAction |
@@ -33,8 +40,15 @@ CoursesLoadedAction
 ;
 //UI
 export const SET_KEYWORD_ACTION='SetKeywordAction';
+export const SET_PAGINATION_PARAMETERS_ACTION='SetPaginationParametersAction';
 export class SetKeywordAction  implements Action{
     readonly type=SET_KEYWORD_ACTION;
     constructor(public payload:string){}
 }
-export type CourseUiActions= SetKeywordAction;
+export class SetPaginationParametersAction implements Action{
+    readonly type=SET_PAGINATION_PARAMETERS_ACTION;
+    constructor(public payload:{pageIndex:number, pageSize:number}){}
+}
+export type CourseUiActions= SetKeywordAction |
+SetPaginationParametersAction
+;

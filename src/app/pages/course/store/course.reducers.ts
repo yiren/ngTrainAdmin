@@ -34,6 +34,12 @@ export function courseUiReducer(state=courseUiInitState, action: CourseActions.C
                 ...state,
                 keyword:action.payload
             }
+        case (CourseActions.SET_PAGINATION_PARAMETERS_ACTION):
+        return {
+            ...state,
+            pageIndex:action.payload.pageIndex,
+            pageSize:action.payload.pageSize
+        }
     
         default:
             return state;

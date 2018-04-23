@@ -4,10 +4,11 @@ import 'rxjs/add/operator/do';
 
 import * as CourseActions from './course.actions';
 
+import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
-import { Course, PaginatedCourses } from './course.states';
+import { Course, CourseFeatureState, PaginatedCourses } from './course.states';
 
-import { Action } from '@ngrx/store';
+import { GetCourseByPageAction } from './course.actions';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -28,16 +29,24 @@ export class CourseEffects {
         .map((courses:PaginatedCourses[])=>{console.log(courses);return new CourseActions.PaginatedCoursesLoadedAction(courses)})
         .catch(err=>Observable.throw(err));
 
+    // @Effect()
+    // getCourses=this.actions$
+    //     .ofType(CourseActions.GET_COURSES_ACTION)
+    //     .switchMap((action:CourseActions.GetCourseByPageAction)=>
+    //         this.httpClient.get(this.API_ENPOINT))
+    //     .do(console.log)
+    //     .map((courses:Course[])=>new CourseActions.CoursesLoadedAction(courses))
+    //     .catch(err=>Observable.throw(err));
+
     @Effect()
-    getCourses=this.actions$
-        .ofType(CourseActions.GET_COURSES_ACTION)
-        .switchMap((action:CourseActions.GetCourseByPageAction)=>
-            this.httpClient.get(this.API_ENPOINT))
-        .do(console.log)
-        .map((courses:Course[])=>new CourseActions.CoursesLoadedAction(courses))
-        .catch(err=>Observable.throw(err));
+    updateCoursesByPageChanges=this.actions$
+        .ofType(CourseActions.SET_PAGINATION_PARAMETERS_ACTION)
+        .switchMap(()=>this.store.select('courseUiState'))
+        .map(uiState=>new GetCourseByPageAction(uiState));
+        
 
     constructor(private actions$:Actions,
+        private store:Store<CourseFeatureState>,
         private httpClient: HttpClient) { }
     
 }

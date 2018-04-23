@@ -2,8 +2,8 @@ import * as _ from 'lodash';
 
 import { AfterContentInit, AfterViewInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Course, CourseFeatureState, CourseState, PaginatedCourses } from '../store/course.states';
-import { GetCourseByPageAction, SetKeywordAction } from '../store/course.actions';
+import { Course, CourseFeatureState, CourseState, CourseUiState, PaginatedCourses } from '../store/course.states';
+import { GetCourseByPageAction, SetKeywordAction, SetPaginationParametersAction } from '../store/course.actions';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 import { AppState } from '../../../store/app.states';
@@ -43,52 +43,58 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
   courseDataSource=new MatTableDataSource<Course>();
   totalRecord;
   dataRecord;
+
+  uiState$:Observable<CourseUiState>;
   displayedColumns = ['courseName', 'courseStartDate', 'courseEndDate', 'trainHours', 'courseId'];
   ngOnInit() {
-        this.store.select('courseUiState').subscribe(uiState=>{
-          const uiData={pageIndex:uiState.pageIndex, pageSize:uiState.pageSize, keyword:uiState.keyword};
-          console.log(uiData);
-          this.store.dispatch(new GetCourseByPageAction(uiData));
-        });
         
+        this.uiState$=this.store.select('courseUiState');
+        this.InitPaginatedCourses();
         this.store.select('courseDataState').skip(1).subscribe(data=>{
          //console.log(data);
 
-          //if(data){
+          
             this.isLoadingResults=false;
             this.totalRecord = data.paginatedCourses.recordCount;
           
             this.courseDataSource.data= data.paginatedCourses.courses;
-          //}
+          
         })
         
         //this.courseService.searchKeywordSubject.subscribe(term=>this.keyword=term);
         
   }
-  
+  InitPaginatedCourses(){
+    this.uiState$.subscribe(uiState=>{
+      const uiData={pageIndex:uiState.pageIndex, pageSize:uiState.pageSize, keyword:uiState.keyword};
+      //console.log(uiData);
+      this.store.dispatch(new GetCourseByPageAction(uiData));
+    });
+  }
+
   ngAfterViewInit(): void {
     //console.log(this.paginator);
     this.paginator.page
-            .pipe(
-              switchMap(() => {
-                this.isLoadingResults=true;
-                return this.courseService.getPaginatedCourses(this.paginator.pageIndex, this.paginator.pageSize)
-            }),
-            map(data=>{
-              this.isLoadingResults=false;
-              return data;
-            })
-
-            ).subscribe(data=>{
-              this.courseService.paginatedcourseSubject.next(data);
-
-            });
+            // .pipe(
+            //   switchMap(() => {
+            //     this.isLoadingResults=true;
+            //     return this.courseService.getPaginatedCourses(this.paginator.pageIndex, this.paginator.pageSize)
+            // }),
+            // map(data=>{
+            //   this.isLoadingResults=false;
+            //   return data;
+            // })
+            .subscribe(()=>
+              this.store.dispatch(new SetPaginationParametersAction({pageIndex:this.paginator.pageIndex, pageSize:this.paginator
+              .pageSize}))
+            );
     //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     //this.courseDataSource.filter = this.keyword;
     //this.courseDataSource.paginator = this.paginator;
   }
 
   applyFilter(filterValue: string) {
+    this.paginator.firstPage();
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase();
     this.isLoadingResults=true;
