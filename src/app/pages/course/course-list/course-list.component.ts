@@ -49,7 +49,7 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
         
         this.uiState$=this.store.select('courseUiState');
-        this.InitPaginatedCourses();
+        this.initPaginatedCourses();
         this.store.select('courseDataState').skip(1).subscribe(data=>{
          //console.log(data);
 
@@ -64,7 +64,7 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
         //this.courseService.searchKeywordSubject.subscribe(term=>this.keyword=term);
         
   }
-  InitPaginatedCourses(){
+  initPaginatedCourses(){
     this.uiState$.subscribe(uiState=>{
       const uiData={pageIndex:uiState.pageIndex, pageSize:uiState.pageSize, keyword:uiState.keyword};
       //console.log(uiData);

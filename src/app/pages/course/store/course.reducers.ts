@@ -20,7 +20,11 @@ export function courseDataReducer(state=courseDataInitState, action: CourseActio
                 ...state,
                 paginatedCourses:action.payload
             };
-        
+        case (CourseActions.GET_COURSE_BY_ID_LOADED_ACTION):
+        return {
+            ...state,
+            course:action.payload
+        };
     
         default:
             return state;

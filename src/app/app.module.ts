@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { CommonSharedModule } from "./shared/common.shared.module";
 import { CourseService } from "app/shared/services/course/course.service";
+import { DebugInterceptor } from './shared/interceptor/debug.Interceptor';
 import { EffectsModule } from '@ngrx/effects';
 import { FormsModule } from "@angular/forms";
 import { GlobalState } from "./app.state";
@@ -70,9 +71,9 @@ export type StoreType = {
     
   ],
   providers: [APP_PROVIDERS,
-   
-    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
-    ,{provide:HTTP_INTERCEPTORS, useClass:AuthRefreshTokenInterceptor, multi:true},
+    {provide:HTTP_INTERCEPTORS, useClass:DebugInterceptor, multi:true}
+    // {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
+    // {provide:HTTP_INTERCEPTORS, useClass:AuthRefreshTokenInterceptor, multi:true},
   ],
   bootstrap: [AppComponent]
 })

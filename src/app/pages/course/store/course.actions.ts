@@ -7,6 +7,11 @@ export const PAGINATED_COURSES_LOADED_ACTION='PaginatedCoursesLoaded';
 export const GET_COURSES_ACTION='GetCourses';
 export const COURSES_LOADED_ACTION='CoursesLoaded';
 export const ADD_COURSE_ACTION='AddCourseAction';
+export const UPDATE_COURSE_BY_ID_ACTION='UpdateCourseAction';
+export const DELETE_COURSE_ACTION='DeleteCourseAction';
+export const GET_COURSE_BY_ID_ACTION='GetCourseByIdAction';
+export const GET_COURSE_BY_ID_LOADED_ACTION='GetCourseByIdLoadedAction';
+export const UPDATE_SCORE_BY_ID_ACTION='UpdateScoreAction';
 
 //Data
 export class GetCourseByPageAction implements Action{
@@ -33,10 +38,42 @@ export class AddCourseAction implements Action{
     constructor(public payload:Course){}
 }
 
+export class UpdateCourseByIdAction implements Action{
+    readonly type=UPDATE_COURSE_BY_ID_ACTION;
+    constructor(public payload:{courseId:string, course:Course}){}
+}
+
+export class GetCourseByIdAction implements Action{
+    readonly type=GET_COURSE_BY_ID_ACTION;
+    constructor(public payload:string){}
+}
+
+export class GetCourseByIdLoadedAction implements Action{
+    readonly type=GET_COURSE_BY_ID_LOADED_ACTION;
+    constructor(public payload:Course){}
+}
+
+export class DeleteCourseAction implements Action{
+    readonly type=DELETE_COURSE_ACTION;
+    constructor(public payload:string){}
+}
+
+
+export class UpdateScoreByIdAction implements Action{
+    readonly type=UPDATE_SCORE_BY_ID_ACTION;
+    constructor(public payload:{courseId:string,scores:{[studentId:number]:string}}){}
+}
+
 export type CourseDataActions= GetCourseByPageAction |
 PaginatedCoursesLoadedAction |
-GetCoursesAction |
-CoursesLoadedAction
+GetCoursesAction | 
+CoursesLoadedAction |
+AddCourseAction |
+UpdateCourseByIdAction |
+DeleteCourseAction |
+GetCourseByIdAction |
+GetCourseByIdLoadedAction |
+UpdateScoreByIdAction
 ;
 //UI
 export const SET_KEYWORD_ACTION='SetKeywordAction';

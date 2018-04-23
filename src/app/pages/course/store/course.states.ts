@@ -21,11 +21,13 @@ export const courseUiInitState:CourseUiState={
 export interface CourseState{
     courses:Course[];
     paginatedCourses:PaginatedCourses;
+    course:Course;
 }
 
 export const courseDataInitState:CourseState={
     courses:[],
-    paginatedCourses:null
+    paginatedCourses:null,
+    course:null
 }
 
 export interface PaginatedCourses{

@@ -3,12 +3,15 @@ import * as moment from 'moment';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { DeleteCourseAction, UpdateCourseByIdAction } from '../store/course.actions';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Course } from '../../../shared/model/Course';
+import { CourseFeatureState } from '../store/course.states';
 import { CourseService } from '../../../shared/services/course/course.service';
 import { FormBuilder } from '@angular/forms';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Store } from '@ngrx/store';
 import { StudentService } from 'app/shared/services/student/student.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -33,6 +36,7 @@ export class CourseEditComponent implements OnInit, OnDestroy {
   constructor(private fb:FormBuilder,
               private courseService:CourseService,
               private studentService:StudentService,
+              private store: Store<CourseFeatureState>,
               private route:ActivatedRoute,
               private router:Router) { }
 
@@ -81,7 +85,7 @@ export class CourseEditComponent implements OnInit, OnDestroy {
               this.editCourseForm.patchValue({
                 'courseName':course.courseName,
                 'courseStartDate':new Date(course.courseStartDate),
-                'courseEndDate':new Date(course.courseEndDate),
+                'courseEndDate':course.courseEndDate?new Date(course.courseEndDate):null,
                 'trainHours':course.trainHours,
                 // 'students':this.studentsFormGroup
               })
@@ -186,29 +190,34 @@ export class CourseEditComponent implements OnInit, OnDestroy {
     });
     //console.log(this.s);
     this.editCourseForm.value.students=this.s;
-    this.editCourseForm.value.courseStartDate=moment(this.editCourseForm.get('courseStartDate').value).format('YYYY/MM/DD');
-    this.editCourseForm.value.courseEndDate=moment(this.editCourseForm.get('courseEndDate').value).format('YYYY/MM/DD');
-    
-    //console.log(this.editCourseForm.value);
-    this.subscriptions.push(this.courseService.updateCourse(this.courseId, this.editCourseForm.value)
-                      .subscribe(res=>{
-                        console.log(res);
-                        this.isSubmitted=true;
-                        setTimeout(()=>this.router.navigate(['/course']),1000);
+    if(this.editCourseForm.get('courseStartDate').value){
+      this.editCourseForm.value.courseStartDate=moment(this.editCourseForm.get('courseStartDate').value).format('YYYY/MM/DD');
+    }
+    if(this.editCourseForm.get('courseEndDate').value){
+      this.editCourseForm.value.courseEndDate=moment(this.editCourseForm.get('courseEndDate').value).format('YYYY/MM/DD');
+    }
+    console.log(this.editCourseForm.value);
+    // this.subscriptions.push(this.courseService.updateCourse(this.courseId, this.editCourseForm.value)
+    //                   .subscribe(res=>{
+    //                     console.log(res);
+    //                     this.isSubmitted=true;
+    //                     setTimeout(()=>this.router.navigate(['/course']),1000);
                         
                         
-                      }));
+    //                   }));
+    this.store.dispatch(new UpdateCourseByIdAction({courseId:this.courseId,course:this.editCourseForm.value}));
   }
 
   deleteCourse(){
-    this.subscriptions.push(this.courseService.deleteCourse(this.courseId)
-                    .subscribe(res=>{
-                      //console.log(res);
-                      this.isSubmitted=true;
-                        setTimeout(()=>{
-                          this.router.navigate(['/course']);
-                        },1000);
-                    }));
+    // this.subscriptions.push(this.courseService.deleteCourse(this.courseId)
+    //                 .subscribe(res=>{
+    //                   //console.log(res);
+    //                   this.isSubmitted=true;
+    //                     setTimeout(()=>{
+    //                       this.router.navigate(['/course']);
+    //                     },1000);
+    //                 }));
+    this.store.dispatch(new DeleteCourseAction(this.courseId));
   }
 
   ngOnDestroy(){

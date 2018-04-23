@@ -1,7 +1,10 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
+import { CourseFeatureState } from '../store/course.states';
 import { CourseService } from '../../../shared/services/course/course.service';
+import { GetCourseByIdAction } from '../store/course.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-course-detail',
@@ -10,15 +13,18 @@ import { CourseService } from '../../../shared/services/course/course.service';
 })
 export class CourseDetailComponent implements OnInit {
 
-  course$;
+  courseDataState$;
 
   constructor(private courseService:CourseService,
+              private store:Store<CourseFeatureState>,
               private route:ActivatedRoute,
               private router:Router) { }
               
   ngOnInit() {
-    
-    this.course$=this.courseService.getCourseDetailById(this.route.snapshot.params['courseId']);
+    const courseId=this.route.snapshot.params['courseId']
+    this.store.dispatch(new GetCourseByIdAction(courseId));
+    this.courseDataState$=this.store.select('courseDataState');
+    // this.courseService.getCourseDetailById();
     
   }
 

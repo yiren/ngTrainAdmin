@@ -66,7 +66,7 @@ export class CourseService {
   addCourse(course){
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-    return this.httpClient.post(this.API_ENPOINT, course,{headers:header});
+    return this.httpClient.post(this.API_ENPOINT, course);
   }
 
   updateCourse(courseId, course){

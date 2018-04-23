@@ -4,11 +4,14 @@ import * as moment from 'moment';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { AddCourseAction } from '../store/course.actions';
 import { Course } from '../../../shared/model/Course';
+import { CourseFeatureState } from '../store/course.states';
 import { CourseService } from '../../../shared/services/course/course.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { StudentService } from 'app/shared/services/student/student.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -25,6 +28,7 @@ export class CourseAddComponent implements OnInit {
   constructor(private fb:FormBuilder,
               private courseService:CourseService,
               private studentService:StudentService,
+              private store:Store<CourseFeatureState>,
               private snackBar:MatSnackBar,
               private router:Router) { }
 
@@ -90,18 +94,21 @@ export class CourseAddComponent implements OnInit {
       this.addCourseForm.value.trainHours=0;
       
     //console.log(this.addCourseForm.value);
-    
-     this.courseService.addCourse(this.addCourseForm.value)
-                      .subscribe((res:Course)=>{
-                        //console.log(res);
-                        // this.snackBar.open(`新增"${res.courseName}"訓練課程`, '關閉',{
-                        //   duration:2000
-                        // });
-                        this.isSubmitted=true;
-                        setTimeout(()=>{
-                          this.router.navigate(['/course']);
-                        },1000);
+  
+    //  this.courseService.addCourse(this.addCourseForm.value)
+    //                   .subscribe((res:Course)=>{
+    //                     //console.log(res);
+    //                     // this.snackBar.open(`新增"${res.courseName}"訓練課程`, '關閉',{
+    //                     //   duration:2000
+    //                     // });
+    //                     this.isSubmitted=true;
+    //                     setTimeout(()=>{
+    //                       this.router.navigate(['/course']);
+    //                     },1000);
                         
-                      });
+    //                   });
+
+    this.store.dispatch(new AddCourseAction(this.addCourseForm.value));
+
   }
 }
