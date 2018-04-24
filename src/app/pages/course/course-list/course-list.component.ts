@@ -47,7 +47,7 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
   uiState$:Observable<CourseUiState>;
   displayedColumns = ['courseName', 'courseStartDate', 'courseEndDate', 'trainHours', 'courseId'];
   ngOnInit() {
-        
+       // this.store.select('auth').subscribe(data=>console.log(`Auth Data:${data.isAuthenticated}`));
         this.uiState$=this.store.select('courseUiState');
         this.initPaginatedCourses();
         this.store.select('courseDataState').skip(1).subscribe(data=>{

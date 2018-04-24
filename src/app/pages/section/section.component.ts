@@ -1,8 +1,14 @@
+import * as fromApp from '../../store/app.states';
+
 import { Component, OnInit } from '@angular/core';
+import { SectionFeatureState, SectionState } from './store/section.states';
 
 import { AddSectionDialogComponent } from '../../shared/components/add-section-dialog/add-section-dialog.component';
+import { GetAllSections } from './store/section.actions';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs/Observable';
 import { SectionService } from '../../shared/services/section/section.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-section',
@@ -12,21 +18,20 @@ import { SectionService } from '../../shared/services/section/section.service';
 export class SectionComponent implements OnInit {
 
   constructor(private sectionService:SectionService,
+              private store:Store<fromApp.AppState>,
               public dialog:MatDialog) { }
       
-  section={
-    sectionName:'',
-    sectionCode:''
-  };
-  sections;
+  
+  sectionDataState$:Observable<SectionState>;
   ngOnInit() {
-    
-    this.sectionService.sectionSubject
-        .subscribe(data=>{
-          //console.log(data);
-          this.sections=data;
-        });
-    this.sectionService.getSectionList();
+    this.store.dispatch(new GetAllSections());
+    this.sectionDataState$=this.store.select('section');
+    // this.sectionService.sectionSubject
+    //     .subscribe(data=>{
+    //       //console.log(data);
+    //       this.sections=data;
+    //     });
+    // this.sectionService.getSectionList();
   }
 
   updateSection(section){

@@ -1,19 +1,28 @@
 import {
   Component,
   HostBinding,
-  OnInit,
   HostListener,
+  OnInit,
   ViewContainerRef
 } from "@angular/core";
-declare var $: any;
-import { GlobalState } from "./app.state";
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
+
+import { AppState } from './store/app.states';
 import { ConfigService } from "./shared/services/config/config.service";
+import { GlobalState } from "./app.state";
 import { PreloaderService } from "./shared/services/preloader/preloader.service";
 import { SpinnerService } from "./shared/services/spinner/spinner.service";
+import { Store } from '@ngrx/store';
+import { ViewChild } from '@angular/core';
+
+declare var $: any;
 
 @Component({
   selector: "app-root",
-  template: "<router-outlet></router-outlet>",
+  template: `
+  
+  <router-outlet></router-outlet>
+  `,
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
@@ -33,16 +42,25 @@ export class AppComponent implements OnInit {
     return this.config.appLayout.isApp_SidebarRightOpen;
   }
 
+  
+
   constructor(
     private _state: GlobalState,
     public config: ConfigService,
     private viewContainerRef: ViewContainerRef,
-    private _spinner: SpinnerService
+    private _spinner: SpinnerService,
+    private toasterService:ToastrService,
+    private store:Store<AppState>
   ) {}
 
   ngOnInit() {
     $(document).on("click", '[href="#"]', e => e.preventDefault());
-    
+    //this.toasterService.overlayContainer=this.toasterContainer;
+    this.store.select('appUi').subscribe(uiState=>{
+      console.log(uiState.errorMessage)
+      if(uiState.errorMessage)
+      this.toasterService.error(uiState.errorMessage.message, uiState.errorMessage.title);
+    })
   }
   //check if menu should reset on resize
   @HostListener("window:resize")

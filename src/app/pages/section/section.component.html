@@ -12,8 +12,8 @@
                 </mat-panel-description>
                 <mat-icon>folder_shared</mat-icon>
             </mat-expansion-panel-header>
-            <mat-list>
-                <mat-list-item *ngFor="let section of sections">
+            <mat-list *ngIf="(sectionDataState$ | async).sections">
+                <mat-list-item *ngFor="let section of (sectionDataState$ | async).sections">
                     <mat-icon>folder_shared</mat-icon>
                     <mat-form-field>
                         <input placeholder="組別名稱" matInput [(ngModel)]="section.sectionName">

@@ -1,4 +1,6 @@
+import * as SectionActions from '../../section/store/section.actions';
 import * as _ from 'lodash';
+import * as fromSection from '../store/course.states';
 import * as moment from 'moment';
 
 import { Component, OnInit } from '@angular/core';
@@ -6,7 +8,6 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 
 import { AddCourseAction } from '../store/course.actions';
 import { Course } from '../../../shared/model/Course';
-import { CourseFeatureState } from '../store/course.states';
 import { CourseService } from '../../../shared/services/course/course.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs/Observable';
@@ -28,7 +29,7 @@ export class CourseAddComponent implements OnInit {
   constructor(private fb:FormBuilder,
               private courseService:CourseService,
               private studentService:StudentService,
-              private store:Store<CourseFeatureState>,
+              private store:Store<fromSection.CourseFeatureState>,
               private snackBar:MatSnackBar,
               private router:Router) { }
 
@@ -47,14 +48,16 @@ export class CourseAddComponent implements OnInit {
       'trainHours':'',
       'students':this.studentsFormGroup
     });
-    this.studentsBySection$=this.studentService.getStudentsBySection();
-    this.sectionSubscription = 
-      this.studentService.getStudentsBySection()
-          .subscribe((sections:any[])=>{
-            this.studentsBySection=sections;
-            //console.log(sections);
+    //this.studentsBySection$=this.studentService.getStudentsBySection();
+    //this.sectionSubscription = 
+      // this.studentService.getStudentsBySection()
+      this.store.dispatch(new SectionActions.GetAllSections());
+      this.store.select('section').skip(1)
+          .subscribe((sectionState)=>{
+            console.log(sectionState);
+            this.studentsBySection=sectionState.sections;
             this.studentsBySection.forEach(section => {
-              //console.log(section);
+              console.log(section);
               this.studentsFormGroup.addControl(section.sectionCode, new FormControl());
           });
     });

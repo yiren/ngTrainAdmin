@@ -16,7 +16,7 @@ export class SpinnerService {
 		
   }
 
-  public hide(delay:number = 300):void {
+  public hide(delay:number = 500):void {
     setTimeout(() => {
       this._element.style['display'] = 'none';
     }, delay);

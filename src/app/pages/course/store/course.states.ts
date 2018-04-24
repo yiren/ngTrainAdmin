@@ -1,4 +1,5 @@
 import { AppState } from "../../../store/app.states";
+import { SectionState } from "../../section/store/section.states";
 
 export interface CourseFeatureState extends AppState{
 

@@ -35,6 +35,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
+import { MessageComponent } from './components/message/message.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
@@ -43,6 +44,7 @@ import { ResponsiveModule } from 'ng2-responsive';
 import { RouterModule } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import {ToastrModule} from 'ngx-toastr';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
@@ -107,21 +109,18 @@ export const TW_FORMATS = {
         TimepickerModule.forRoot(),
         TooltipModule.forRoot(),
         TypeaheadModule.forRoot(),
-        ...matModule,
-
+        ...matModule
     ],
     declarations: [
 		AppBackdropComponent,
 		FooterComponent,
 		AddSectionDialogComponent,
-		
+		MessageComponent
     ],
-
     providers:[
         {provide: MAT_DATE_FORMATS, useValue: TW_FORMATS},
         {provide: MAT_DATE_LOCALE, useValue: 'zh-TW'},
         {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-        
     ],
     exports: [
 		CommonModule,
@@ -147,7 +146,6 @@ export const TW_FORMATS = {
         TypeaheadModule,
         ...matModule,
         ...kendoUI
-        
     ]
 })
 

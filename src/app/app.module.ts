@@ -4,6 +4,7 @@ import { AppState, InternalStateType } from "./app.service";
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
+import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from "./app.component";
 import { AuthEffects } from './pages/auth/store/auth.effects';
@@ -25,6 +26,7 @@ import { LayoutModule } from "./layout/layout.module";
 import { NgModule } from "@angular/core";
 import { ReportService } from './shared/services/report/report.service';
 import { ResponsiveModule } from "ng2-responsive";
+import { SectionEffects } from './pages/section/store/section.effects';
 import { SectionService } from './shared/services/section/section.service';
 import { ServicesModule } from "./shared/services/services.module";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
@@ -65,8 +67,14 @@ export type StoreType = {
     ResponsiveModule,
     CommonSharedModule.forRoot(),
     routing,
+    ToastrModule.forRoot({
+      timeOut:3500,
+      positionClass:'toast-top-center',
+      progressBar:true
+    }),
+    ToastContainerModule,
     StoreModule.forRoot(appReducers),
-        EffectsModule.forRoot([AuthEffects]),
+        EffectsModule.forRoot([AuthEffects, SectionEffects]),
         StoreDevtoolsModule.instrument()
     
   ],
