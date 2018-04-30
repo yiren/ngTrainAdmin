@@ -3,12 +3,13 @@ import * as _ from 'lodash';
 import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Course } from '../../../../shared/model/Course';
+import { Course } from '../../../course/store/course.states';
 import { DataStateChangeEvent } from '@progress/kendo-angular-grid';
 import { GridComponent } from '@progress/kendo-angular-grid/dist/es/grid.component';
 import { GridDataResult } from '@progress/kendo-angular-grid/dist/es/data/data.collection';
 import { Observable } from 'rxjs/Observable';
 import { PageChangeEvent } from '@progress/kendo-angular-grid/dist/es/data/change-event-args.interface';
+import { SearchDataState } from '../../store/search.states';
 import { SortDescriptor } from '@progress/kendo-data-query/dist/es/sort-descriptor';
 import { orderBy } from '@progress/kendo-data-query/dist/es/array.operators';
 
@@ -43,7 +44,7 @@ export class CourseSearchResultComponent implements OnInit, AfterViewInit {
   pageSize=15;
   skip=0;
   ngOnInit() {
-    this.data.subscribe((res:Course[])=>{
+    this.data.subscribe((res)=>{
       this.record=_.cloneDeep(res);
       console.log(this.record);
       this.loadData();

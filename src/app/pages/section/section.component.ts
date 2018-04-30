@@ -43,15 +43,15 @@ export class SectionComponent implements OnInit {
   }
 
   OnAddSectionDialog(){
-    let dialogRef=this.dialog.open(AddSectionDialogComponent,{
-      data:{
-        section:this.section
-      }
-    });
-    console.log(dialogRef);
-    dialogRef.afterClosed().subscribe((section)=>{
-      //console.log(section + ' added');
-      this.sectionService.addSection(section);
-    });
+    // let dialogRef=this.dialog.open(AddSectionDialogComponent,{
+    //   data:{
+    //     section:this.section
+    //   }
+    // });
+    // console.log(dialogRef);
+    // dialogRef.afterClosed().subscribe((section)=>{
+    //   //console.log(section + ' added');
+    //   this.sectionService.addSection(section);
+    // });
   }
 }

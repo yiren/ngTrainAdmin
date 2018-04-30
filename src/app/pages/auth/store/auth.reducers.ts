@@ -1,8 +1,8 @@
 import * as fromAuth from './auth.actions';
 
-import { AuthState, initialState } from './auth.state';
+import { AuthState, authInitialState } from './auth.state';
 
-export function authReducer(state:AuthState=initialState, action:fromAuth.AuthActions){
+export function authReducer(state:AuthState=authInitialState, action:fromAuth.AuthActions){
     switch(action.type){
         
         case (fromAuth.SET_TOKEN):

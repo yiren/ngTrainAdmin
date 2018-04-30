@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { CourseService } from '../../../shared/services/course/course.service';
+import { ResetSearchUiAction } from '../store/search.actions';
+import { SearchFeatureState } from '../store/search.states';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-course-search',
@@ -10,16 +13,20 @@ import { CourseService } from '../../../shared/services/course/course.service';
 export class CourseSearchComponent implements OnInit, OnDestroy {
   
 
-  constructor(private courseService:CourseService) { }
+  constructor(
+    private courseService:CourseService,
+    private store: Store<SearchFeatureState>) { }
 
-  courseSearch$;
+  SearchCourseState$;
 
   ngOnInit() {
-    this.courseSearch$=this.courseService.courseSearchSubject;
+    this.SearchCourseState$=this.store.select('searchDataState')
+                                    .map(state=>state.courses)
+                                    .skip(1);
 
   }
   ngOnDestroy(): void {
-    this.courseService.courseSearchSubject.next([]);
+    this.store.dispatch(new ResetSearchUiAction());
   }
 
 }

@@ -33,9 +33,9 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/cdk@^5.2.3":
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-5.2.3.tgz#b52e7040e1e6577b593b5d974b80020c1f5babe3"
+"@angular/cdk@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-5.2.5.tgz#cae2b12e1990a692dd267a73fdb1d49db37f9604"
   dependencies:
     tslib "^1.7.1"
 
@@ -131,9 +131,9 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/flex-layout@^2.0.0-beta.12":
-  version "2.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-2.0.0-beta.12.tgz#80970dc1d60f27fa41537659926f3238f759f343"
+"@angular/flex-layout@^5.0.0-beta.14":
+  version "5.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-5.0.0-beta.14.tgz#300e1cba2ef1a70f43fe7ea68ea78267cb4241e4"
   dependencies:
     tslib "^1.7.1"
 
@@ -149,15 +149,15 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/material-moment-adapter@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-5.0.3.tgz#8cc331aba22d075d085b3f75502ae121bd27cdfb"
+"@angular/material-moment-adapter@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-5.2.5.tgz#896744c307edd0850f2ce333bc32cdf45852e88f"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/material@^5.2.3":
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-5.2.3.tgz#ce7e2abb79c0bd16dff7f247b21c5339d02dd949"
+"@angular/material@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-5.2.5.tgz#287af95d234e0644244d9db565f7a05c10b737f8"
   dependencies:
     tslib "^1.7.1"
 
@@ -224,85 +224,99 @@
     tree-kill "^1.0.0"
     webpack-sources "^1.1.0"
 
-"@progress/kendo-angular-dateinputs@^1.4.3":
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-dateinputs/-/kendo-angular-dateinputs-1.4.3.tgz#41ed299d3c7f55a66b8f1fdd56bef382c486c540"
+"@progress/kendo-angular-buttons@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-buttons/-/kendo-angular-buttons-4.0.0.tgz#bb013d3176291841e2f9305098f375c024a40d91"
   dependencies:
-    "@progress/kendo-angular-popup" "^1.2.0"
+    "@progress/kendo-angular-popup" "^2.0.0"
+    tslib "^1.7.0"
+
+"@progress/kendo-angular-dateinputs@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-dateinputs/-/kendo-angular-dateinputs-2.2.0.tgz#4bf8f1e55b598c33a372a6fbe396498e4a57c2ee"
+  dependencies:
+    "@progress/kendo-angular-popup" "^2.0.0"
     "@progress/kendo-date-math" "^1.1.0"
     tslib "^1.7.0"
 
-"@progress/kendo-angular-dropdowns@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-dropdowns/-/kendo-angular-dropdowns-1.5.0.tgz#38fe508eb40a28a4c8fbdfd068820bf36854b0b2"
+"@progress/kendo-angular-dropdowns@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-dropdowns/-/kendo-angular-dropdowns-2.1.0.tgz#7ace9b944a6493da6ef791aadc5caa2455c50df5"
   dependencies:
-    "@progress/kendo-angular-popup" "^1.1.0"
-    "@progress/kendo-angular-resize-sensor" "^2.0.0"
+    "@progress/kendo-angular-popup" "^2.0.0"
+    "@progress/kendo-angular-resize-sensor" "^3.0.0"
     tslib "^1.7.0"
 
-"@progress/kendo-angular-excel-export@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-excel-export/-/kendo-angular-excel-export-1.0.5.tgz#dfc409ad379b23a8f5c3c560eead6b048a07fa8b"
+"@progress/kendo-angular-excel-export@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-excel-export/-/kendo-angular-excel-export-1.0.7.tgz#2833cb5569a47ec2c80715f77a8fca9f40ac458c"
   dependencies:
     "@progress/kendo-file-saver" "^1.0.0"
     "@progress/kendo-ooxml" "^1.0.0"
     tslib "^1.7.0"
 
-"@progress/kendo-angular-grid@^1.6.5":
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-grid/-/kendo-angular-grid-1.6.5.tgz#2235ca3f233aa5d0766ac916e7fd42027fc6cb87"
+"@progress/kendo-angular-grid@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-grid/-/kendo-angular-grid-3.0.0.tgz#4c038c8322347d13bd4d1a526509fbaa9310f563"
   dependencies:
     "@progress/kendo-angular-pdf-export" "^1.0.0"
-    "@progress/kendo-angular-resize-sensor" "^2.0.0"
+    "@progress/kendo-angular-resize-sensor" "^3.0.0"
     "@progress/kendo-file-saver" "^1.0.0"
     "@telerik/kendo-draggable" "^1.6.0"
     tslib "^1.7.0"
 
-"@progress/kendo-angular-inputs@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-inputs/-/kendo-angular-inputs-1.4.2.tgz#3004e94660b21739604dea9c080d97bbc51e6f92"
+"@progress/kendo-angular-inputs@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-inputs/-/kendo-angular-inputs-2.2.0.tgz#debda4f602dc17c7afb30efb27bf386ce61ff004"
   dependencies:
-    "@progress/kendo-angular-resize-sensor" "^2.0.0"
+    "@progress/kendo-angular-resize-sensor" "^3.0.0"
     "@telerik/kendo-draggable" "^1.5.1"
     "@telerik/kendo-inputs-common" "^2.2.2"
     tslib "^1.7.0"
 
-"@progress/kendo-angular-intl@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-intl/-/kendo-angular-intl-1.3.0.tgz#0c78278d5963f2adf3bfdc64a3da8396b0c4b857"
+"@progress/kendo-angular-intl@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-intl/-/kendo-angular-intl-1.4.0.tgz#1cdc2c802abee2350295dc4e35a9f995bd644886"
   dependencies:
     "@telerik/kendo-intl" "^1.3.0"
     tslib "^1.7.0"
 
-"@progress/kendo-angular-l10n@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-l10n/-/kendo-angular-l10n-1.0.5.tgz#9ca828cfe45ae3aed634223b9cb13dcb2c875031"
+"@progress/kendo-angular-l10n@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-l10n/-/kendo-angular-l10n-1.1.0.tgz#807266626c7cf76d61450693dfa5b14bfb9c2e3b"
   dependencies:
     tslib "^1.7.0"
 
-"@progress/kendo-angular-pdf-export@^1.0.0", "@progress/kendo-angular-pdf-export@^1.0.1":
+"@progress/kendo-angular-pdf-export@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@progress/kendo-angular-pdf-export/-/kendo-angular-pdf-export-1.0.1.tgz#56e061a029648a2b433d05dd8fdffeef50b56487"
   dependencies:
     "@progress/kendo-file-saver" "^1.0.1"
     tslib "^1.7.0"
 
-"@progress/kendo-angular-popup@^1.1.0", "@progress/kendo-angular-popup@^1.2.0":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-popup/-/kendo-angular-popup-1.3.1.tgz#170ae717cbb521888cd6a940e7b38e7e693f54c4"
+"@progress/kendo-angular-pdf-export@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-pdf-export/-/kendo-angular-pdf-export-1.0.3.tgz#b554ec20ae1facae75adb3a8f3f45cd9148414b3"
   dependencies:
-    "@progress/kendo-popup-common" "^1.2.3"
+    "@progress/kendo-file-saver" "^1.0.1"
     tslib "^1.7.0"
 
-"@progress/kendo-angular-resize-sensor@^2.0.0":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-resize-sensor/-/kendo-angular-resize-sensor-2.0.1.tgz#51a0beee17fa11fe711694db8cb15f7f0d6a807a"
+"@progress/kendo-angular-popup@^2.0.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-popup/-/kendo-angular-popup-2.2.0.tgz#2027406491b883a180f67dcb8973eada7656ac47"
+  dependencies:
+    "@progress/kendo-popup-common" "^1.5.0"
+    tslib "^1.7.0"
+
+"@progress/kendo-angular-resize-sensor@^3.0.0":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-angular-resize-sensor/-/kendo-angular-resize-sensor-3.0.2.tgz#e756f796988aa4498b295efb5dc03e834c2e131a"
   dependencies:
     tslib "^1.7.0"
 
-"@progress/kendo-data-query@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-data-query/-/kendo-data-query-1.1.2.tgz#77827eb8bc690b0a06b2a02653eb591b6a66333f"
+"@progress/kendo-data-query@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-data-query/-/kendo-data-query-1.2.2.tgz#25ab154668e7489467e4a1b94a268e30acb140ba"
   dependencies:
     tslib "^1.7.0"
 
@@ -312,9 +326,9 @@
   dependencies:
     tslib "^1.7.0"
 
-"@progress/kendo-drawing@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-drawing/-/kendo-drawing-1.4.0.tgz#e0bbd509ae069f399b243b4d2260d1fb7c6d6d7e"
+"@progress/kendo-drawing@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-drawing/-/kendo-drawing-1.5.2.tgz#d7f1de9db2e061fc04fe341bcb23a6732c80e774"
   dependencies:
     pako "^1.0.5"
 
@@ -328,9 +342,9 @@
   dependencies:
     jszip "^3.1.0"
 
-"@progress/kendo-popup-common@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@progress/kendo-popup-common/-/kendo-popup-common-1.2.3.tgz#4ba09bffdf886eabed4126a78b538d98fe3211c6"
+"@progress/kendo-popup-common@^1.5.0":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-popup-common/-/kendo-popup-common-1.5.1.tgz#608a162e967965e61c2c264b33d9f644066d0675"
 
 "@progress/kendo-theme-bootstrap@^2.11.11":
   version "2.11.11"
@@ -1922,6 +1936,10 @@ deep-equal@^1.0.1:
 deep-extend@~0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
+
+deep-freeze-strict@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/deep-freeze-strict/-/deep-freeze-strict-1.1.1.tgz#77d0583ca24a69be4bbd9ac2fae415d55523e5b0"
 
 default-passive-events@^1.0.6:
   version "1.0.6"
@@ -4243,9 +4261,9 @@ md5.js@^1.3.4:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-mdi@^1.9.33:
-  version "1.9.33"
-  resolved "https://registry.yarnpkg.com/mdi/-/mdi-1.9.33.tgz#3caf6d95fc6b800633630bd62ba0cf1fbde6b2e2"
+mdi@^2.2.43:
+  version "2.2.43"
+  resolved "https://registry.yarnpkg.com/mdi/-/mdi-2.2.43.tgz#c5e419a6e5f48c82c7109328f52530fd187a0ec0"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -4502,9 +4520,15 @@ ng2-toasty@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/ng2-toasty/-/ng2-toasty-4.0.3.tgz#ea78ef8d18757d41ebaba11bd9f90a543f58fd7a"
 
-ngx-bootstrap@2.0.0-beta.11:
-  version "2.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-2.0.0-beta.11.tgz#fc7da7168f56a7f730720e4c25ff3429901e12d9"
+ngrx-store-freeze@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/ngrx-store-freeze/-/ngrx-store-freeze-0.2.2.tgz#fbc1f50dbee8f5a63a34aa589abeb422d68f7fc5"
+  dependencies:
+    deep-freeze-strict "^1.1.1"
+
+ngx-bootstrap@2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-2.0.4.tgz#26be0eb1b9a5dc133caa93b39ae221d6872c8b55"
 
 ngx-toastr@^8.4.0:
   version "8.4.0"

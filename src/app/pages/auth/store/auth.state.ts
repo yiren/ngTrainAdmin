@@ -5,7 +5,7 @@ export interface AuthState{
     isAuthenticated:boolean;
 }
 
-export const initialState: AuthState={
+export const authInitialState: AuthState={
     token:null,
     isAuthenticated : false
 }

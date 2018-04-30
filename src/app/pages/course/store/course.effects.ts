@@ -3,17 +3,19 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
 import * as CourseActions from './course.actions';
+import * as fromApp from '../../../store/app.actions';
 
 import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { Course, CourseFeatureState, PaginatedCourses } from './course.states';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { GetCourseByPageAction } from './course.actions';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class CourseEffects {
@@ -28,7 +30,11 @@ export class CourseEffects {
         {pageIndex:action.payload.pageIndex, pageSize:action.payload.pageSize, keyword:action.payload.keyword}))
         .do(console.log)
         .map((courses:PaginatedCourses[])=>{console.log(courses);return new CourseActions.PaginatedCoursesLoadedAction(courses)})
-        .catch(err=>Observable.throw(err));
+        .catch((err:HttpErrorResponse)=>{
+            if(err.status===504){
+                return of(new fromApp.ShowErrorMessageAction({message:'遠端伺服器無法連線',title:'糟糕!'}));
+            }
+        });
 
     // @Effect()
     // getCourses=this.actions$
@@ -70,6 +76,7 @@ export class CourseEffects {
             this.httpClient.post(this.API_ENPOINT,
                 action.payload))
         .map(()=>this.router.navigate(['/course']));
+
 
     @Effect({dispatch:false})
     editCourse=this.actions$

@@ -5,13 +5,15 @@ import * as fromSection from '../pages/section/store/section.reducers';
 
 import { AppDataState, AppState, AppUiState, initAppDataState, initAppUiState } from './app.states';
 
-import { ActionReducerMap } from "@ngrx/store";
+import { ActionReducerMap } from '@ngrx/store';
+import {routerReducer} from '@ngrx/router-store';
 
 export const appReducers:ActionReducerMap<AppState>={
     auth:fromAuth.authReducer,
     section:fromSection.sectionReducer,
     appUi:appUiReducer,
-    appData:appDataReducer
+    appData:appDataReducer,
+    router:routerReducer
 }
 
 export function appDataReducer(state:AppDataState= initAppDataState, action: fromApp.AppActions){

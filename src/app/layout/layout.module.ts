@@ -14,6 +14,7 @@ import { ScrollbarDirective } from "../shared/directives/scrollbar.directive";
 import { SearchComponent } from './top-navbar/search/search.component';
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { StoreModule } from "@ngrx/store";
+import { StoreRouterConnectingModule } from "@ngrx/router-store";
 import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 import { authReducer } from "../pages/auth/store/auth.reducers";
 
@@ -31,7 +32,7 @@ import { authReducer } from "../pages/auth/store/auth.reducers";
     imports: [
 		LayoutRoutes,
 		CommonModule,
-		FormsModule,
+        FormsModule,
         CommonSharedModule.forRoot()
         
     ]

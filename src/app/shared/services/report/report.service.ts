@@ -21,8 +21,6 @@ export class ReportService {
             searchParams = searchParams.append(key, searchVM[key]);
        });
         this.httpClient.get(`${this.API_ENDPOINT}/searchbycourse`,{
-                            
-                            observe:'body',
                             params:searchVM
                         })
                         //.do(console.log)
