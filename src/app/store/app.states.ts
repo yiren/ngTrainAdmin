@@ -3,7 +3,7 @@ import * as fromSection from '../pages/section/store/section.states';
 
 import { MetaReducer } from '@ngrx/store';
 import { RouterReducerState } from '@ngrx/router-store';
-import { RouterStateUrl } from './route.state';
+import { RouterStateUrl } from './routerStore/router.state';
 import { environment } from '../../environments/environment';
 import { storeFreeze } from 'ngrx-store-freeze';
 
@@ -34,7 +34,7 @@ export const initAppState:AppState={
     router:null
 }
 
-
+export const selectRouter=(state:AppState)=>state.router;
 
 
 

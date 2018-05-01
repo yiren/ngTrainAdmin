@@ -17,7 +17,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { CommonSharedModule } from "./shared/common.shared.module";
 import { CourseService } from "app/shared/services/course/course.service";
-import { CustomSerializer } from './store/route.state';
+import { CustomSerializer } from './store/routerStore/router.state';
 import { DebugInterceptor } from './shared/interceptor/debug.Interceptor';
 import { EffectsModule } from '@ngrx/effects';
 import { FormsModule } from "@angular/forms";
@@ -100,3 +100,4 @@ export type StoreType = {
 export class AppModule {
   constructor(public appState: AppState) {}
 }
+

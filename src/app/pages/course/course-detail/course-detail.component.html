@@ -30,16 +30,16 @@
                     <a style="float:right" href="javascript:void(0)" onclick="javascript:window.print();"><i class="zmdi zmdi-print p-r-5"></i> <span class="p-l-5">列印</span></a>
                 </header>
                 <div class="card-body p-50 p-t-10">
-                    <h1>{{(courseDataState$ | async)?.course.courseName}}</h1>
+                    <h1>{{(courseDataState$ | async)?.courseName}}</h1>
                     <div class="row">
                         <div class="col-md-6">
-                            <h3>開訓日期:{{(courseDataState$ | async)?.course.courseStartDate}}</h3>
-                            <h3>訓練時數:{{(courseDataState$ | async)?.course.trainHours | number:'.1' }}</h3>
+                            <h3>開訓日期:{{(courseDataState$ | async)?.courseStartDate}}</h3>
+                            <h3>訓練時數:{{(courseDataState$ | async)?.trainHours | number:'.1' }}</h3>
                             <h3>學員名單:</h3>
 
                         </div>
                         <div class="col-md-6">
-                            <h3>結訓日期:{{(courseDataState$ | async)?.course.courseEndDate}}</h3>
+                            <h3>結訓日期:{{(courseDataState$ | async)?.courseEndDate}}</h3>
 
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let student of (courseDataState$ | async)?.course.studentCourses; let i=index">
+                                    <tr *ngFor="let student of (courseDataState$ | async)?.studentCourses; let i=index">
                                         <th scope="row">{{i+1}}</th>
                                         <td>{{student.studentName}}</td>
                                         <td>{{student.sectionName}}</td>

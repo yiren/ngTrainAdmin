@@ -1,5 +1,7 @@
 import { AppState } from '../../../store/app.states';
 import { Course } from "../../course/store/course.states";
+import { createFeatureSelector } from '@ngrx/store';
+import { searchDataReducer } from './search.reducers';
 
 export interface SearchFeatureState extends AppState{
     searchDataState:SearchDataState;
@@ -40,3 +42,7 @@ export const initialSearchUiState:SearchUiState={
         pageSize:20
     }
 }
+
+export const selectSearchData=createFeatureSelector<SearchDataState>('searchDataState');
+
+export const selectSearchByCourseName=select

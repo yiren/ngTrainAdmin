@@ -1,7 +1,11 @@
-import { AppState } from "../../../store/app.states";
+import * as R from 'ramda';
+import * as fromApp from "../../../store/app.states";
+
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+
 import { SectionState } from "../../section/store/section.states";
 
-export interface CourseFeatureState extends AppState{
+export interface CourseFeatureState extends fromApp.AppState{
 
     courseDataState: CourseState
     courseUiState:CourseUiState
@@ -51,3 +55,19 @@ export interface Course{
     courseStartDate: string;
     courseEndDate: string;
   }
+
+  export const selectCourseDataState=createFeatureSelector<CourseState>('courseDataState');
+  export const selectCourseById=createSelector(
+      selectCourseDataState,
+      (courseState)=>{
+        if(courseState){
+            
+            //const course=R.find(R.eqProps('courseId',courseId),courseState.paginatedCourses.courses)
+            console.log(courseState.course);
+            return courseState.course;
+        }else{
+            return null;
+        }
+      }
+  )
+  export const selectCourseUiSate=createFeatureSelector<CourseFeatureState>('courseUiState')
