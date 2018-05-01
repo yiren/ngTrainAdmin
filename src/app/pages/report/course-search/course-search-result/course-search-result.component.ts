@@ -26,7 +26,7 @@ export class CourseSearchResultComponent implements OnInit, AfterViewInit {
   @ViewChild(GridComponent) grid :GridComponent
 
   @Input()
-  data:Observable<Course[]>;
+  data:Observable<SearchDataState>;
   record:Course[];
   searchGrid:GridDataResult;
   public multiple = false;
@@ -44,8 +44,8 @@ export class CourseSearchResultComponent implements OnInit, AfterViewInit {
   pageSize=15;
   skip=0;
   ngOnInit() {
-    this.data.subscribe((res)=>{
-      this.record=_.cloneDeep(res);
+    this.data.subscribe(res=>{
+      this.record=_.cloneDeep(res.courses);
       console.log(this.record);
       this.loadData();
       //console.log(this.searchGrid);

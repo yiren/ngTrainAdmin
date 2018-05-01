@@ -8,13 +8,18 @@ export function searchDataReducer(state:SearchDataState=initialSearchDataState ,
     switch(action.type){
         case (fromSearch.SEARCHDATALOADEDACTION):
             return {
-                state,
+                ...state,
                 courses:action.payload
             }
         case (fromSearch.RESETSEARCHDATASTATEACION):
             return {
-                state,
+                ...state,
                 courses:initialSearchDataState.courses
+            }
+        case (fromSearch.SEARCHEXPORTDATALOADEDACTION):
+            return {
+                ...state,
+                exportData:action.payload
             }
         
         default:
@@ -27,17 +32,19 @@ export function searchUiReducer(state:SearchUiState=initialSearchUiState, action
     switch(action.type){
         case (fromSearch.SETSEARCHUISTATEACTION) :
             return {
-                state,
+                ...state,
                 courseName:action.payload.courseName,
                 courseStartDate:action.payload.courseStartDate,
-                courseEndDate:action.payload.courseEndDate
+                courseEndDate:action.payload.courseEndDate,
+                queryOption:action.payload.queryOption
             }
         case (fromSearch.RESETSEARCHUISTATEACION):
             return {
-                state,
+                ...state,
                 courseName:initialSearchUiState.courseName,
                 courseStartDate:initialSearchUiState.courseStartDate,
-                courseEndDate:initialSearchUiState.courseEndDate
+                courseEndDate:initialSearchUiState.courseEndDate,
+                queryOption:initialSearchUiState.queryOption
             }
         default:
         return state;

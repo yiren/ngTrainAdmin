@@ -1,19 +1,20 @@
+import { AppState } from '../../../store/app.states';
 import { Course } from "../../course/store/course.states";
 
-export interface SearchFeatureState{
+export interface SearchFeatureState extends AppState{
     searchDataState:SearchDataState;
     searchUiState:SearchUiState;
 }
 
 
-
-
 export interface SearchDataState{
     courses:Course[];
+    exportData:Course[];
 }
 
 export const initialSearchDataState:SearchDataState={
-    courses:[]
+    courses:[],
+    exportData:[]
 }
 
 export interface SearchUiState{
@@ -21,11 +22,21 @@ export interface SearchUiState{
     courseStartDate:string;
     courseEndDate:string;
     queryOption:number;
+    pager:Pager
+}
+
+export interface Pager{
+    pageIndex:number,
+    pageSize:number
 }
 
 export const initialSearchUiState:SearchUiState={
     courseName:'',
     courseStartDate:null,
     courseEndDate:null,
-    queryOption:0
+    queryOption:0,
+    pager:{
+        pageIndex:0,
+        pageSize:20
+    }
 }

@@ -25,7 +25,7 @@
 
 </form>
 
-<kendo-excelexport [data]="searchData" fileName="訓練課程搜尋結果.xlsx" #excelexport>
+<kendo-excelexport [data]="(exportData | async)?.exportData" fileName="訓練課程搜尋結果.xlsx" #excelexport>
     <kendo-excelexport-column field="sectionName" title="組別">
     </kendo-excelexport-column>
     <kendo-excelexport-column field="studentName" title="學員">

@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SearchDataState, SearchFeatureState } from '../store/search.states';
 
 import { CourseService } from '../../../shared/services/course/course.service';
+import { Observable } from 'rxjs/Observable';
 import { ResetSearchUiAction } from '../store/search.actions';
-import { SearchFeatureState } from '../store/search.states';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -17,11 +18,10 @@ export class CourseSearchComponent implements OnInit, OnDestroy {
     private courseService:CourseService,
     private store: Store<SearchFeatureState>) { }
 
-  SearchCourseState$;
+  SearchDataState$:Observable<SearchDataState>;
 
   ngOnInit() {
-    this.SearchCourseState$=this.store.select('searchDataState')
-                                    .map(state=>state.courses)
+    this.SearchDataState$=this.store.select('searchDataState')
                                     .skip(1);
 
   }

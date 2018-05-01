@@ -7,6 +7,8 @@ export const SEARCHDATALOADEDACTION='SearchDataLoaded';
 export const SETSEARCHUISTATEACTION='SetSearchUiState';
 export const RESETSEARCHUISTATEACION='ResetSearchUiState';
 export const RESETSEARCHDATASTATEACION='ResetSearchUiState';
+export const GETSEARCHEXPORTDATAACTION='GetSearchExportDataAction';
+export const SEARCHEXPORTDATALOADEDACTION='SearchExportDataLoadedAction';
 
 export class SearchByCourseNameAction implements Action{
     readonly type=SEARCHBYCOURSENAMEACTION;
@@ -25,8 +27,18 @@ export class SearchDataLoadedAction implements Action{
     constructor(public payload:Course[]){}
 }
 
+export class GetSearchExportDataAction implements Action{
+    readonly type=GETSEARCHEXPORTDATAACTION;
+    constructor(public payload:QueryParams){}
+}
+
+export class SearchExportDataLoadedAction implements Action{
+    readonly type=SEARCHEXPORTDATALOADEDACTION;
+    constructor(public payload:Course[]){}
+}
+
 export class ResetSearchDataAction implements Action{
-    readonly type=RESETSEARCHDATASTATEACION
+    readonly type=RESETSEARCHDATASTATEACION;
 }
 
 export class SetSearchUiAction implements Action{
@@ -41,7 +53,9 @@ export class ResetSearchUiAction implements Action{
 
 export type SearchDataActions= SearchByCourseNameAction |
 SearchDataLoadedAction |
-ResetSearchDataAction
+ResetSearchDataAction |
+GetSearchExportDataAction |
+SearchExportDataLoadedAction
 ;
 
 export type SearchUiActions=SetSearchUiAction |

@@ -81,7 +81,7 @@ export type StoreType = {
       progressBar:true
     }),
     ToastContainerModule,
-    //StoreRouterConnectingModule,
+    StoreRouterConnectingModule,
     StoreModule.forRoot(appReducers
        ,{metaReducers}
     ),

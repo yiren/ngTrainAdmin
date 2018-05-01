@@ -12,8 +12,8 @@
 
             </mat-expansion-panel-header>
 
-            <app-course-search-form></app-course-search-form>
-            <app-course-search-result [data]="SearchCourseState$"></app-course-search-result>
+            <app-course-search-form [exportData]="SearchDataState$"></app-course-search-form>
+            <app-course-search-result [data]="SearchDataState$"></app-course-search-result>
         </mat-expansion-panel>
     </mat-accordion>
 

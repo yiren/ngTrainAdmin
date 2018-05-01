@@ -1,12 +1,14 @@
 import * as moment from 'moment';
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ResetSearchDataAction, ResetSearchUiAction, SearchByCourseNameAction, SetSearchUiAction } from '../../store/search.actions';
+import { SearchDataState, SearchFeatureState } from '../../store/search.states';
 
+import { Course } from '../../../course/store/course.states';
 import { CourseService } from '../../../../shared/services/course/course.service';
+import { Observable } from 'rxjs/Observable';
 import { ReportService } from '../../../../shared/services/report/report.service';
-import { SearchFeatureState } from '../../store/search.states';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -23,17 +25,21 @@ export class CourseSearchFormComponent implements OnInit, OnDestroy {
               private courseService:CourseService,
               private store:Store<SearchFeatureState>) { }
   
+  @Input()
+  exportData:Observable<SearchDataState>;
+  exportCourses$:Observable<Course[]>;
   isSubmitted;
   searchForm:FormGroup;
-  searchData:any[];
-  courseSearchSubscription:Subscription;
+  //searchData:Observable<Course>;
+  //courseSearchSubscription:Subscription;
   ngOnInit() {
     this.searchForm=this.fb.group({
       'courseName':'',
       'courseStartDate':{value:'',disabled:true},
       'courseEndDate':{value:'',disabled:true}
     });
-    this.courseSearchSubscription=this.reportService.courseExportSubject.subscribe(res=>this.searchData=res);
+    // this.exportCourses$=this.store.select('searchDataState').skip(1)
+    //           .map(state=>state.exportData);
     this.isSubmitted=false;
   }
 
@@ -44,7 +50,7 @@ export class CourseSearchFormComponent implements OnInit, OnDestroy {
     let startDate=moment(this.searchForm.get('courseStartDate').value);
     let endDate=moment(this.searchForm.get('courseEndDate').value);
     if(!this.searchForm.get('courseName')){
-      this.searchForm.value.courseName=''
+      this.searchForm.value.courseName='';
     }
     if(startDate.isValid() ==true){
       this.searchForm.value.courseStartDate=startDate.format('YYYY/MM/DD');
@@ -61,6 +67,7 @@ export class CourseSearchFormComponent implements OnInit, OnDestroy {
   }
 
   reset(){
+    this.isSubmitted=false;
     this.searchForm.reset();
     //this.courseService.courseSearchSubject.next([]);
     //this.courseService.studentSearchSubject.next([]);
@@ -68,7 +75,7 @@ export class CourseSearchFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.courseSearchSubscription.unsubscribe();
+    this.store.dispatch(new ResetSearchUiAction());
   }
 
 }
