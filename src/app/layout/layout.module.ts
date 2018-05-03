@@ -1,3 +1,5 @@
+import * as StudentGuards from 'app/pages/student/store/Guards';
+
 import { AuthEffects } from "../pages/auth/store/auth.effects";
 import { CommonModule } from "@angular/common";
 import { CommonSharedModule } from '../shared/common.shared.module';

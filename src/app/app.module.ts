@@ -1,3 +1,4 @@
+import * as StudentGuards from 'app/pages/student/store/Guards';
 import * as moment from 'moment';
 
 import { AppState, InternalStateType } from "./app.service";
@@ -33,7 +34,9 @@ import { SectionEffects } from './pages/section/store/section.effects';
 import { SectionService } from './shared/services/section/section.service';
 import { ServicesModule } from "./shared/services/services.module";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { StudentEffects } from './pages/student/store/student.effects';
 import { StudentService } from "./shared/services/student/student.service";
+import { StudentsDataGuard } from './pages/student/store/Guards/students.guards';
 import { TrainAdminGuard } from './shared/guard/trainadmin.guard';
 import { appReducers } from './store/app.reducers';
 import { authReducer } from './pages/auth/store/auth.reducers';
@@ -51,7 +54,8 @@ const APP_PROVIDERS = [
   SectionService,
   ReportService,
   AuthService,
-  TrainAdminGuard
+  TrainAdminGuard,
+  StudentsDataGuard
 ];
 
 export type StoreType = {
@@ -85,13 +89,15 @@ export type StoreType = {
     StoreModule.forRoot(appReducers
        ,{metaReducers}
     ),
-        EffectsModule.forRoot([AuthEffects, SectionEffects]),
+        EffectsModule.forRoot([AuthEffects, SectionEffects,StudentEffects]),
         StoreDevtoolsModule.instrument()
     
   ],
-  providers: [APP_PROVIDERS,
+  providers: [
+    APP_PROVIDERS,
     { provide: RouterStateSerializer, useClass: CustomSerializer },
     {provide:HTTP_INTERCEPTORS, useClass:DebugInterceptor, multi:true}
+    
     // ,{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
     // {provide:HTTP_INTERCEPTORS, useClass:AuthRefreshTokenInterceptor, multi:true},
   ],

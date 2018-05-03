@@ -45,4 +45,3 @@ export const initialSearchUiState:SearchUiState={
 
 export const selectSearchData=createFeatureSelector<SearchDataState>('searchDataState');
 
-export const selectSearchByCourseName=select

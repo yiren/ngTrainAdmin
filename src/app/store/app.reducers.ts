@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import * as fromApp from './app.actions';
 import * as fromAuth from '../pages/auth/store/auth.reducers';
 import * as fromSection from '../pages/section/store/section.reducers';
+import * as fromStudent from '../pages/student/store/student.reducers';
 
 import { AppDataState, AppState, AppUiState, initAppDataState, initAppUiState } from './app.states';
 
@@ -13,6 +14,7 @@ export const appReducers:ActionReducerMap<AppState>={
     section:fromSection.sectionReducer,
     appUi:appUiReducer,
     appData:appDataReducer,
+    student:fromStudent.studentReducer,
     router:routerReducer
 }
 

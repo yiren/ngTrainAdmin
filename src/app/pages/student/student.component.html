@@ -1,35 +1,37 @@
-<div class="content-body container">
-    <button class="float-add-btn" mat-fab color="warn" (click)="OnAddStudentDialog()">新增</button>
-    <mat-accordion multi="true">
-        <mat-expansion-panel expanded="true" *ngFor="let section of studentsBySection">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    {{section.sectionName}}
-                </mat-panel-title>
-                <mat-panel-description>
-                    請點選要修改人員
-                </mat-panel-description>
-            </mat-expansion-panel-header>
+<mat-spinner class="float-add-btn" style="margin:auto" *ngIf="(isLoaded$ | async) else sectionBody"></mat-spinner>
+<ng-template #sectionBody>
+    <div class="content-body container">
+        <button class="float-add-btn" mat-fab color="warn" (click)="OnAddStudentDialog()">新增</button>
+        <mat-accordion multi="true">
+            <mat-expansion-panel expanded="true" *ngFor="let section of (sections$ | async)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{section.sectionName}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        請點選要修改人員
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
 
-            <mat-list>
-                <mat-list-item *ngFor="let student of section.students">
-                    <i class="zmdi zmdi-face"></i>
-                    <mat-form-field>
-                        <input placeholder="姓名" matInput [(ngModel)]="student.studentName" required>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-select placeholder="組別" [(value)]="student.sectionId">
-                            <mat-option *ngFor="let item of sections" [value]="item.sectionId">{{item.sectionName}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <button mat-raised-button color="accent" (click)="updateStudent(student, section.sectionId)">更改</button>
-                    <button mat-raised-button color="warning" (click)="deleteStudent(student, section.sectionId)">刪除</button>
-                </mat-list-item>
-            </mat-list>
-        </mat-expansion-panel>
-    </mat-accordion>
-</div>
-
+                <mat-list>
+                    <mat-list-item *ngFor="let student of section.students">
+                        <i class="zmdi zmdi-face"></i>
+                        <mat-form-field>
+                            <input placeholder="姓名" matInput [(ngModel)]="student.studentName" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-select placeholder="組別" [(value)]="student.sectionId">
+                                <mat-option *ngFor="let item of sections" [value]="item.sectionId">{{item.sectionName}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button mat-raised-button color="accent" (click)="updateStudent(student, section.sectionId)">更改</button>
+                        <button mat-raised-button color="warning" (click)="deleteStudent(student, section.sectionId)">刪除</button>
+                    </mat-list-item>
+                </mat-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</ng-template>
 
 
 <!-- Copyright 2017 Google Inc. All Rights Reserved.

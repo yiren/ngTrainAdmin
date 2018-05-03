@@ -135,21 +135,23 @@ export class StudentService {
   studentKeywordSubject=new BehaviorSubject('');
   constructor(private httpClient:HttpClient) { }
 
-  SECTION_API_ENPOINT = '/api/sections';
+  SECTION_API_ENDPOINT = '/api/sections';
 
   STUDENT_API_ENDPOINT='/api/students';
 
   
 
   getStudentsBySection(){
-    return this.httpClient.get(this.SECTION_API_ENPOINT);
+    return this.httpClient.get(this.SECTION_API_ENDPOINT);
   }
 
   getStudents():Observable<any[]>{
     return this.httpClient.get<any[]>(this.STUDENT_API_ENDPOINT);
   }
+
+
   getSections(){
-    return this.httpClient.get(this.SECTION_API_ENPOINT)
+    return this.httpClient.get(this.SECTION_API_ENDPOINT)
                .subscribe((data:any[]) => {
                   this.studentSubject.next(data);
                });
