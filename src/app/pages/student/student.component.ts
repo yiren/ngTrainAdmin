@@ -3,7 +3,8 @@ import * as fromApp from '../../store/app.states';
 import * as fromStudent from './store/student.actions';
 
 import { Component, OnInit } from '@angular/core';
-import { StudentState, selectStudentLoaded } from './store/student.reducers';
+import { StudentState, getStudentLoaded } from './store/student.reducers';
+import { selectAllStudents, selectStudentsLoaded } from './store/student.selectors';
 
 import { AddStudentDialogComponent } from '../../shared/components/add-student-dialog/add-student-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,7 +13,6 @@ import { Section } from '../section/store/section.states';
 import { Store } from '@ngrx/store';
 import { StudentService } from '../../shared/services/student/student.service';
 import { Subscription } from 'rxjs/Subscription';
-import { selectAllStudents } from './store/student.selectors';
 
 @Component({
   selector: 'app-student',
@@ -22,7 +22,7 @@ import { selectAllStudents } from './store/student.selectors';
 export class StudentComponent implements OnInit {
 
   constructor(private studentService:StudentService,
-              private store:Store<StudentState>,
+              private store:Store<fromApp.AppState>,
               public dialog:MatDialog) { }
 
   sectionSubscription:Subscription;
@@ -34,11 +34,12 @@ export class StudentComponent implements OnInit {
     sectionId:1
   };
   isLoaded$:Observable<boolean>
-  sections$:Observable<Section[]>;
+  sections$;
+  //:Observable<Section[]>;
   ngOnInit() {
     //this.store.dispatch(new fromStudent.LoadStudentsAction());
     this.sections$=this.store.select(selectAllStudents);
-    this.isLoaded$=this.store.select(selectStudentLoaded);
+    this.isLoaded$=this.store.select(selectStudentsLoaded);
     // this.studentService.getSections();
     // this.sectionSubscription = 
     //   this.studentService.studentSubject

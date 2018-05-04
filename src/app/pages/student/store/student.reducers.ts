@@ -58,6 +58,6 @@ export function studentReducer(
     }
 }
 
-export const selectStudentEntities=(state:StudentState)=>state.entities;
-export const selectStudentLoading=(state:StudentState)=>state.loading;
-export const selectStudentLoaded=(state:StudentState)=>state.loaded;
+export const getStudentEntities=(state:StudentState)=>state.entities;
+export const getStudentLoading=(state:StudentState)=>state.loading;
+export const getStudentLoaded=(state:StudentState)=>state.loaded;

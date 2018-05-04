@@ -5,17 +5,17 @@ import { createSelector } from '@ngrx/store';
 
 export const selectStudentsEntities = createSelector(
     fromApp.selectStudentState,
-    (state:fromStudent.StudentState) => state.entities
+    fromStudent.getStudentEntities
 )
 
 export const selectStudentsLoaded = createSelector(
     fromApp.selectStudentState,
-    (state:fromStudent.StudentState) => state.loaded
+    fromStudent.getStudentLoaded
 )
 
 export const selectStudentsLoading = createSelector(
     fromApp.selectStudentState,
-    (state:fromStudent.StudentState) => state.loading
+    fromStudent.getStudentLoading
 )
 
 export const selectAllStudents = createSelector(
