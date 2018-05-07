@@ -4,17 +4,17 @@ import * as fromStudent from './student.reducers';
 import { createSelector } from '@ngrx/store';
 
 export const selectStudentsEntities = createSelector(
-    fromApp.selectStudentState,
+    fromApp.getStudentState,
     fromStudent.getStudentEntities
 )
 
 export const selectStudentsLoaded = createSelector(
-    fromApp.selectStudentState,
+    fromApp.getStudentState,
     fromStudent.getStudentLoaded
 )
 
 export const selectStudentsLoading = createSelector(
-    fromApp.selectStudentState,
+    fromApp.getStudentState,
     fromStudent.getStudentLoading
 )
 

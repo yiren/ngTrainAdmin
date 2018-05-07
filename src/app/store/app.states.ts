@@ -43,8 +43,8 @@ export const initAppState:AppState={
     router:null
 }
 
-export const selectRouter= (state:AppState) => state.router ;
+export const getRouter= (state:AppState) => state.router ;
 
-export const selectStudentState = (state:AppState) => state.student;
+export const getStudentState = (state:AppState) => state.student;
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [storeFreeze]: [];

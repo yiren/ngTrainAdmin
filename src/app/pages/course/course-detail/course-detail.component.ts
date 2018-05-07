@@ -5,7 +5,7 @@ import { CourseFeatureState, selectCourseById } from '../store/course.states';
 import { CourseService } from '../../../shared/services/course/course.service';
 import { GetCourseByIdAction } from '../store/course.actions';
 import { Store } from '@ngrx/store';
-import { selectRouter } from '../../../store/app.states';
+import { getRouter } from '../../../store/app.states';
 
 @Component({
   selector: 'app-course-detail',
@@ -24,7 +24,7 @@ export class CourseDetailComponent implements OnInit {
   ngOnInit() {
     // const courseId=this.route.snapshot.params['courseId']
     // this.store.dispatch(new GetCourseByIdAction(courseId));
-    this.courseDataState$=this.store.select(selectRouter)
+    this.courseDataState$=this.store.select(getRouter)
               .map(routeParams=>routeParams.state.params)
               .take(1)
               .do(console.log)
