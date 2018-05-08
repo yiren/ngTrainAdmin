@@ -1,3 +1,6 @@
+import 'rxjs/operators/share';
+import 'rxjs/operators/catchError';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -53,7 +56,8 @@ export class CourseService {
     //console.log({pageIndex:pageIndex, pageSize:pageSize, keyword:keyword});
     let header = new HttpHeaders();
     header.set('Content-Type', 'application/json');
-    return this.httpClient.post(`${this.API_ENPOINT}/getpaginatedcourses`, {pageIndex:pageIndex, pageSize:pageSize, keyword:keyword}).catch(x=>Observable.throw(x));
+    return this.httpClient.post(`${this.API_ENPOINT}/getpaginatedcourses`, {pageIndex:pageIndex, pageSize:pageSize, keyword:keyword});
+    //.catchError(x=>Observable.throw(x));
   }
   updateStudentScoreById(courseId,updateScore){
     let header = new HttpHeaders();

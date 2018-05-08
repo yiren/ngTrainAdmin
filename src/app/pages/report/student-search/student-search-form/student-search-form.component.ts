@@ -10,7 +10,7 @@ import { ReportService } from '../../../../shared/services/report/report.service
 import { StudentService } from 'app/shared/services/student/student.service';
 import { Subscription } from 'rxjs/Subscription';
 import { map } from 'rxjs/operator/map';
-import { startWith } from 'rxjs/operator/startWith';
+import { startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-student-search-form',

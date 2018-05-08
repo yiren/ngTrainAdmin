@@ -1,3 +1,5 @@
+import 'rxjs/operators/take'
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CourseFeatureState, selectCourseById } from '../store/course.states';

@@ -1,3 +1,5 @@
+import 'rxjs/operators/skip';
+
 import * as SectionActions from '../../section/store/section.actions';
 import * as _ from 'lodash';
 import * as fromSection from '../store/course.states';

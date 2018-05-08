@@ -1,3 +1,5 @@
+import 'rxjs/operators/skip';
+
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SearchDataState, SearchFeatureState } from '../store/search.states';
 

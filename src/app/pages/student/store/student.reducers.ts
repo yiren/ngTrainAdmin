@@ -44,8 +44,15 @@ export function studentReducer(
                 entities
             };
         }
-
+        
         case (fromStudent.LOADSTUDENTSFAIL):{
+            return {
+                ...state,
+                loaded:false,
+                loading:false
+            }
+        }
+        case (fromStudent.LOADSTUDENTS):{
             return {
                 ...state,
                 loaded:false,

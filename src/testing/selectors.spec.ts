@@ -66,7 +66,7 @@ describe('Testing Student Selectors',()=>{
             store
                 .select(fromSelectors.selectStudentsEntities)
                 .subscribe(value=>{
-                    console.log(value)
+                    //console.log(value)
                     result=value;
                 });
         
@@ -79,6 +79,55 @@ describe('Testing Student Selectors',()=>{
         })
 
     });
+
+    describe('Testing Select StudentLoaded',()=>{
+        it('loaded to be true',()=>
+        {
+            let result;
+            store
+                .select(fromSelectors.selectStudentsLoaded)
+                .subscribe(value=>{
+                    //console.log(value)
+                    result=value;
+                });
+            store
+                .dispatch(new fromActions.LoadStudentsAction());
+
+            expect(result).toEqual(false);
+
+            store
+                .dispatch(new fromActions.LoadStudentsSuccessAction(sections));
+
+            expect(result).toEqual(true);
+        })
+
+    });
+
+    describe('Testing Select StudentLoading',()=>{
+        it('loading to be true',()=>
+        {
+            let result;
+
+            store
+                .select(fromSelectors.selectStudentsLoading)
+                .subscribe(value=>{
+                    //console.log(value)
+                    result=value;
+                });
+                
+            store
+                .dispatch(new fromActions.LoadStudentsAction());
+            expect(result).toEqual(true);
+
+            store
+                .dispatch(new fromActions.LoadStudentsSuccessAction(sections));
+
+            expect(result).toEqual(false);
+        })
+
+    });
+
+    
 
 
 })
