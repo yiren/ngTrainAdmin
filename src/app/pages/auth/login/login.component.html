@@ -8,10 +8,14 @@
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <div fxLayout="column" fxLayoutAlign="center">
                         <mat-form-field>
-                            <input placeholder="帳號" matInput formControlName="username">
+                            <input placeholder="帳號" matInput formControlName="username" #nameInput>
+                            <mat-hint align="end">{{nameInput.value?.length}} / 5</mat-hint>
+                            <mat-error></mat-error>
                         </mat-form-field>
                         <mat-form-field>
-                            <input placeholder="密碼 " type="password" matInput formControlName="password">
+                            <input placeholder="密碼 " type="password" matInput formControlName="password" #pWInput>
+                            <mat-hint align="end">{{pWInput.value?.length}} / 3</mat-hint>
+                            <mat-error></mat-error>
                         </mat-form-field>
                         <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid || isSubmitted ">登入</button>
                     </div>

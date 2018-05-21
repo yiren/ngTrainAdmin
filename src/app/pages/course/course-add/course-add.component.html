@@ -13,31 +13,34 @@
             </mat-expansion-panel-header>
 
             <form [formGroup]="addCourseForm" (ngSubmit)="onSubmit()">
-                <p>
+                <div fxLayout="column">
                     <mat-form-field>
                         <input placeholder="課程名稱" matInput formControlName="courseName">
                     </mat-form-field>
-                </p>
 
-                <mat-form-field>
-                    <input matInput [matDatepicker]="startDate" placeholder="開訓日期" formControlName="courseStartDate">
-                    <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-                    <mat-datepicker #startDate disabled="false"></mat-datepicker>
-                </mat-form-field>
-                /
-                <mat-form-field>
-                    <input matInput [matDatepicker]="endDate" placeholder="結訓日期" formControlName="courseEndDate">
-                    <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-                    <mat-datepicker #endDate disabled="false"></mat-datepicker>
-                </mat-form-field>
 
-                <p>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="startDate" [max]="endDate" placeholder="開訓日期" formControlName="courseStartDate">
+                        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                        <mat-datepicker #startDate disabled="false"></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="endDate" placeholder="結訓日期" formControlName="courseEndDate">
+                        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                        <mat-datepicker #endDate disabled="false"></mat-datepicker>
+                    </mat-form-field>
+
+
                     <mat-form-field>
                         <input placeholder="訓練時數" matInput formControlName="trainHours">
                     </mat-form-field>
-                </p>
+                </div>
+
+
                 <h6>各組:</h6>
                 <div formGroupName="students" fxLayout="row no-wrap" fxLayoutAlign="space-between">
+
                     <mat-form-field *ngFor="let section of studentsBySection; let i=index">
                         <mat-select [placeholder]="section.sectionName" multiple [formControlName]="section.sectionCode">
                             <mat-option *ngFor="let student of section.students" [value]="student.studentId">{{student.studentName}}</mat-option>
@@ -45,9 +48,9 @@
                     </mat-form-field>
                 </div>
 
-                <p>
-                    <button mat-raised-button color="primary" type="submit" [disabled]="!addCourseForm.valid || isSubmitted">新增訓練課程</button>
-                </p>
+
+                <button mat-raised-button color="primary" type="submit" [disabled]="!addCourseForm.valid || isSubmitted">新增訓練課程</button>
+
                 <mat-spinner *ngIf="isSubmitted">
                 </mat-spinner>
 
