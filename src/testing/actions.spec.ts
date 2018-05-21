@@ -1,4 +1,4 @@
-import * as fromActions from "app/pages/student/store/student.actions";
+import * as fromActions from "../app/pages/student/store/student.actions";
 
 import { Section } from '../app/pages/section/store/section.states';
 

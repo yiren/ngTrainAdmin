@@ -11,10 +11,7 @@ import { TestBed } from '@angular/core/testing';
 import { appReducers } from '../app/store/app.reducers';
 
 describe('Testing Student Selectors',()=>{
-    let store:Store<fromApp.AppState>;
-
-
-    
+    let store:Store<fromApp.AppState>;    
     const sections:Section[]=[
         {
             sectionId:1,

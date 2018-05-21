@@ -1,5 +1,4 @@
-import 'rxjs/operators/share';
-import 'rxjs/operators/catchError';
+import 'rxjs/add/operator/share';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -9,6 +8,10 @@ import { CourseSearch } from 'app/shared/model/CourseSearch';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { StudentService } from 'app/shared/services/student/student.service';
+import {catchError} from 'rxjs/operators/catchError';
+
+//import {share} from 'rxjs/operators/share';
+
 
 @Injectable()
 export class CourseService {

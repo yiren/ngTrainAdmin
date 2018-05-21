@@ -1,4 +1,4 @@
-import 'rxjs/operators/skip';
+import 'rxjs/add/operator/skip';
 
 import * as SectionActions from '../../section/store/section.actions';
 import * as _ from 'lodash';
@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { StudentService } from 'app/shared/services/student/student.service';
 import { Subscription } from 'rxjs/Subscription';
+import { skip } from 'rxjs/operators/skip';
 
 @Component({
   selector: 'app-course-add',

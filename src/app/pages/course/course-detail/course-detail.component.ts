@@ -1,4 +1,5 @@
-import 'rxjs/operators/take'
+import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/switchMap';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -8,6 +9,7 @@ import { CourseService } from '../../../shared/services/course/course.service';
 import { GetCourseByIdAction } from '../store/course.actions';
 import { Store } from '@ngrx/store';
 import { getRouter } from '../../../store/app.states';
+import {take} from 'rxjs/operators/take';
 
 @Component({
   selector: 'app-course-detail',

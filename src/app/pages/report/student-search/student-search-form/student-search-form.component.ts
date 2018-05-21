@@ -1,3 +1,5 @@
+import 'rxjs/add/operator/startWith';
+
 import * as moment from 'moment';
 
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
@@ -10,7 +12,7 @@ import { ReportService } from '../../../../shared/services/report/report.service
 import { StudentService } from 'app/shared/services/student/student.service';
 import { Subscription } from 'rxjs/Subscription';
 import { map } from 'rxjs/operator/map';
-import { startWith } from 'rxjs/operators';
+import { startWith } from 'rxjs/operators/startWith';
 
 @Component({
   selector: 'app-student-search-form',

@@ -1,5 +1,3 @@
-import 'rxjs/operators/skip';
-
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SearchDataState, SearchFeatureState } from '../store/search.states';
 
@@ -7,6 +5,7 @@ import { CourseService } from '../../../shared/services/course/course.service';
 import { Observable } from 'rxjs/Observable';
 import { ResetSearchUiAction } from '../store/search.actions';
 import { Store } from '@ngrx/store';
+import {skip} from 'rxjs/operators/skip';
 
 @Component({
   selector: 'app-course-search',

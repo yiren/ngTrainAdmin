@@ -51,13 +51,12 @@ const sections:Section[]=[
 describe('Testing Effects', ()=>{
     let actions$: Observable<any>;
     let service: StudentService;
-    let effects: fromEffects.StudentEffects
+    let effects: fromEffects.StudentEffects;
 
     beforeEach(()=>{
         TestBed.configureTestingModule({
             imports:[
                 HttpClientTestingModule,
-                
             ],
             providers:[
                 fromEffects.StudentEffects,
@@ -65,15 +64,15 @@ describe('Testing Effects', ()=>{
                 provideMockActions(() => actions$),
             ]
         });
-        
-        effects=TestBed.get(fromEffects.StudentEffects);
-        service=TestBed.get(StudentService);
+
+        effects = TestBed.get(fromEffects.StudentEffects);
+        service = TestBed.get(StudentService);
 
         spyOn(service, 'getStudentsBySection').and.returnValue(of(sections));
+    });
 
-    })
     describe('Testing load student effect',()=>{
-        it('should return a collection from LoadStudentSuccess',()=>{
+        it('should return a collection from LoadStudentSuccess', () => {
             const action=new fromActions.LoadStudentsAction();
             const completedAction= new fromActions.LoadStudentsSuccessAction(sections);
 
@@ -82,5 +81,5 @@ describe('Testing Effects', ()=>{
 
             expect(effects.loadingStudents).toBeObservable(expected);
         });
-    })
+    });
 });

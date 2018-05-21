@@ -1,5 +1,3 @@
-import 'rxjs/operators/skip'
-
 import * as _ from 'lodash';
 
 import { AfterContentInit, AfterViewInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -18,6 +16,7 @@ import { StudentService } from '../../../shared/services/student/student.service
 import { Subscription } from 'rxjs/Subscription';
 import { map } from 'rxjs/operators/map';
 import { merge } from 'rxjs/operator/merge';
+import {skip} from 'rxjs/operators/skip';
 import { startWith } from 'rxjs/operator/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
 

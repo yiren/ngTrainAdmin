@@ -1,5 +1,3 @@
-import 'rxjs/operators/skip';
-
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
@@ -8,6 +6,7 @@ import { GetCourseByIdAction, UpdateScoreByIdAction } from '../store/course.acti
 import { CourseFeatureState } from '../store/course.states';
 import { CourseService } from 'app/shared/services/course/course.service';
 import { Store } from '@ngrx/store';
+import {skip} from 'rxjs/operators/skip';
 
 @Component({
   selector: 'app-course-score',
