@@ -1,3 +1,5 @@
+import 'rxjs/add/operator/merge';
+
 import * as _ from 'lodash';
 
 import { AfterContentInit, AfterViewInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -15,9 +17,9 @@ import { Store } from '@ngrx/store';
 import { StudentService } from '../../../shared/services/student/student.service';
 import { Subscription } from 'rxjs/Subscription';
 import { map } from 'rxjs/operators/map';
-import { merge } from 'rxjs/operator/merge';
+import { merge } from 'rxjs/operators/merge';
 import {skip} from 'rxjs/operators/skip';
-import { startWith } from 'rxjs/operator/startWith';
+import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
 
 @Component({
@@ -46,20 +48,15 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
   dataRecord;
 
   uiState$:Observable<CourseUiState>;
-  displayedColumns = ['courseName', 'courseStartDate', 'courseEndDate', 'trainHours', 'courseId'];
+  displayedColumns = ['courseName', 'courseStartDate', 'courseEndDate', 'trainHours'];
   ngOnInit() {
        // this.store.select('auth').subscribe(data=>console.log(`Auth Data:${data.isAuthenticated}`));
         this.uiState$=this.store.select('courseUiState');
         this.initPaginatedCourses();
         this.store.select('courseDataState').skip(1).subscribe(data=>{
-         //console.log(data);
-
-          
             this.isLoadingResults=false;
             this.totalRecord = data.paginatedCourses.recordCount;
-          
             this.courseDataSource.data= data.paginatedCourses.courses;
-          
         })
         
         //this.courseService.searchKeywordSubject.subscribe(term=>this.keyword=term);
@@ -75,7 +72,9 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     //console.log(this.paginator);
-    this.paginator.page
+
+    this.paginator.page.merge(this.sort.sortChange)
+    
             // .pipe(
             //   switchMap(() => {
             //     this.isLoadingResults=true;
@@ -86,14 +85,20 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
             //   return data;
             // })
             .subscribe(()=>
-              this.store.dispatch(new SetPaginationParametersAction({pageIndex:this.paginator.pageIndex, pageSize:this.paginator
-              .pageSize}))
+              this.store.dispatch(new SetPaginationParametersAction(
+                {pageIndex:this.paginator.pageIndex, 
+                 pageSize:this.paginator.pageSize,
+                 sortCol:this.sort.active,
+                 direction:this.sort.direction
+                }))
             );
     //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     //this.courseDataSource.filter = this.keyword;
     //this.courseDataSource.paginator = this.paginator;
   }
-
+  changeSort(sortInfo){
+    console.log(sortInfo);
+  }
   applyFilter(filterValue: string) {
     this.paginator.firstPage();
     filterValue = filterValue.trim(); // Remove whitespace

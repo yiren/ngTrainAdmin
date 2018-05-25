@@ -21,7 +21,7 @@
             </div>
 
             <div>
-                <mat-table #table [dataSource]="courseDataSource">
+                <mat-table #table [dataSource]="courseDataSource" matSort (matSortChange)="changeSort($event)">
 
                     <!-- Position Column -->
                     <ng-container matColumnDef="courseName">

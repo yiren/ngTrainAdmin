@@ -82,9 +82,13 @@ export class SetKeywordAction  implements Action{
     readonly type=SET_KEYWORD_ACTION;
     constructor(public payload:string){}
 }
+
+interface pageInfo{
+
+}
 export class SetPaginationParametersAction implements Action{
     readonly type=SET_PAGINATION_PARAMETERS_ACTION;
-    constructor(public payload:{pageIndex:number, pageSize:number}){}
+    constructor(public payload:{pageIndex:number, pageSize:number, sortCol:string, direction:string}){}
 }
 export type CourseUiActions= SetKeywordAction |
 SetPaginationParametersAction

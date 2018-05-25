@@ -16,11 +16,15 @@ export interface CourseUiState{
     keyword:string;
     pageIndex:number;
     pageSize:number;
+    sortCol:string;
+    direction:string;
 }
 export const courseUiInitState:CourseUiState={
     keyword:'',
     pageIndex:0,
-    pageSize:20
+    pageSize:20,
+    sortCol:'',
+    direction:''
 }
 
 export interface CourseState{

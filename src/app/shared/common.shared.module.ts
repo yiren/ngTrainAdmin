@@ -34,6 +34,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import { MessageComponent } from './components/message/message.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -68,7 +69,8 @@ const matModule= [
     MatGridListModule,
     MatAutocompleteModule,
     MatPaginatorModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSortModule
 ];
 
 const kendoUI=[

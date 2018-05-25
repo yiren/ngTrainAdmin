@@ -28,7 +28,7 @@ export class CourseEffects {
         .switchMap((action:CourseActions.GetCourseByPageAction)=>
         this.httpClient.post(`${this.API_ENPOINT}/getpaginatedcourses`, 
         {pageIndex:action.payload.pageIndex, pageSize:action.payload.pageSize, keyword:action.payload.keyword}))
-        .do(console.log)
+        //.do(console.log)
         .map((courses:PaginatedCourses[])=>{console.log(courses);return new CourseActions.PaginatedCoursesLoadedAction(courses)})
         .catch((err:HttpErrorResponse)=>{
             if(err.status===504){
