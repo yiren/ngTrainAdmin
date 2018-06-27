@@ -33,19 +33,19 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
               private router:Router) { }
   subscriptions:Subscription[]=[];
   isLoadingResults=true;
-  keyword='';  
+  keyword;
   courseSubscription:Subscription;
   courseDataSource=new MatTableDataSource<Course>();
   totalRecord;
   dataRecord;
   displayedColumns = ['courseName', 'courseStartDate', 'courseEndDate', 'trainHours', 'courseId'];
   ngOnInit() {
-        
-        this.subscriptions.push(this.courseService.getPaginatedCourses(0,25).subscribe(data=>{
+        this.courseService.searchKeywordSubject.subscribe(term=>this.keyword=term);
+        this.subscriptions.push(this.courseService.getPaginatedCourses(0, 20, this.keyword).subscribe(data=>{
           this.isLoadingResults=false;
           this.courseService.paginatedcourseSubject.next(data);
         }));
-        this.courseService.searchKeywordSubject.subscribe(term=>this.keyword=term);
+        
         
         this.courseService.paginatedcourseSubject.subscribe((data:PaginatedCourses)=>{
           //console.log(data);
@@ -86,7 +86,8 @@ export class CourseListComponent implements OnInit, AfterViewInit, OnDestroy {
                   this.isLoadingResults=false;
                   this.courseService.searchKeywordSubject.next(filterValue);
                   this.courseService.paginatedcourseSubject.next(data);
-               })
+               });
+    this.courseService.searchKeywordSubject.next(filterValue);
     
   }
 }
