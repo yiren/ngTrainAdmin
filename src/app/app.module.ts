@@ -1,9 +1,6 @@
 import * as moment from 'moment';
 
 import { AppState, InternalStateType } from "./app.service";
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import { HashLocationStrategy, LocationStrategy } from "@angular/common";
-import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 
 import { AppComponent } from "./app.component";
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
@@ -21,7 +18,7 @@ import { HttpModule } from "@angular/http";
 import { LayoutModule } from "./layout/layout.module";
 import { NgModule } from "@angular/core";
 import { ReportService } from './shared/services/report/report.service';
-import { ResponsiveModule } from "ng2-responsive";
+import { ResponsiveModule } from "ngx-responsive";
 import { SectionService } from './shared/services/section/section.service';
 import { ServicesModule } from "./shared/services/services.module";
 import { StudentService } from "./shared/services/student/student.service";
@@ -59,10 +56,10 @@ export type StoreType = {
     CommonSharedModule.forRoot(),
     routing
   ],
-  providers: [APP_PROVIDERS,
-   
-    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
-    ,{provide:HTTP_INTERCEPTORS, useClass:AuthRefreshTokenInterceptor, multi:true},
+  providers: [
+    APP_PROVIDERS,
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
+    {provide:HTTP_INTERCEPTORS, useClass:AuthRefreshTokenInterceptor, multi:true},
   ],
   bootstrap: [AppComponent]
 })

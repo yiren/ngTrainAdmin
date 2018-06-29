@@ -39,7 +39,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { RatingModule } from 'ngx-bootstrap/rating';
-import { ResponsiveModule } from 'ng2-responsive';
 import { RouterModule } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
@@ -91,7 +90,6 @@ export const TW_FORMATS = {
 		CommonModule,
         FormsModule,
         ReactiveFormsModule,
-		ResponsiveModule,
         AccordionModule.forRoot(),
         AlertModule.forRoot(),
         ButtonsModule.forRoot(),
@@ -126,7 +124,6 @@ export const TW_FORMATS = {
     exports: [
 		CommonModule,
         FormsModule,
-		ResponsiveModule,
 		AppBackdropComponent,
 		FooterComponent,
         ReactiveFormsModule,

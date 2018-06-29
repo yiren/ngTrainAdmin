@@ -1,6 +1,7 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Section } from '../../../ngxs/sections/section.model';
 
 @Injectable()
 export class SectionService {
@@ -15,7 +16,11 @@ export class SectionService {
     this.httpClient.get(this.SECTION_API_ENDPOINT)
                    .subscribe((data:any[])=>{
                      this.sectionSubject.next(data);
-                   })
+                   });
+  }
+
+  getSections(){
+    return this.httpClient.get<Section[]>(this.SECTION_API_ENDPOINT);
   }
 
 
@@ -38,7 +43,7 @@ export class SectionService {
   addSection(section){
     this.httpClient.post(this.SECTION_API_ENDPOINT,section)
         .subscribe(data=>{
-          console.log(data);
+          //console.log(data);
           this.getSectionList()
         });
   }

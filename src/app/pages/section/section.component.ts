@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Selector, Store } from '@ngxs/store';
 
 import { AddSectionDialogComponent } from '../../shared/components/add-section-dialog/add-section-dialog.component';
+import { LoadSections } from '../../ngxs/sections/section.actions';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs/Observable';
+import { Section } from '../../ngxs/sections/section.model';
 import { SectionService } from '../../shared/services/section/section.service';
+import { SectionState } from '../../ngxs/sections/section.state';
 
 @Component({
   selector: 'app-section',
@@ -11,16 +16,26 @@ import { SectionService } from '../../shared/services/section/section.service';
 })
 export class SectionComponent implements OnInit {
 
+
+
+  @Selector(SectionState.getSections) 
+  sections$:Observable<Section[]>;
+
+  sections;
+
   constructor(private sectionService:SectionService,
+              private store:Store,
               public dialog:MatDialog) { }
       
   section={
     sectionName:'',
     sectionCode:''
   };
-  sections;
+
+  
   ngOnInit() {
-    
+    this.store.dispatch(new LoadSections());
+    this.sections$.subscribe(console.log);
     this.sectionService.sectionSubject
         .subscribe(data=>{
           //console.log(data);
@@ -43,7 +58,7 @@ export class SectionComponent implements OnInit {
         section:this.section
       }
     });
-    console.log(dialogRef);
+    //console.log(dialogRef);
     dialogRef.afterClosed().subscribe((section)=>{
       //console.log(section + ' added');
       this.sectionService.addSection(section);
