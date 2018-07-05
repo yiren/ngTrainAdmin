@@ -32,19 +32,11 @@ import {MatListModule} from '@angular/material/list';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectModule} from '@angular/material/select';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
-import { RatingModule } from 'ngx-bootstrap/rating';
 import { ResponsiveModule } from 'ng2-responsive';
-import { RouterModule } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { TimepickerModule } from 'ngx-bootstrap/timepicker';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 const matModule= [
     MatExpansionModule,
@@ -58,7 +50,6 @@ const matModule= [
     MatSelectModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatCheckboxModule,
     MatTableModule,
     MatProgressSpinnerModule,
     MatIconModule,
@@ -85,6 +76,10 @@ export const TW_FORMATS = {
     }
   };
 
+const bsUI=[
+
+];
+
 
 @NgModule({
     imports: [
@@ -92,21 +87,15 @@ export const TW_FORMATS = {
         FormsModule,
         ReactiveFormsModule,
 		ResponsiveModule,
-        AccordionModule.forRoot(),
-        AlertModule.forRoot(),
+        
         ButtonsModule.forRoot(),
-        CarouselModule.forRoot(),
+        
         CollapseModule.forRoot(),
-        DatepickerModule.forRoot(),
+        
         BsDropdownModule.forRoot(),
-        ModalModule.forRoot(),
-        PaginationModule.forRoot(),
-        ProgressbarModule.forRoot(),
-        RatingModule.forRoot(),
+       
         TabsModule.forRoot(),
-        TimepickerModule.forRoot(),
-        TooltipModule.forRoot(),
-        TypeaheadModule.forRoot(),
+        
         ...matModule,
 
     ],
@@ -130,21 +119,15 @@ export const TW_FORMATS = {
 		AppBackdropComponent,
 		FooterComponent,
         ReactiveFormsModule,
-        AccordionModule,
-        AlertModule,
+       
         ButtonsModule,
-        CarouselModule,
+     
         CollapseModule,
-        DatepickerModule,
+      
         BsDropdownModule,
-        ModalModule,
-        PaginationModule,
-        ProgressbarModule,
-        RatingModule,
+      
         TabsModule,
-        TimepickerModule,
-        TooltipModule,
-        TypeaheadModule,
+     
         ...matModule,
         ...kendoUI
         
